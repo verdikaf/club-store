@@ -44,9 +44,7 @@
               <form role="form">
                 <div class="card-body">
                 <div class="form-group">
-                @foreach ($produk as $p)
-                <input type="hidden" name="id" value="{{$p->id}}">
-                @endforeach
+                    <input type="hidden" name="id" value="{{$p->id}}">
                     <label for="nama_produk">Nama</label>
                     <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama Produk" value="{{ $p->nama }}"> 
                     <label for="stok">Stok</label>

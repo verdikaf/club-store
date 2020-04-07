@@ -47,10 +47,14 @@ class ProdukController extends Controller
     public function produkEdit($id)
     {
 
-        $data['produk'] = DB::table("SELECT * FROM produk WHERE id=?", [$id]);
-        $data['kategori'] = DB::select("SELECT * FROM kategori");
-        $data['supplier'] = DB::select("SELECT * FROM supplier");
-        return view('produk_edit',$data);
+        // $data['produk'] = DB::table("SELECT * FROM produk WHERE id=?", [$id]);
+        // $data['kategori'] = DB::select("SELECT * FROM kategori");
+        // $data['supplier'] = DB::select("SELECT * FROM supplier");
+        $produk = DB::table('produk')->where('id',$id)->get();
+        $supplier = DB::table('supplier')->get();
+        $kategori = DB::table('kategori')->get();
+        return view('produk_edit',['produk' => $produk, 'kategori' => $kategori, 'supplier' => $supplier]);
+        // return view('produk_edit',$data);
     }
 
     public function produkEditSave(Request $request)
