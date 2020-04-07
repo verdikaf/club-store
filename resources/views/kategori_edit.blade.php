@@ -38,7 +38,7 @@
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Insert Kategori</h3>
+                <h3 class="card-title">Edit Kategori</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -53,7 +53,7 @@
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Insert</button>
+                  <button type="submit" class="btn btn-primary">Update</button>
                 </div>
               </form>
             </div>

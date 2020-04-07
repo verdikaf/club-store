@@ -34,7 +34,7 @@
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Insert Kategori</h3>
+                <h3 class="card-title">Add Kategori</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->

@@ -12,7 +12,6 @@
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="{{url('/assets/library/bootstrap/css/bootstrap.css')}}">
-  <link rel="stylesheet" href="{{url('/assets/library/fontawesome/css/fontawesome.css')}}">
   <link rel="stylesheet" href="{{url('/assets/library/bootstrap/css/simple-sidebar.css')}}">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
 
@@ -37,7 +36,7 @@
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Update Supplier</h3>
+                <h3 class="card-title">Edit Supplier</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -58,7 +57,7 @@
                 <!-- /.card-body -->
 
                 <div class="card-footer">
-                  <button type="submit" class="btn btn-primary">Insert</button>
+                  <button type="submit" class="btn btn-primary">Update</button>
                 </div>
               </form>
             </div>
