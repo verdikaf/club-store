@@ -18,7 +18,7 @@
       <div class="list-group list-group-flush">
         <a href="#" class="list-group-item list-group-item-action bg-dark" style="color: White;"><img src="vendor/images/user8-128x128.jpg" alt="Users" style="width:30px; border-radius: 20px;"> Jackson D.</a>
         <a href="{{url('/dashboard')}}" class="list-group-item list-group-item-action bg-light">Dashboard</a>
-        <a href="#" class="list-group-item list-group-item-action bg-light">Produk</a>
+        <a href="{{url('/produk/')}}" class="list-group-item list-group-item-action bg-light">Produk</a>
         <a href="{{url('/supplier/')}}" class="list-group-item list-group-item-action bg-light">Supplier</a>
         <a href="#" class="list-group-item list-group-item-action bg-light">Rak</a>
         <a href="{{url('/kategori/')}}" class="list-group-item list-group-item-action bg-light">Kategori</a>
