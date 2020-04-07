@@ -23,7 +23,8 @@ Route::get('/pages/{id}', 'PagesController@singlePage');
 Route::get('/login', 'UserController@login');
 Route::post('/login/action', 'UserController@loginAction');
 
-Route::get('/dashboard', 'DashboardController@index');
+Route::get('/', 'DashboardController@index');
+Route::get('/keranjang', 'DashboardController@keranjang');
 Route::get('/sign-out', 'DashboardController@signOut');
 
 Route::get('/produk', 'ProdukController@index');
