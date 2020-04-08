@@ -279,7 +279,7 @@
 														</a>
 														<div class="button-head">
 															<div class="product-action">
-																<a title="Quick View" href="#"><i class=" ti-eye"></i><span>Details</span></a>
+																<a title="Quick View" href="{{url('/detail')}}"><i class=" ti-eye"></i><span>Details</span></a>
 																<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
 															</div>
 															<div class="product-action-2">
@@ -288,7 +288,7 @@
 														</div>
 													</div>
 													<div class="product-content">
-														<h3><a href="product-details.html">{{$p->nama}}</a></h3>
+														<h3><a href="{{url('/detail')}}">{{$p->nama}}</a></h3>
 														<div class="product-price">
 															<span>Rp. {{$p->harga}}</span>
 														</div>
@@ -364,7 +364,7 @@
 								</a>
 								<div class="button-head">
 									<div class="product-action">
-										<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Details</span></a>
+										<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="{{url('/detail')}}"><i class=" ti-eye"></i><span>Details</span></a>
 										<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
 									</div>
 									<div class="product-action-2">
@@ -373,7 +373,7 @@
 								</div>
 							</div>
 							<div class="product-content">
-								<h3><a href="product-details.html">{{$p->nama}}</a></h3>
+								<h3><a href="{{url('/detail')}}">{{$p->nama}}</a></h3>
 								<div class="product-price">
 									<span>{{$p->harga}}</span>
 								</div>
@@ -405,13 +405,13 @@
 						@foreach ($produk as $p)
 						<div class="single-product">
 							<div class="product-img">
-								<a href="product-details.html">
+								<a href="{{url('/detail')}}">
 									<img class="default-img" src="data:image/png;base64,{{ base64_encode($p->foto) }}" alt="Card image cap" style="width: 150px; height: 150px;">
 															<img class="hover-img" src="data:image/png;base64,{{ base64_encode($p->foto) }}" alt="Card image cap" style="width: 150px; height: 150px;">
 								</a>
 								<div class="button-head">
 									<div class="product-action">
-										<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Details</span></a>
+										<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="{{url('/detail')}}"><i class=" ti-eye"></i><span>Details</span></a>
 										<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
 									</div>
 									<div class="product-action-2">
@@ -420,7 +420,7 @@
 								</div>
 							</div>
 							<div class="product-content">
-								<h3><a href="product-details.html">{{$p->nama}}</a></h3>
+								<h3><a href="{{url('/detail')}}">{{$p->nama}}</a></h3>
 								<div class="product-price">
 									<span>{{$p->harga}}</span>
 								</div>

@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 Route::get('/pages', 'PagesController@index');
 Route::get('/pages/{id}', 'PagesController@singlePage');
+Route::get('/detail', 'PagesController@showDetail');
 
 Route::get('/login', 'UserController@login');
 Route::post('/login/action', 'UserController@loginAction');
