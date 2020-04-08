@@ -86,7 +86,6 @@ class UserController extends Controller
             'password' => 'required',
         ]);
         DB::table('user')->insert([
-            'id' =>1,
             'nama' => $request->nama,
             'email' => $request->email,
             'password' => $request->password,
@@ -108,7 +107,6 @@ class UserController extends Controller
             'password' => 'required',
         ]);
         DB::table('user')->insert([
-            'id' =>6,
             'nama' => $request->nama,
             'email' => $request->email,
             'password' => $request->password,
