@@ -49,7 +49,7 @@
                             </div>
                             <div id="register-link" class="text-right">
                                 <br><h1></h1>
-                                <a href="#" class="text-info">Sudah punya akun?.Login</a>
+                                <a href="{{url('/login/employee')}}" class="text-info">Sudah punya akun?.Login</a>
                             </div>
                         </form>
                     </div>
