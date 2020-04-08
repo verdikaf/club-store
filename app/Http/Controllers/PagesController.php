@@ -9,7 +9,7 @@ class PagesController extends Controller
 {
     public function index(){
         // return view('produk');
-        $produk = DB::table('produk')->get();
-        return view('produk', ['produk'=>$produk]);
+        // $produk = DB::table('produk')->get();
+        // return view('produk', ['produk'=>$produk]);
     }
 }

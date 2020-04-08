@@ -165,13 +165,13 @@
 			</ol>
 			<div class="carousel-inner">
 			  <div class="carousel-item active">
-				<img class="d-block w-100" src="{{url('/assets/image/slide/2.jpg')}}" alt="First slide">
+				<img class="d-block w-100" src="{{url('/assets/image/dashboard/6.jpg')}}" alt="First slide">
 			  </div>
 			  <div class="carousel-item">
-				<img class="d-block w-100" src="{{url('/assets/image/slide/3.jpg')}}" alt="Second slide">
+				<img class="d-block w-100" src="{{url('/assets/image/dashboard/7.jpg')}}" alt="Second slide">
 			  </div>
 			  <div class="carousel-item">
-				<img class="d-block w-100" src="{{url('/assets/image/slide/2.jpg')}}" alt="Third slide">
+				<img class="d-block w-100" src="{{url('/assets/image/dashboard/6.jpg')}}" alt="Third slide">
 			  </div>
 			</div>
 			<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -279,7 +279,7 @@
 														</a>
 														<div class="button-head">
 															<div class="product-action">
-																<a title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+																<a title="Quick View" href="#"><i class=" ti-eye"></i><span>Details</span></a>
 																<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
 															</div>
 															<div class="product-action-2">
@@ -364,7 +364,7 @@
 								</a>
 								<div class="button-head">
 									<div class="product-action">
-										<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+										<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Details</span></a>
 										<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
 									</div>
 									<div class="product-action-2">
@@ -411,7 +411,7 @@
 								</a>
 								<div class="button-head">
 									<div class="product-action">
-										<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick Shop</span></a>
+										<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="#"><i class=" ti-eye"></i><span>Details</span></a>
 										<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
 									</div>
 									<div class="product-action-2">
