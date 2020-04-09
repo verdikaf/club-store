@@ -65,7 +65,7 @@ class UserController extends Controller
             $request->session()->put('s_status', $result->status);
             $request->session()->put('s_roole', $result->roole);
 
-            return redirect('/');
+            return redirect('/supplier');
         }else{
             return redirect('/login/employee')->with('error','Email atau Password employee yang dimasukkan salah,harap masukkan ulang!');
         }
