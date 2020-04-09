@@ -89,6 +89,7 @@ class UserController extends Controller
             'nama' => $request->nama,
             'email' => $request->email,
             'password' => $request->password,
+            'status' =>'active',
             'role_id'=>3
         ]);
        
@@ -110,6 +111,7 @@ class UserController extends Controller
             'nama' => $request->nama,
             'email' => $request->email,
             'password' => $request->password,
+            'status' =>'active',
             'role_id'=>2
         ]);
        
