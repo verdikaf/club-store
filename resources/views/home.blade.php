@@ -93,13 +93,13 @@
 							<div class="search-bar">
 								
 								<select>
-									<option selected="selected">All Category</option>
+									<option selected="selected">Kategori</option>
 									@foreach($kategori as $k)
 									<option>{{$k->nama}}</option>
 									@endforeach
 								</select>
 								<form>
-									<input name="search" placeholder="Search Products Here....." type="search">
+									<input name="search" placeholder="Cari produk disini....." type="search">
 									<button class="btnn"><i class="ti-search"></i></button>
 								</form>
 							</div>
@@ -108,9 +108,9 @@
 					<div class="col-lg-2 col-md-3 col-12">
 						<div class="right-bar">
 							<!-- Search Form -->
-							<div class="sinlge-bar">
+							<!-- <div class="sinlge-bar">
 								<a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-							</div>
+							</div> -->
 							<div class="sinlge-bar">
 								<a href="{{url('/login')}}" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
 							</div>
@@ -189,7 +189,7 @@
 			<div class="card-body d-flex flex-column align-items-start">
 			   <strong class="d-inline-block mb-2 text-white">OREO RED VELVET 136gr</strong>
 			   <p class="card-text mb-auto">Produk Terlaris></p>
-			   <a class="btn btn-outline-light btn-sm" role="button" href="#">More Info <i class="fa fa-chevron-right "></i></a>
+			   <a class="btn btn-outline-light btn-sm" role="button" href="#">Telusuri <i class="fa fa-chevron-right "></i></a>
 			</div>
 			<img class="card-img-right flex-auto d-none d-lg-block" alt="Thumbnail [200x250]" src="{{url('/assets/image/warehouse/stok_terlaris.jpg')}}" style="width: 150px; height: 150px;">
 		 </div>
@@ -197,7 +197,7 @@
 			<div class="card-body d-flex flex-column align-items-start">
 			   <strong class="d-inline-block mb-2 text-white">OREO RED VELVET 136gr</strong>
 			   <p class="card-text mb-auto">Produk Terlaris></p>
-			   <a class="btn btn-outline-light btn-sm" role="button" href="#">More Info <i class="fa fa-chevron-right "></i></a>
+			   <a class="btn btn-outline-light btn-sm" role="button" href="#">Beli Sekarang <i class="fa fa-chevron-right "></i></a>
 			</div>
 			<img class="card-img-right flex-auto d-none d-lg-block" alt="Thumbnail [200x250]" src="{{url('/assets/image/warehouse/stok_terlaris.jpg')}}" style="width: 150px; height: 150px;">
 		 </div>
@@ -214,9 +214,9 @@
 									<div class="single-banner">
 										<img src="{{url('/assets/image/dashboard/1.jpg')}}" alt="#">
 										<div class="content">
-											<p>Bag Collectons</p>
+											<p>Koleksi Tas 2020</p>
 											<h3>Hush Puppies Green Sling Bag <br> 2020</h3>
-											<a href="#">Shop Now</a>
+											<a href="#">Beli Sekarang</a>
 										</div>
 									</div>
 								</div>
@@ -226,9 +226,9 @@
 					<div class="single-banner">
 						<img src="{{url('/assets/image/dashboard/4.jpg')}}" alt="#">
 						<div class="content">
-							<p>Man's Collectons</p>
-							<h3>Denim jean's <br> collection</h3>
-							<a href="#">Discover Now</a>
+							<p>Koleksi Baju Pria</p>
+							<h3>Koleksi <br> Denim Jean's</h3>
+							<a href="#">Temukan Sekarang</a>
 						</div>
 					</div>
 				</div>
@@ -240,7 +240,7 @@
 						<div class="content">
 							<p>Flash Sale</p>
 							<h3>Mid Season <br> Up to <span>40%</span> Off</h3>
-							<a href="#">Discover Now</a>
+							<a href="#">Kunjungi Toko</a>
 						</div>
 					</div>
 				</div>
@@ -279,11 +279,10 @@
 														</a>
 														<div class="button-head">
 															<div class="product-action">
-																<a title="Quick View" href="{{url('/detail')}}"><i class=" ti-eye"></i><span>Details</span></a>
-																<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+																<a title="Quick View" href="{{url('/detail')}}"><i class=" ti-eye"></i><span>Detail Produk</span></a>
 															</div>
 															<div class="product-action-2">
-																<a title="Add to cart" href="{{url('/keranjang')}}">Add to cart</a>
+																<a title="Add to cart" href="{{url('/keranjang')}}">Masukkan keranjang</a>
 															</div>
 														</div>
 													</div>
@@ -317,9 +316,9 @@
 					<div class="single-banner">
 						<img src="{{url('/assets/image/dashboard/6.jpg')}}" alt="#">
 						<div class="content">
-							<p>Man's Collectons</p>
+							<p>Kolesi Pria</p>
 							<h3>Man's items <br>Up to<span> 50%</span></h3>
-							<a href="#">Shop Now</a>
+							<a href="#">Kunjungi Toko</a>
 						</div>
 					</div>
 				</div>
@@ -329,9 +328,9 @@
 					<div class="single-banner">
 						<img src="{{url('/assets/image/dashboard/7.jpg')}}" alt="#">
 						<div class="content">
-							<p>shoes women</p>
-							<h3>mid season <br> up to <span>70%</span></h3>
-							<a href="#" class="btn">Shop Now</a>
+							<p>Sepatu Wanita</p>
+							<h3>mid season <br> up to <span>40%</span></h3>
+							<a href="#" class="btn">Kunjungi Toko</a>
 						</div>
 					</div>
 				</div>
@@ -365,7 +364,6 @@
 								<div class="button-head">
 									<div class="product-action">
 										<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="{{url('/detail')}}"><i class=" ti-eye"></i><span>Details</span></a>
-										<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
 									</div>
 									<div class="product-action-2">
 										<a title="Add to cart" href="{{url('/keranjang')}}">Add to cart</a>
@@ -388,8 +386,8 @@
     </div>
 	<!-- End Most Popular Area -->
 
-	<!-- Start Best Seller -->
-	<div class="product-area most-popular section">
+	<!-- Start Top Viewed-->
+	<!-- <div class="product-area most-popular section">
         <div class="container">
             <div class="row">
 				<div class="col-12">
@@ -401,7 +399,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="owl-carousel popular-slider">
-						<!-- Start Single Product -->
+						Start Single Product
 						@foreach ($produk as $p)
 						<div class="single-product">
 							<div class="product-img">
@@ -412,7 +410,6 @@
 								<div class="button-head">
 									<div class="product-action">
 										<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="{{url('/detail')}}"><i class=" ti-eye"></i><span>Details</span></a>
-										<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
 									</div>
 									<div class="product-action-2">
 										<a title="Add to cart" href="{{url('/keranjang')}}">Add to cart</a>
@@ -426,14 +423,14 @@
 								</div>
 							</div>
 						</div>
-						@endforeach
-						<!-- End Single Product -->
+						@endforeach -->
+						<!-- End Single Product
                     </div>
 				</div>
             </div>
         </div>
     </div>
-	<!-- End Most Popular Area -->
+	End Most Popular Area -->
 	
 	<!-- Start Category List  -->
 	<section class="shop-home-list section">
@@ -443,7 +440,7 @@
 					<div class="row">
 						<div class="col-12">
 							<div class="shop-section-title">
-								<h1>Category</h1>
+								<h1>Kategori</h1>
 							</div>
 						</div>
 					</div>
@@ -480,12 +477,12 @@
 						<div class="content">
 							<div class="heading-block">
 								<p class="small-title">Deal of day</p>
-								<h3 class="title">Beatutyful dress for women</h3>
+								<h3 class="title">Dress Wanita</h3>
 								<p class="text">Suspendisse massa leo, vestibulum cursus nulla sit amet, frungilla placerat lorem. Cars fermentum, sapien. </p>
-								<h1 class="price">$1200 <s>$1890</s></h1>
-								<div class="coming-time">
+								<h1 class="price">Rp. 200 <s>Rp. 500</s></h1>
+								<!-- <div class="coming-time">
 									<div class="clearfix" data-countdown="2021/02/30"></div>
-								</div>
+								</div> -->
 							</div>
 						</div>	
 					</div>	
@@ -503,8 +500,8 @@
 					<!-- Start Single Service -->
 					<div class="single-service">
 						<i class="ti-rocket"></i>
-						<h4>Free shiping</h4>
-						<p>Orders over $100</p>
+						<h4>Gratis Ongkir</h4>
+						<p>Order Max Rp. 300</p>
 					</div>
 					<!-- End Single Service -->
 				</div>
@@ -512,8 +509,8 @@
 					<!-- Start Single Service -->
 					<div class="single-service">
 						<i class="ti-reload"></i>
-						<h4>Free Return</h4>
-						<p>Within 30 days returns</p>
+						<h4>Gratis Pengembalian</h4>
+						<p>Dalam 30 hari pengembalian</p>
 					</div>
 					<!-- End Single Service -->
 				</div>
@@ -521,8 +518,8 @@
 					<!-- Start Single Service -->
 					<div class="single-service">
 						<i class="ti-lock"></i>
-						<h4>Sucure Payment</h4>
-						<p>100% secure payment</p>
+						<h4>Pembayaran Aman</h4>
+						<p>100% Pembayaran aman</p>
 					</div>
 					<!-- End Single Service -->
 				</div>
@@ -530,8 +527,8 @@
 					<!-- Start Single Service -->
 					<div class="single-service">
 						<i class="ti-tag"></i>
-						<h4>Best Peice</h4>
-						<p>Guaranteed price</p>
+						<h4>Harga Terjangkau</h4>
+						<p>Harga terjamin</p>
 					</div>
 					<!-- End Single Service -->
 				</div>
@@ -553,19 +550,19 @@
 								<h4>ClubStore.com</h4>
 							</div>
 							<p class="text">Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue,  magna eros eu erat. Aliquam erat volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis luctus, metus.</p>
-							<p class="call">Got Question? Call us 24/7<span><a href="tel:123456789">+0123 456 789</a></span></p>
+							<p class="call">Tanya? Call Us 24/7<span><a href="tel:123456789">+0123 456 789</a></span></p>
 						</div>
 						<!-- End Single Widget -->
 					</div>
 					<div class="col-lg-2 col-md-6 col-12">
 						<!-- Single Widget -->
 						<div class="single-footer links">
-							<h4>Information</h4>
+							<h4>Informasi</h4>
 							<ul>
-								<li><a href="#">About Us</a></li>
+								<li><a href="#">Tentang Kami</a></li>
 								<li><a href="#">Faq</a></li>
 								<li><a href="#">Terms & Conditions</a></li>
-								<li><a href="#">Contact Us</a></li>
+								<li><a href="#">Kontak Kami</a></li>
 								<li><a href="#">Help</a></li>
 							</ul>
 						</div>
@@ -576,10 +573,10 @@
 						<div class="single-footer links">
 							<h4>Customer Service</h4>
 							<ul>
-								<li><a href="#">Payment Methods</a></li>
+								<li><a href="#">Metode Pembayran</a></li>
 								<li><a href="#">Money-back</a></li>
-								<li><a href="#">Returns</a></li>
-								<li><a href="#">Shipping</a></li>
+								<li><a href="#">Pengembalian</a></li>
+								<li><a href="#">Pengantaran</a></li>
 								<li><a href="#">Privacy Policy</a></li>
 							</ul>
 						</div>
@@ -588,14 +585,14 @@
 					<div class="col-lg-3 col-md-6 col-12">
 						<!-- Single Widget -->
 						<div class="single-footer social">
-							<h4>Get In Tuch</h4>
+							<h4>Kunjungi Kami</h4>
 							<!-- Single Widget -->
 							<div class="contact">
 								<ul>
-									<li>NO. 342 - London Oxford Street.</li>
-									<li>012 United Kingdom.</li>
-									<li>info@eshop.com</li>
-									<li>+032 3456 7890</li>
+									<li>NO. 342 - Veteran.</li>
+									<li>012 Malang.</li>
+									<li>info@clubstore.com</li>
+									<li>+0123 456 789</li>
 								</ul>
 							</div>
 							<!-- End Single Widget -->
