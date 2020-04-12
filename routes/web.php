@@ -28,6 +28,8 @@ Route::get('/', 'PagesController@index');
 Route::get('/keranjang', 'PagesController@keranjang');
 Route::get('/sign-out', 'DashboardController@signOut');
 
+Route::get('/dashboard', 'DashboardController@index');
+
 Route::get('/produk', 'ProdukController@index');
 Route::get('/produk/add', 'ProdukController@produkAdd');
 Route::post('/produk/add/save', 'ProdukController@produkAddSave');
