@@ -37,7 +37,14 @@ Route::post('/produk/add/save', 'ProdukController@produkAddSave');
 Route::get('/produk/edit/{id}', 'ProdukController@produkEdit');
 Route::post('/produk/edit/save', 'ProdukController@produkEditSave');
 Route::get('/produk/detail/{id}', 'ProdukController@produkDetail');
-Route::get('/produk/delete/{id}', 'ProdukController@produkDelete');
+//Route::get('/produk/delete/{id}', 'ProdukController@produkDelete');
+
+//MULTIPLE UPLOAD FORM
+Route::get('/produk/gambar/form/{nama}', 'ProdukController@gambarUploadForm');
+Route::post('/produk/gambar/action', 'ProdukController@gambarUploadAction');
+Route::post('/produk/gambar/delete', 'ProdukController@gambarDelete');
+Route::post('/produk/gambar/edit/delete', 'ProdukController@gambarDelete');
+//////////////
 
 Route::get('/kategori', 'KategoriController@index');
 Route::get('/kategori/add', 'KategoriController@kategoriAdd');
