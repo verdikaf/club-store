@@ -26,6 +26,8 @@ Route::post('/login/action', 'UserController@loginAction');
 
 Route::get('/', 'PagesController@index');
 Route::get('/keranjang', 'PagesController@keranjang');
+Route::get('/profil', 'PagesController@addprofil');
+Route::post('/profil/save', 'PagesController@addprofilsave');
 Route::get('/sign-out', 'DashboardController@signOut');
 
 Route::get('/produk', 'ProdukController@index');

@@ -149,8 +149,8 @@
 					<div class="col-12">
 						<div class="bread-inner">
 							<ul class="bread-list">
-								<li><a href="index1.html">Home<i class="ti-arrow-right"></i></a></li>
-								<li class="active"><a href="blog-single.html">Checkout</a></li>
+								<li><a href="{{url('/')}}">Home<i class="ti-arrow-right"></i></a></li>
+								<li class="active"><a href="blog-single.html">Profil</a></li>
 							</ul>
 						</div>
 					</div>
@@ -168,7 +168,8 @@
 							<h2>Buat Profilmu disini</h2>
 							<p>Mohon Masukkan data dengan benar untuk membantu pengiriman</p>
 							<!-- Form -->
-							<form class="form" method="post" action="#">
+							<form  class="form" action="{{url('/profil/save')}}" method="post">
+							<input type="hidden" name="_token" value="{{csrf_token()}}">
 								<div class="row">
 									<div class="col-lg-6 col-md-6 col-12">
 										<div class="form-group">
@@ -184,8 +185,14 @@
 									</div>
 									<div class="col-lg-6 col-md-6 col-12">
 										<div class="form-group">
+											<label>Password<span>*</span></label>
+											<input type="password" name="password" placeholder="" required="required">
+										</div>
+									</div>
+									<div class="col-lg-6 col-md-6 col-12">
+										<div class="form-group">
 											<label>Nomer Telepon<span>*</span></label>
-											<input type="number" name="telepon" placeholder="" required="required">
+											<input type="text" name="telepon" placeholder="" required="required">
 										</div>
 									</div>
 									<div class="col-lg-6 col-md-6 col-12">
@@ -205,6 +212,9 @@
 											<input id="cbox" type="checkbox">
 											<label>Create an account?</label>
 										</div>
+									</div>
+									<div class="col-12">
+									<input type="submit" value="Save" class="btn btn-success"/>
 									</div>
 								</div>
 							</form>
