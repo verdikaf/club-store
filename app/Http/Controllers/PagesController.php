@@ -45,26 +45,37 @@ class PagesController extends Controller
         return view('keranjang', ['produk' => $produk, 'data' => $data, 'kategori' => $kategori]);
     }
 
-    public function addprofil(){
+    public function profil(Request $request){
+        $user = DB::table('user')->where('id', session()->get('s_id'))->first();
+        // return print_r($user);
         $kategori = DB::table('kategori')
         ->get();
-        return view('profil', ['kategori' => $kategori]);
+        return view('profil', ['user' => $user, 'kategori' => $kategori]);
     }
 
-    public function addprofilsave(Request $request){
+    public function editprofil(Request $request){
+        $user = DB::table('user')->where('id', session()->get('s_id'))->first();
+        // return print_r($user);
+        $kategori = DB::table('kategori')
+        ->get();
+        return view('editprofil', ['user' => $user, 'kategori' => $kategori]);
+    }
+
+    public function editprofilsave(Request $request){
         $method = $request->method();
         if($method=="POST"){
-            DB::update("INSERT INTO t_users (id, nama, email, telepon, alamat, kodepos, t_role_id) VALUE (?, ?, ?, ?, ?, ?, ?)",[
-                $request->input('id'),
-                $request->input('nama'),
-                $request->input('email'),
-                $request->input('telepon'),
-                $request->input('alamat'),
-                $request->input('kodepost'),
-            ]);
+            DB::table('user')
+            ->where('id', $request->input('id'))
+            ->update(['nama' => $request->input('nama'),
+                      'email' => $request->input('email'),
+                      'password' => $request->input('password'),
+                      'telepon' => $request->input('telepon'),
+                      'alamat' => $request->input('alamat'),
+                      'kodepos' => $request->input('kodepos'),
+                      ]);
             return redirect('/');
         } else{
-            return redirect('/profil');
+            return redirect('/editprofil');
         }
     }
 
