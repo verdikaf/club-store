@@ -81,8 +81,7 @@
                     <input type="number" class="form-control {{ $errors->has('stok') ? 'is-invalid':'' }}" name="stok" id="stok" placeholder="Stok Produk">
                     <label for="harga">Harga</label>
                     <input type="number" class="form-control {{ $errors->has('harga') ? 'is-invalid':'' }}" name="harga" id="harga" placeholder="Harga Produk">
-                    <label for="foto">Foto</label>
-                    <input type="file" class="form-control {{ $errors->has('foto') }}" name="foto" id="foto" placeholder="Foto Produk">
+                  
 
                     <label for="kategori_id">Kategori</label>
                     <!-- <input type="text" class="form-control" name="kategori_id" id="kategori_id" placeholder="Kategori Produk"> -->
