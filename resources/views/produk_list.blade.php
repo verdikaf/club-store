@@ -128,52 +128,50 @@
 
 	<!-- Start Trending -->
     <div class="product-area section">
-        <div class="container">
-			<div class="row">
-				<div class="col-12">
-					<div class="product-info">
-						<div class="tab-content" id="myTabContent">
-							<!-- Start Single Tab -->
+            <div class="container">
+				<div class="row">
+					<div class="col-12">
+						<div class="section-title">
+							<h2>All Produk</h2>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<div class="product-info">
+							<div class="tab-content" id="myTabContent">
+								<!-- Start Single Tab -->
 								<div class="tab-pane fade show active" id="man" role="tabpanel">
 									<div class="tab-single">
 										<div class="row">
-										@foreach($produk as $p)
-              							 <div class="col l5 m12 s12 offset-l1">
-          						        <!-- Gambar Item -->
-           							        <div class="product-image">
-            						         <!-- <img id="img" src="{{url('/assets/image/dashboard/1.jpg')}}" alt="ydp.png" class="d-block w-100"> -->
-												 <img class="default-img" src="data:image/png;base64,{{ base64_encode($p->foto) }}" alt="Card image cap" style="width: 150px; height: 150px;">
-                							</div>
-           								       <br>
-              							 </div>
-            								<div class="col l4 m12 s12 offset-l1 detail">
-            							      <!-- Detail Item -->
-        							  <div class="item-title">
-            					         <h5>{{$p->nama}}</h5>
-										 <hr>
-       							           </div>
-									  <div class="product-price">
-										<span><i class="fa fa-tags"></i>Rp. {{$p->harga}}</span>
-									  </div>
-										<div class="product-price">
-										<span>Tersedia: {{$p->stok}} barang</span>
-						 			 </div>
-          				        <div class="clearfix"></div>
-
-           				       <form action="/pages/detail" method="post" class="detail-item">
-
-            		         <label class="active">Beli</label>
-					 
-					<!--<span class="input-number-decrement"><i class="fas fa-minus"></i></span>-->
-                    <input type="number" name="qty" min="1" max="10" value="1">
-					<!-- <span class="input-number-decrement"><i class="fas fa-plus"></i></span>-->
-                    </form>
-					<button type="submit" name="submit" value="Submit" class="btn btn-success"> Add Chart </button>
-
-                    <button type="button" class="btn red waves-effect waves-light"
-                        onclick="window.history.go(-1)">Kembali</button>
-               </div>
-			   @endforeach
+											@foreach ($produk as $p)
+											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
+												<div class="single-product">
+													<div class="product-img">
+														<a href="#">
+															<img class="default-img" src="data:image/png;base64,{{ base64_encode($p->foto) }}" alt="Card image cap" style="width: 150px; height: 150px;">
+															<img class="hover-img" src="data:image/png;base64,{{ base64_encode($p->foto) }}" alt="Card image cap" style="width: 150px; height: 150px;">
+															<!-- <span class="out-of-stock">Hot</span> -->
+														</a>
+														<div class="button-head">
+															<div class="product-action">
+																<a title="Quick View" href="{{url('/detail')}}"><i class=" ti-eye"></i><span>Details</span></a>
+																<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+															</div>
+															<div class="product-action-2">
+																<a title="Add to cart" href="{{url('/keranjang')}}">Add to cart</a>
+															</div>
+														</div>
+													</div>
+													<div class="product-content">
+														<h3><a href="{{url('/detail')}}">{{$p->nama}}</a></h3>
+														<div class="product-price">
+															<span>Rp. {{$p->harga}}</span>
+														</div>
+													</div>
+												</div>
+											</div>
+											@endforeach
 										</div>
 									</div>
 								</div>
@@ -185,7 +183,6 @@
             </div>
     </div>
 	<!-- End Trending -->
-
 	
 	<!-- Start Shop Services Area -->
 	<section class="shop-services section home">
