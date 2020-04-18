@@ -120,7 +120,7 @@ class UserController extends Controller
     //Logout
     public function Userlogout(){
         Session::flush();
-        return redirect('login')->with('warning','Kamu berhasil logout');
+        return redirect('/')->with('warning','Kamu berhasil logout');
     }
     public function Employeelogout(){
         Session::flush();

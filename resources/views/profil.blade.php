@@ -48,100 +48,9 @@
 	
 	
 </head>
-<body class="js">
+<body class="js" id="wrapper">
 
-	<!-- Header -->
-	<header class="header shop">
-		<div class="middle-inner">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-2 col-md-2 col-12">
-						<!-- Logo -->
-						<div class="logo">
-              <a class="navbar-brand font-weight-bold" href="{{url('/')}}"><h6>ClubStore.com</h6></a>
-						</div>
-						<!--/ End Logo -->
-						<!-- Search Form -->
-						<div class="search-top">
-							<div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
-							<!-- Search Form -->
-							<div class="search-top">
-								<form class="search-form">
-									<input type="text" placeholder="Search here..." name="search">
-									<button value="search" type="submit"><i class="ti-search"></i></button>
-								</form>
-							</div>
-							<!--/ End Search Form -->
-						</div>
-						<!--/ End Search Form -->
-						<div class="mobile-nav"></div>
-					</div>
-					<div class="col-lg-8 col-md-7 col-12">
-						<div class="search-bar-top">
-							<div class="search-bar">
-								
-								<select>
-									<option selected="selected">Kategori</option>
-									@foreach($kategori as $k)
-									<option>{{$k->nama}}</option>
-									@endforeach
-								</select>
-								<form>
-									<input name="search" placeholder="Cari produk disini....." type="search">
-									<button class="btnn"><i class="ti-search"></i></button>
-								</form>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-2 col-md-3 col-12">
-						<div class="right-bar">
-							<!-- Search Form -->
-							<!-- <div class="sinlge-bar">
-								<a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-							</div> -->
-							<div class="sinlge-bar">
-								<a href="{{url('/login')}}" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
-							</div>
-							<div class="sinlge-bar shopping">
-								<a href="{{url('/keranjang')}}" class="single-icon"><i class="ti-bag"></i></a>
-								<!-- Shopping Item
-								<div class="shopping-item">
-									<div class="dropdown-cart-header">
-										<span>2 Items</span>
-										<a href="#">View Cart</a>
-									</div>
-									<ul class="shopping-list">
-										<li>
-											<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-											<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
-											<h4><a href="#">Woman Ring</a></h4>
-											<p class="quantity">1x - <span class="amount">$99.00</span></p>
-										</li>
-										<li>
-											<a href="#" class="remove" title="Remove this item"><i class="fa fa-remove"></i></a>
-											<a class="cart-img" href="#"><img src="https://via.placeholder.com/70x70" alt="#"></a>
-											<h4><a href="#">Woman Necklace</a></h4>
-											<p class="quantity">1x - <span class="amount">$35.00</span></p>
-										</li>
-									</ul>
-									<div class="bottom">
-										<div class="total">
-											<span>Total</span>
-											<span class="total-amount">$134.00</span>
-										</div>
-										<a href="checkout.html" class="btn animate">Checkout</a>
-									</div>
-								</div>
-								/ End Shopping Item -->
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</header>
-	<!--/ End Header -->
-	
+@include('headerhome')
 			<!-- Breadcrumbs -->
 			<div class="breadcrumbs">
 			<div class="container">
@@ -166,6 +75,7 @@
 					<div class="col-lg-8 col-12">
 						<div class="checkout-form">
 							<h2>Profil</h2>
+							<br>
 							<!-- Form -->
 							<form  class="form">
 								<div class="row">
@@ -345,5 +255,12 @@
 	<script src="{{url('/assets/usertemplate/js/easing.js')}}"></script>
 	<!-- Active JS -->
 	<script src="{{url('/assets/usertemplate/js/active.js')}}"></script>
+
+			<!-- Menu Toggle Script -->
+			<script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
 </body>
 </html>

@@ -26,10 +26,11 @@ Route::post('/login/action', 'UserController@loginAction');
 
 Route::get('/', 'PagesController@index');
 Route::get('/keranjang', 'PagesController@keranjang');
+Route::get('/checkout', 'PagesController@checkout');
 Route::get('/profil', 'PagesController@profil');
 Route::get('/editprofil', 'PagesController@editprofil');
 Route::post('/profil/edit', 'PagesController@editprofilsave');
-Route::get('/sign-out', 'DashboardController@signOut');
+Route::get('/logout', 'UserController@Userlogout');
 
 Route::get('/produk', 'ProdukController@index');
 Route::get('/produk/add', 'ProdukController@produkAdd');

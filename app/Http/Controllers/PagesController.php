@@ -80,9 +80,11 @@ class PagesController extends Controller
     }
 
     public function checkout(){
+        $user = DB::table('user')->where('id', session()->get('s_id'))->first();
+        // return print_r($user);
         $kategori = DB::table('kategori')
         ->get();
-        return view('profil', ['kategori' => $kategori]);
+        return view('checkouth.', ['user' => $user, 'kategori' => $kategori]);
     }
 
 }
