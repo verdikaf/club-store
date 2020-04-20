@@ -21,7 +21,7 @@ class UserController extends Controller
     public function loginAction(Request $request){
         $method =$request->method();
         if($method == "POST"){
-            $result =DB::selectOne("SELECT u.id,u.nama,u.email,u.status,r.nama AS roole FROM user AS u RIGHT JOIN role AS r
+            $result =DB::selectOne("SELECT u.id,u.nama,u.email,u.alamat,u.telepon,u.kodepos,u.status,r.nama AS roole FROM user AS u RIGHT JOIN role AS r
             ON u.role_id = r.id WHERE u.email=? AND u.password=? AND u.role_id=3",[
                 $request->input('email'),
                 $request->input('password')
@@ -34,6 +34,9 @@ class UserController extends Controller
             $request->session()->put('s_email', $result->email);
             $request->session()->put('s_status', $result->status);
             $request->session()->put('s_roole', $result->roole);
+            $request->session()->put('s_alamat', $result->alamat);
+            $request->session()->put('s_telepon', $result->telepon);
+            $request->session()->put('s_kodepos', $result->kodepos);
 
             return redirect('/');
         }else{
@@ -82,11 +85,17 @@ class UserController extends Controller
     public function registerPost(Request $request){
         $this->validate($request, [
             'nama' => 'required|min:4',
+            'alamat' => 'required',
+            'telepon' => 'required',
+            'kodepos' => 'required',
             'email' => 'required|min:4|email|unique:user',
             'password' => 'required',
         ]);
         DB::table('user')->insert([
             'nama' => $request->nama,
+            'alamat' => $request->alamat,
+            'telepon'=> $request->telepon,
+            'kodepos' => $request->kodepos,
             'email' => $request->email,
             'password' => $request->password,
             'status' =>'active',

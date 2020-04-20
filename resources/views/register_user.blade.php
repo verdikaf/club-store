@@ -22,18 +22,28 @@
     @include('flash-message')
 
     @yield('content')
-
-        <h3 class="text-center text-white pt-5">CLUB STORE REGISTER</h3>
         <div class="container">
             <div id="register-row" class="row justify-content-center align-items-center">
                 <div id="register-column" class="col-md-6">
                     <div id="register-box" class="col-md-12">
                         <form id="register-form" class="form" action="{{url('/register/action')}}" method="post">
                         @csrf
-                            <h3 class="text-center text-info">Register</h3>
+                            <h3 class="text-center text-info">Club Store Register</h3>
                             <div class="form-group">
                                 <label for="nama" class="text-info">Nama:</label><br>
                                 <input type="text" name="nama" id="nama" class="form-control" placeholder="Masukkan Nama disini" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="alamat" class="text-info">Alamat:</label><br>
+                                <input type="text" name="alamat" id="alamat" class="form-control" placeholder="Masukkan Alamat disini" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="telepon" class="text-info">Telepon:</label><br>
+                                <input type="text" name="telepon" id="telepon" class="form-control" placeholder="Masukkan No Telepon disini" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="kodepos" class="text-info">Kode Pos:</label><br>
+                                <input type="number" name="kodepos" id="kodepos" class="form-control" placeholder="Masukkan Kode Pos disini" required>
                             </div>
                             <div class="form-group">
                                 <label for="email" class="text-info">Email:</label><br>

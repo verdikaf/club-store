@@ -21,8 +21,12 @@ Route::get('/pages', 'PagesController@index');
 Route::get('/pages/{id}', 'PagesController@singlePage');
 Route::get('/detail', 'PagesController@showDetail');
 
+//Login,Register,Logout User
 Route::get('/login', 'UserController@login');
 Route::post('/login/action', 'UserController@loginAction');
+Route::get('/register', 'UserController@register');
+Route::post('/register/action', 'UserController@registerPost');
+
 
 Route::get('/', 'PagesController@index');
 Route::get('/cari','PagesController@cari');

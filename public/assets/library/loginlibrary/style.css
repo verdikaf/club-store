@@ -19,9 +19,8 @@ body {
   margin-top: -85px;
 }
 #register .container #register-row #register-column #register-box {
-  margin-top: 50px;
   max-width: 600px;
-  height: 420px;
+  height: 640px;
   border: 1px solid #f7fff7;
   background-color: #EAEAEA;
 }
