@@ -48,143 +48,80 @@
 	
 	
 </head>
-<body class="js">
-	
-	<!-- Preloader -->
-	<div class="preloader">
-		<div class="preloader-inner">
-			<div class="preloader-icon">
-				<span></span>
-				<span></span>
-			</div>
-		</div>
-	</div>
-	<!-- End Preloader -->
-	
-	
-	<!-- Header -->
-	<header class="header shop">
-		<div class="middle-inner">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-2 col-md-2 col-12">
-						<!-- Logo -->
-						<div class="logo">
-              <a class="navbar-brand font-weight-bold" href="{{url('/')}}"><h6>ClubStore.com</h6></a>
-						</div>
-						<!--/ End Logo -->
-						<!-- Search Form -->
-						<div class="search-top">
-							<div class="top-search"><a href="#0"><i class="ti-search"></i></a></div>
-							<!-- Search Form -->
-							<div class="search-top">
-								<form class="search-form">
-									<input type="text" placeholder="Search here..." name="search">
-									<button value="search" type="submit"><i class="ti-search"></i></button>
-								</form>
-							</div>
-							<!--/ End Search Form -->
-						</div>
-						<!--/ End Search Form -->
-						<div class="mobile-nav"></div>
-					</div>
-					<div class="col-lg-8 col-md-7 col-12">
-						<div class="search-bar-top">
-							<div class="search-bar">
-								
-								<select>
-									<option selected="selected">All Category</option>
-									@foreach($kategori as $k)
-									<option>{{$k->nama}}</option>
-									@endforeach
-								</select>
-								<form>
-									<input name="search" placeholder="Search Products Here....." type="search">
-									<button class="btnn"><i class="ti-search"></i></button>
-								</form>
-							</div>
-						</div>
-					</div>
-					<div class="col-lg-2 col-md-3 col-12">
-						<div class="right-bar">
-							<!-- Search Form -->
-							<div class="sinlge-bar">
-								<a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-							</div>
-							<div class="sinlge-bar">
-								<a href="{{url('/login')}}" class="single-icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
-							</div>
-							<div class="sinlge-bar shopping">
-								<a href="{{url('/keranjang')}}" class="single-icon"><i class="ti-bag"></i></a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</header>
-	<!--/ End Header -->
-	
+<body class="js" id="wrapper">
 
-	<!-- Start Trending -->
-    <div class="product-area section">
-        <div class="container">
-			<div class="row">
-				<div class="col-12">
-					<div class="product-info">
-						<div class="tab-content" id="myTabContent">
-							<!-- Start Single Tab -->
-								<div class="tab-pane fade show active" id="man" role="tabpanel">
-									<div class="tab-single">
-										<div class="row">
-										@foreach($produk as $p)
-              							 <div class="col l5 m12 s12 offset-l1">
-          						        <!-- Gambar Item -->
-           							        <div class="product-image">
-            						         <!-- <img id="img" src="{{url('/assets/image/dashboard/1.jpg')}}" alt="ydp.png" class="d-block w-100"> -->
-												 <img class="default-img" src="data:image/png;base64,{{ base64_encode($p->foto) }}" alt="Card image cap" style="width: 150px; height: 150px;">
-                							</div>
-           								       <br>
-              							 </div>
-            								<div class="col l4 m12 s12 offset-l1 detail">
-            							      <!-- Detail Item -->
-        							  <div class="item-title">
-            					         <h5>{{$p->nama}}</h5>
-										 <hr>
-       							           </div>
-									  <div class="product-price">
-										<span><i class="fa fa-tags"></i>Rp. {{$p->harga}}</span>
-									  </div>
-										<div class="product-price">
-										<span>Tersedia: {{$p->stok}} barang</span>
-						 			 </div>
-          				        <div class="clearfix"></div>
+@include('headerhome')
 
-           				       <form action="/pages/detail" method="post" class="detail-item">
 
-            		         <label class="active">Beli</label>
-					 
-					<!--<span class="input-number-decrement"><i class="fas fa-minus"></i></span>-->
-                    <input type="number" name="qty" min="1" max="10" value="1">
-					<!-- <span class="input-number-decrement"><i class="fas fa-plus"></i></span>-->
-                    </form>
-					<button type="submit" name="submit" value="Submit" class="btn btn-success"> Add Chart </button>
+<!-- Modal -->
 
-                    <button type="button" class="btn red waves-effect waves-light"
-                        onclick="window.history.go(-1)">Kembali</button>
-               </div>
-			   @endforeach
-										</div>
+                    <div class="modal-body">
+                        <div class="row no-gutters">
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+							@foreach($produk as $p)
+                                <!-- Product Slider -->
+									<div class="product-gallery">
+												<img src="data:image/png;base64,{{ base64_encode($p->foto) }}" alt="#">
+
 									</div>
-								</div>
-								<!--/ End Single Tab -->
+								<!-- End Product slider -->
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
+                                <div class="quickview-content">
+									<h2>{{$p->nama}}</h2>
+									<hr>
+									<div class="quickview-ratting-review">
+                                        <div class="quickview-stock">
+                                            <span><i class="fa fa-check-circle-o"></i>Tersedia: {{$p->stok}} barang</span>
+                                        </div>
+                                    </div>
+                                    <h3><i class="fa fa-tags"></i>Rp. {{$p->harga}}</h3>
+                                    <div class="quickview-peragraph">
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia iste laborum ad impedit pariatur esse optio tempora sint ullam autem deleniti nam in quos qui nemo ipsum numquam.</p>
+									</div>
+									<br>
+									<br>
+                                    <div class="quantity">
+										<!-- Input Order -->
+										<div class="input-group">
+											<div class="button minus">
+												<button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
+													<i class="ti-minus"></i>
+												</button>
+											</div>
+											<input type="text" name="quant[1]" class="input-number"  data-min="1" data-max="1000" value="1">
+											<div class="button plus">
+												<button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant[1]">
+													<i class="ti-plus"></i>
+												</button>
+											</div>
+										</div>
+										<!--/ End Input Order -->
+									</div>
+									<div class="add-to-cart">
+									@if(session()->has('s_id'))
+															<a title="Add to cart" href="{{url('/keranjang')}}" class="btn min">Masukkan keranjang</a>
+                            								@elseif(session()->has('s_id')== false)
+															<a title="Add to cart" href="{{url('/login')}}" class="btn min">Masukkan keranjang</a>
+                            								@endif
+										<a href="#" class="btn min">Kembali</a>
+									</div>
+                                    <div class="default-social">
+										<h4 class="share-now">Share:</h4>
+                                        <ul>
+                                            <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
+                                            <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
+                                            <li><a class="youtube" href="#"><i class="fa fa-pinterest-p"></i></a></li>
+                                            <li><a class="dribbble" href="#"><i class="fa fa-google-plus"></i></a></li>
+                                        </ul>
+									</div>
+									@endforeach
+                                </div>
 							</div>
-						</div>
-					</div>
-				</div>
-            </div>
-    </div>
-	<!-- End Trending -->
+</div>
+	<!-- Modal end -->
+	
+
 
 	
 	<!-- Start Shop Services Area -->
@@ -358,5 +295,12 @@
 	<script src="{{url('/assets/usertemplate/js/easing.js')}}"></script>
 	<!-- Active JS -->
 	<script src="{{url('/assets/usertemplate/js/active.js')}}"></script>
+
+	<!-- Menu Toggle Script -->
+	<script>
+    $("#menu-toggle").click(function(e) {
+      e.preventDefault();
+      $("#wrapper").toggleClass("toggled");
+    });
 </body>
 </html>

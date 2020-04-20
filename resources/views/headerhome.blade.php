@@ -81,14 +81,14 @@
 							<div class="search-bar">
 								
 								<select>
-									<option selected="selected">Kategori</option>
+								<option>kategori</option>
 									@foreach($kategori as $k)
 									<option>{{$k->nama}}</option>
 									@endforeach
 								</select>
-								<form>
-									<input name="search" placeholder="Cari produk disini....." type="search">
-									<button class="btnn"><i class="ti-search"></i></button>
+								<form action="/cari" method="GET">
+									<input value="{{ old('cari') }}" name="cari" placeholder="Cari produk disini....." type="text">
+									<button type="submit" class="btnn"><i class="ti-search"></i></button>
 								</form>
 							</div>
 						</div>

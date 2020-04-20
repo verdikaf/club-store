@@ -34,6 +34,24 @@ class PagesController extends Controller
             ->get();
         return view('home', ['produk' => $produk, 'data' => $data, 'kategori' => $kategori]);
     }
+
+    public function cari(Request $request)
+	{
+		// menangkap data pencarian
+		$cari = $request->cari;
+ 
+		$produk = DB::table('produk')
+		->where('nama','like',"%".$cari."%")
+        ->paginate();
+        
+        $kategori = DB::table('kategori')
+            ->get();
+ 
+
+		return view('produk_list',['produk' => $produk, 'kategori' => $kategori]);
+ 
+    }
+    
     public function keranjang() {
         $data['title'] = "Clubstore.com";
         $produk = DB::table('produk')
@@ -45,6 +63,7 @@ class PagesController extends Controller
         return view('keranjang', ['produk' => $produk, 'data' => $data, 'kategori' => $kategori]);
     }
 
+    // Profil
     public function profil(Request $request){
         $user = DB::table('user')->where('id', session()->get('s_id'))->first();
         // return print_r($user);
@@ -84,7 +103,7 @@ class PagesController extends Controller
         // return print_r($user);
         $kategori = DB::table('kategori')
         ->get();
-        return view('checkouth.', ['user' => $user, 'kategori' => $kategori]);
+        return view('checkout.', ['user' => $user, 'kategori' => $kategori]);
     }
 
 }
