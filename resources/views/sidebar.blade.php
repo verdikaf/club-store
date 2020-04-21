@@ -21,7 +21,6 @@
         <a href="{{url('/dashboard')}}" class="list-group-item list-group-item-action bg-extras1">Dashboard</a>
         <a href="{{url('/produk/')}}" class="list-group-item list-group-item-action bg-extras1">Produk</a>
         <a href="{{url('/supplier/')}}" class="list-group-item list-group-item-action bg-extras1">Supplier</a>
-        <a href="#" class="list-group-item list-group-item-action bg-extras1">Rak</a>
         <a href="{{url('/kategori/')}}" class="list-group-item list-group-item-action bg-extras1">Kategori</a>
         <a href="{{url('/laporan/')}}" class="list-group-item list-group-item-action bg-extras1">Laporan</a>
         <button class="dropdown-btn">Users
