@@ -52,77 +52,65 @@
 
 @include('headerhome')
 
-
-<!-- Modal -->
-
-                    <div class="modal-body">
-                        <div class="row no-gutters">
-                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-							@foreach($produk as $p)
-                                <!-- Product Slider -->
-									<div class="product-gallery">
-												<img src="data:image/png;base64,{{ base64_encode($p->foto) }}" alt="#">
-
-									</div>
-								<!-- End Product slider -->
-                            </div>
-                            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                                <div class="quickview-content">
-									<h2>{{$p->nama}}</h2>
-									<hr>
-									<div class="quickview-ratting-review">
-                                        <div class="quickview-stock">
-                                            <span><i class="fa fa-check-circle-o"></i>Tersedia: {{$p->stok}} barang</span>
-                                        </div>
-                                    </div>
-                                    <h3><i class="fa fa-tags"></i>Rp. {{$p->harga}}</h3>
-                                    <div class="quickview-peragraph">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia iste laborum ad impedit pariatur esse optio tempora sint ullam autem deleniti nam in quos qui nemo ipsum numquam.</p>
-									</div>
-									<br>
-									<br>
-                                    <div class="quantity">
-										<!-- Input Order -->
-										<div class="input-group">
-											<div class="button minus">
-												<button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
-													<i class="ti-minus"></i>
-												</button>
-											</div>
-											<input type="text" name="quant[1]" class="input-number"  data-min="1" data-max="1000" value="1">
-											<div class="button plus">
-												<button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant[1]">
-													<i class="ti-plus"></i>
-												</button>
-											</div>
-										</div>
-										<!--/ End Input Order -->
-									</div>
-									<div class="add-to-cart">
-									@if(session()->has('s_id'))
-															<a title="Add to cart" href="{{url('/keranjang')}}" class="btn min">Masukkan keranjang</a>
-                            								@elseif(session()->has('s_id')== false)
-															<a title="Add to cart" href="{{url('/login')}}" class="btn min">Masukkan keranjang</a>
-                            								@endif
-										<a href="#" class="btn min">Kembali</a>
-									</div>
-                                    <div class="default-social">
-										<h4 class="share-now">Share:</h4>
-                                        <ul>
-                                            <li><a class="facebook" href="#"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a class="twitter" href="#"><i class="fa fa-twitter"></i></a></li>
-                                            <li><a class="youtube" href="#"><i class="fa fa-pinterest-p"></i></a></li>
-                                            <li><a class="dribbble" href="#"><i class="fa fa-google-plus"></i></a></li>
-                                        </ul>
-									</div>
-									@endforeach
-                                </div>
-							</div>
-</div>
-	<!-- Modal end -->
 	
 
-
+	<!-- Start Trending -->
+    <div class="product-area section">
+            <div class="container">
+				<div class="row">
+					<div class="col-12">
+						<div class="section-title">
+							<h2>All Produk</h2>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-12">
+						<div class="product-info">
+							<div class="tab-content" id="myTabContent">
+								<!-- Start Single Tab -->
+								<div class="tab-pane fade show active" id="man" role="tabpanel">
+									<div class="tab-single">
+										<div class="row">
+											@foreach ($produk as $p)
+											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
+												<div class="single-product">
+													<div class="product-img">
+														<a href="#">
+															<img class="default-img" src="data:image/png;base64,{{ base64_encode($p->foto) }}" alt="Card image cap" style="width: 150px; height: 150px;">
+															<img class="hover-img" src="data:image/png;base64,{{ base64_encode($p->foto) }}" alt="Card image cap" style="width: 150px; height: 150px;">
+															<!-- <span class="out-of-stock">Hot</span> -->
+														</a>
+														<div class="button-head">
+															<div class="product-action">
+																<a title="Quick View" href="{{url('/detail')}}"><i class=" ti-eye"></i><span>Details</span></a>
+																<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
+															</div>
+															<div class="product-action-2">
+																<a title="Add to cart" href="{{url('/keranjang')}}">Add to cart</a>
+															</div>
+														</div>
+													</div>
+													<div class="product-content">
+														<h3><a href="{{url('/detail')}}">{{$p->nama}}</a></h3>
+														<div class="product-price">
+															<span>Rp. {{$p->harga}}</span>
+														</div>
+													</div>
+												</div>
+											</div>
+											@endforeach
+										</div>
+									</div>
+								</div>
+								<!--/ End Single Tab -->
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
+    </div>
+	<!-- End Trending -->
 	
 	<!-- Start Shop Services Area -->
 	<section class="shop-services section home">

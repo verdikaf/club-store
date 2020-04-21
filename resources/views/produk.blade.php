@@ -55,7 +55,7 @@
                     <tbody> 
                 
                     
-                    @foreach($produk as $p)
+                    @foreach($data as $p)
                         <tr>
                         
                             <td >{{ $p->id }}</td>
@@ -63,11 +63,11 @@
                             <td >{{ $p->stok }}</td>
                             <td >{{ $p->harga }}</td>
                             <td ><img src="{{$p->foto}}" height="50"></td>
-                            <td >{{ $p->nama }}</td>
-                            <td >{{ $p->nama }}</td>
+                            <td >{{ $p->kategori }}</td>
+                            <td >{{ $p->supplier }}</td>
                             <td >
                                 <a href="/produk/edit/{{ $p->id }}" type="button" class="btn btn-warning btn-sm"><span class="fa fa-pencil" ></a>
-                                <a href="/produk/delete/{{ $p->id }}" type="button" class="btn btn-danger btn-sm"><span class="fa fa-trash"></a>
+                                <!-- <a href="/produk/delete/{{ $p->id }}" type="button" class="btn btn-danger btn-sm"><span class="fa fa-trash"></a> -->
                             </td>
                         </tr>
                     @endforeach

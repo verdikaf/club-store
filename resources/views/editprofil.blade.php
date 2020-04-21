@@ -51,6 +51,7 @@
 <body class="js" id="wrapper">
 
 @include('headerhome')
+	
 			<!-- Breadcrumbs -->
 			<div class="breadcrumbs">
 			<div class="container">
@@ -74,10 +75,12 @@
 				<div class="row"> 
 					<div class="col-lg-8 col-12">
 						<div class="checkout-form">
-							<h2>Profil</h2>
-							<br>
+							<h2>Edit Profilmu Disini</h2>
+                            <p>Mohon edit data dengan benar untuk membantu pengiriman</p>
 							<!-- Form -->
-							<form  class="form">
+                            <form class="form" action="{{url('/profil/edit')}}" method="post">
+                            <input type="hidden" name="_token" value="{{csrf_token()}}">
+                            <input type="hidden" name="id" value="{{$user->id}}" class="form-control" placeholder="tulis id disini">
 								<div class="row">
 									<div class="col-lg-6 col-md-6 col-12">
 										<div class="form-group">
@@ -116,7 +119,7 @@
 										</div>
 									</div>
 									<div class="col-12">
-									<a class="btn btn-warning" href="{{url('/editprofil')}}"><i class="fa fa-pencil-alt"></i>Edit</a>
+									<input type="submit" value="Submit" class="btn btn-warning"/>
 									</div>
 								</div>
 							</form>
