@@ -39,6 +39,14 @@ Route::get('/logout', 'UserController@Userlogout');
 
 Route::get('/dashboard', 'DashboardController@index');
 
+
+
+Route::get('/user/employee', 'UserController@index');
+Route::get('/user/employee/add', 'UserController@employeeAdd');
+Route::post('/user/employee/add/save', 'UserController@employeeAddSave');
+Route::get('/user/employee/edit/{id}', 'UserController@employeeEdit');
+Route::post('/user/employee/edit/save', 'UserController@employeeEditSave');
+
 Route::get('/produk', 'ProdukController@index');
 Route::get('/produk/add', 'ProdukController@produkAdd');
 Route::post('/produk/add/save', 'ProdukController@produkAddSave');
