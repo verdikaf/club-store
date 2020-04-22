@@ -140,12 +140,21 @@ class UserController extends Controller
     //WAREHOUSE EMPLOYEE
 
     public function index() {
-        $user = DB::table('user')->get();
-        return view('user_employee',['user' => $user]);
+        // $user = DB::table('user')->get();
+        // return view('user_employee',['user' => $user]);
+
+        $data = DB::table('user')
+            ->join('role', 'user.role_id', '=', 'role.id')
+            ->select(DB::raw('user.*, role.nama as role_id'))
+            ->groupBy('user.id')->get();
+        
+            return view('user_employee', ['data' => $data]);
+ 
     }
 
     public function employeeAdd() {
-        return view('user_employee_add');
+        $data['role'] = DB::select("SELECT * FROM role");
+        return view('user_employee_add', $data);
     }
 
     public function employeeAddSave(Request $request) {
@@ -162,11 +171,14 @@ class UserController extends Controller
             'role_id' => $request->role_id
         ]);
     return redirect('/user/employee');
+
     }
 
     public function employeeEdit($id) {
         $user = DB::table('user')->where('id',$id)->get();
-        return view('user_employee_edit',['user' => $user]);
+        $role = DB::table('role')->get();
+        return view('user_employee_edit',['user' => $user, 'role' => $role]);
+
     }
 
     public function employeeEditSave(Request $request) {
@@ -189,4 +201,8 @@ class UserController extends Controller
 
     
 
-}
+
+
+    
+
+
