@@ -58,8 +58,15 @@
                     <input type="number" class="form-control" name="kode_pos" id="kode_pos" placeholder="Kode Pos">
                     <label for="alamat_lengkap">Alamat</label>
                     <input type="text" class="form-control" name="alamat_lengkap" id="alamat_lengkap" placeholder="Alamat Lengkap">
-                    <label for="role_id">Role ID</label>
-                    <input type="text" class="form-control" name="role_id" id="role_id" placeholder="Role ID">
+                    <!-- <label for="role_id">Role ID</label>
+                    <input type="text" class="form-control" name="role_id" id="role_id" placeholder="Role ID"> -->
+
+                    <label for="role_id">Role</label>
+                        <select id="role_id" class="form-control" name="role_id">
+                            @foreach($role as $r)
+                            <option value="{{$r->id}}">{{$r->nama}}</option>
+                            @endforeach
+                        </select>
 
                     <!-- <label for="role_id">Role ID</label>
                         <select id="role_id" class="form-control" name="role_id">
