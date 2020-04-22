@@ -58,7 +58,7 @@
                     <tbody>
                     
                     <?php $no = 0;?>
-                    @foreach($user as $u)
+                    @foreach($data as $u)
                     <?php $no++ ;?>
                         <tr>
                             <td >{{ $no }}</td>
