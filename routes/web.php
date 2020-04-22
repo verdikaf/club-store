@@ -20,6 +20,8 @@ Route::get('/', function () {
 Route::get('/pages', 'PagesController@index');
 Route::get('/pages/{id}', 'PagesController@singlePage');
 Route::get('/detail', 'PagesController@showDetail');
+Route::get('produk/list', 'PagesController@produkList');
+Route::get('/produk-kategori/{id}', 'PagesController@byKategori')->name('produk.kategori');
 
 //Login,Register,Logout User
 Route::get('/login', 'UserController@login');
