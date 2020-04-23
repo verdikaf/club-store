@@ -22,6 +22,7 @@
         <a href="{{url('/produk/')}}" class="list-group-item list-group-item-action bg-extras1">Produk</a>
         <a href="{{url('/supplier/')}}" class="list-group-item list-group-item-action bg-extras1">Supplier</a>
         <a href="{{url('/kategori/')}}" class="list-group-item list-group-item-action bg-extras1">Kategori</a>
+        <a href="#" class="list-group-item list-group-item-action bg-extras1">Transaksi</a>
         <a href="{{url('/laporan/')}}" class="list-group-item list-group-item-action bg-extras1">Laporan</a>
         <button class="dropdown-btn">Users
             <i class="fa fa-caret-down"></i>

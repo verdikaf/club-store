@@ -44,8 +44,8 @@
                         <th scope="col">No</th>
                         <!-- <th scope="col">ID</th> -->
                         <th scope="col">NAMA</th>
-                        <th scope="col">ALAMAT</th>
-                        <th scope="col">EMAIL</th>
+                        <th scope="col">KODE POS</th>
+                        <th scope="col">KOTA</th>
                         <th scope="col">NO TELP</th>
                         <th scope="col">OPSI</th>
                         </tr>
@@ -57,10 +57,9 @@
                     <?php $no++ ;?>
                         <tr>
                             <td >{{ $no }}</td>
-                            <!-- <td >{{ $k->id }}</td> -->
                             <td >{{ $k->nama }}</td>
-                            <td >{{ $k->alamat }}</td>
-                            <td >{{ $k->email }}</td>
+                            <td >{{ $k->kode_pos }}</td>
+                            <td >{{ $k->kota }}</td>
                             <td >{{ $k->telp }}</td>
                             <td >
                                 <a href="/supplier/edit/{{ $k->id }}" type="button" class="btn btn-warning btn-sm"><span class="fa fa-pencil" ></a>

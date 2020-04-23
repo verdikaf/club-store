@@ -46,12 +46,18 @@
                 <input type="hidden" name="id" value="{{ $k->id }}">
                     <label for="nama_kategori">Nama</label>
                     <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama Supplier" value="{{ $k->nama }}"> 
-                    <label for="alamat">Alamat</label>
-                    <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Alamat Supplier" value="{{ $k->alamat }}">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" name="email" id="email" placeholder="Email Supplier" value="{{ $k->email }}">
                     <label for="telp">NoTelp</label>
                     <input type="number" class="form-control" name="telp" id="telp" placeholder="NoTelp Supplier" value="{{ $k->telp }}">
+                    <label for="provinsi">Provinsi</label>
+                    <input type="provinsi" class="form-control" name="provinsi" id="provinsi" placeholder="provinsi Supplier" value="{{ $k->provinsi }}">
+                    <label for="kota">Kota</label>
+                    <input type="kota" class="form-control" name="kota" id="kota" placeholder="kota Supplier" value="{{ $k->kota }}">
+                    <label for="kecamatan">Kecamatan</label>
+                    <input type="kecamatan" class="form-control" name="kecamatan" id="kecamatan" placeholder="kecamatan Supplier" value="{{ $k->kecamatan }}">
+                    <label for="kode_pos">Kode Pos</label>
+                    <input type="kode_pos" class="form-control" name="kode_pos" id="kode_pos" placeholder="Kode Pos Supplier" value="{{ $k->kode_pos }}">
+                    <label for="alamat_lengkap">Alamat Lengkap</label>
+                    <input type="alamat_lengkap" class="form-control" name="alamat_lengkap" id="alamat_lengkap" placeholder="Alamat Lengkap Supplier" value="{{ $k->alamat_lengkap }}">
                   </div>
                 </div>
                 <!-- /.card-body -->

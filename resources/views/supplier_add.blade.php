@@ -44,12 +44,18 @@
                   <div class="form-group">
                     <label for="nama_kategori">Nama</label>
                     <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama Supplier">
-                    <label for="alamat">Alamat</label>
-                    <input type="text" class="form-control" name="alamat" id="alamat" placeholder="Alamat Supplier">
-                    <label for="email">Email</label>
-                    <input type="email" class="form-control" name="email" id="email" placeholder="Email Supplier">
                     <label for="telp">NoTelp</label>
                     <input type="number" class="form-control" name="telp" id="telp" placeholder="NoTelp Supplier">
+                    <label for="provinsi">Provinsi</label>
+                    <input type="provinsi" class="form-control" name="provinsi" id="provinsi" placeholder="provinsi Supplier">
+                    <label for="kota">Kota</label>
+                    <input type="kota" class="form-control" name="kota" id="kota" placeholder="kota Supplier">
+                    <label for="kecamatan">Kecamatan</label>
+                    <input type="kecamatan" class="form-control" name="kecamatan" id="kecamatan" placeholder="kecamatan Supplier">
+                    <label for="kode_pos">Kode Pos</label>
+                    <input type="kode_pos" class="form-control" name="kode_pos" id="kode_pos" placeholder="Kode Pos Supplier">
+                    <label for="alamat_lengkap">Alamat Lengkap</label>
+                    <input type="alamat_lengkap" class="form-control" name="alamat_lengkap" id="alamat_lengkap" placeholder="Alamat Lengkap Supplier">
                   </div>
                 </div>
                 <!-- /.card-body -->
