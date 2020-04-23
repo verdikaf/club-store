@@ -43,19 +43,19 @@
                 <div class="card-body">
                   <div class="form-group">
                     <label for="nama_kategori">Nama</label>
-                    <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama Supplier">
+                    <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama">
                     <label for="telp">NoTelp</label>
-                    <input type="number" class="form-control" name="telp" id="telp" placeholder="NoTelp Supplier">
+                    <input type="number" class="form-control" name="telp" id="telp" placeholder="NoTelp">
                     <label for="provinsi">Provinsi</label>
-                    <input type="provinsi" class="form-control" name="provinsi" id="provinsi" placeholder="provinsi Supplier">
+                    <input type="provinsi" class="form-control" name="provinsi" id="provinsi" placeholder="Provinsi">
                     <label for="kota">Kota</label>
-                    <input type="kota" class="form-control" name="kota" id="kota" placeholder="kota Supplier">
+                    <input type="kota" class="form-control" name="kota" id="kota" placeholder="Kota">
                     <label for="kecamatan">Kecamatan</label>
-                    <input type="kecamatan" class="form-control" name="kecamatan" id="kecamatan" placeholder="kecamatan Supplier">
+                    <input type="kecamatan" class="form-control" name="kecamatan" id="kecamatan" placeholder="Kecamatan">
                     <label for="kode_pos">Kode Pos</label>
-                    <input type="kode_pos" class="form-control" name="kode_pos" id="kode_pos" placeholder="Kode Pos Supplier">
+                    <input type="kode_pos" class="form-control" name="kode_pos" id="kode_pos" placeholder="Kode Pos">
                     <label for="alamat_lengkap">Alamat Lengkap</label>
-                    <input type="alamat_lengkap" class="form-control" name="alamat_lengkap" id="alamat_lengkap" placeholder="Alamat Lengkap Supplier">
+                    <input type="alamat_lengkap" class="form-control" name="alamat_lengkap" id="alamat_lengkap" placeholder="Jalan, RT/RW, Kelurahan">
                   </div>
                 </div>
                 <!-- /.card-body -->
