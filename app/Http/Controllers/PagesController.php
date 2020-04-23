@@ -106,4 +106,19 @@ class PagesController extends Controller
         return view('checkout.', ['user' => $user, 'kategori' => $kategori]);
     }
 
+    public function produkList(){
+        $produk = DB::table('produk')
+            ->join('kategori', 'produk.kategori_id', '=', 'kategori.id')
+            ->select('produk.*', 'kategori.nama as kategori')
+            ->get();
+        $kategori = DB::table('kategori')
+            ->get();
+        return view('produk_list', ['produk' => $produk, 'kategori' => $kategori]);
+    }
+
+    public function byKategori(Request $request){
+        $produkall = $request->Produk()->get();
+        return $produkall;
+    }
+
 }

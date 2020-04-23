@@ -15,7 +15,7 @@
     <link rel="stylesheet" href="{{url('/assets/library/fontawesome/css/fontawesome.css')}}">
     <link rel="stylesheet" href="{{url('/assets/library/bootstrap/css/simple-sidebar.css')}}">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="{{url('/assets/library/dropzone-5.7.0/dropzone.min.css')}}">
+    <link rel="stylesheet" href="{{url('/assets/library/dropzone/dropzone.min.css')}}">
   <meta name="_token" content="{{csrf_token()}}" />
 </head>
 
@@ -27,7 +27,7 @@
         <!-- Page Content -->
         <div id="page-content-wrapper">
             @foreach($produk as $p)
-            <form action="/produk/edit/save" method="post">
+            <form action="/produk/edit/save" method="POST">
                 {{ csrf_field() }}
                 <div class="container" style="padding-top: 15px;">
                     <div class="row" style=>
@@ -36,7 +36,6 @@
                             <div class="card">
                                 <div class="card-header">
                                     <h3 class="card-title">Update Produk</h3>
-                                    <button type="submit" class="btn btn-warning">Update </button>
                                 </div>
 
                                 <div class="card-body">
@@ -45,6 +44,9 @@
                                         <label for="nama_produk">Nama</label>
                                         <input type="text" class="form-control" name="nama" id="nama"
                                             placeholder="Nama Produk" value="{{ $p->nama }}">
+                                        <label for="nama_produk">Nama</label>
+                                        <textarea name="deskripsi" id="deskripsi" cols="30" rows="10" 
+                                        placeholder="Deskripsi" value="{{ $p->deskripsi }}"></textarea>
                                         <label for="stok">Stok</label>
                                         <input type="number" class="form-control" name="stok" id="stok"
                                             placeholder="Stok Produk" value="{{ $p->stok }}">
@@ -60,13 +62,6 @@
                                             <option value="{{$k->id}}">{{$k->nama}}</option>
                                             @endforeach
                                         </select>
-
-                                        <label for="supplier_id">Supplier</label>
-                                        <!-- <input type="text" class="form-control" name="supplier_id" id="supplier_id" placeholder="Supplier Produk"> -->
-                                        <select id="supplier_id" class="form-control" name="supplier_id">
-                                            @foreach($supplier as $s)
-                                            <option value="{{$s->id}}">{{$s->nama}}</option>
-                                            @endforeach
                                     </div>
 
                                     <div class="form-group">
@@ -81,18 +76,17 @@
                                             </thead>
                                             <tbody>
 
-                                                @foreach($foto_produk as $fp)
+                                                @foreach($preview as $fp)
                                                 <tr>
 
                                                     <td th width="650px" scope="col" style="text-align:center"><img
                                                             src="{{$fp->foto}}" height="50"></td>
 
                                                     <td>
-                                                        <form action="/produk/gambar/edit/delete" method="POST"
-                                                            id="delete">
+                                                        <form action="/produk/gambar/edit/delete" method="POST" id="delete">
                                                             <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                            <input type="hidden" name="id_produk"
-                                                                value="{{$fp->id_produk}}">
+                                                            <input type="hidden" name="produk_id" value="{{$fp->produk_id}}">
+                                                            <input type="hidden" name="id" value="{{$fp->id}}">
                                                             <input type="hidden" name="path" value="{{$fp->foto}}">
                                                         </form>
                                                             <button class="btn-danger" type="submit" form="delete"><span class="fa fa-trash"></button>
@@ -118,7 +112,7 @@
 
 
                                 <div class="card-footer">
-
+                                  <button type="submit" class="btn btn-primary">Update</button>
                                 </div>
                             </div>
                             <!-- /.card -->
@@ -136,9 +130,9 @@
         <script src="{{url('/assets/library/jquery/jquery.min.js')}}"></script>
         <script src="{{url('/assets/library/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
         <script src="{{url('/assets/library/fontawesome/js/fontawesome.min.js')}}"></script>
-        <script src="{{url('/assets/library/dropzone-5.7.0/dropzone.min.js')}}"></script>
+        <script src="{{url('/assets/library/dropzone/dropzone.min.js')}}"></script>
         <!-- Menu Toggle Script -->
-        <script>
+        <!-- <script>
             $("#menu-toggle").click(function (e) {
                 e.preventDefault();
                 $("#wrapper").toggleClass("toggled");
@@ -184,7 +178,7 @@
                 }
             };
 
-        </script>
+        </script> -->
 
 </body>
 

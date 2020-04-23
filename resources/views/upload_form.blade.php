@@ -14,7 +14,7 @@
   <link rel="stylesheet" href="{{url('/assets/library/bootstrap/css/bootstrap.css')}}">
   <link rel="stylesheet" href="{{url('/assets/library/bootstrap/css/simple-sidebar.css')}}">
 
-  <link rel="stylesheet" href="{{url('/assets/library/dropzone-5.7.0/dropzone.min.css')}}">
+  <link rel="stylesheet" href="{{url('/assets/library/dropzone/dropzone.min.css')}}">
   <meta name="_token" content="{{csrf_token()}}" />
 </head>
 
@@ -57,7 +57,7 @@
   <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></script>
   <!-- <script src="{{url('/assets/library/jquery/jquery.js')}}"></script>
   <script src="{{url('/assets/library/bootstrap/js/bundle/bootstrap.js')}}"></script> -->
-  <script src="{{url('/assets/library/dropzone-5.7.0/dropzone.min.js')}}"></script>
+  <script src="{{url('/assets/library/dropzone/dropzone.min.js')}}"></script>
 
   <!-- Menu Toggle Script -->
 <script>
