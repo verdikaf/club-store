@@ -277,7 +277,7 @@
 								</a>
 								<div class="button-head">
 									<div class="product-action">
-										<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="{{url('/detail')}}"><i class=" ti-eye"></i><span>Details</span></a>
+										<a title="Quick View" href="{{url('/detail')}}"><i class=" ti-eye"></i><span>Details</span></a>
 									</div>
 									<div class="product-action-2">
 															@if(session()->has('s_id'))
