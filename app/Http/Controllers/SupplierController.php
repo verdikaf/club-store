@@ -24,9 +24,12 @@ class SupplierController extends Controller
         DB::table('supplier')->insert([
             'id' => $request->id,
             'nama' => $request->nama,
-            'alamat' => $request->alamat,
-            'email' => $request->email,
-            'telp' => $request->telp
+            'telp' => $request->telp,
+            'provinsi' => $request->provinsi,
+            'kota' => $request->kota,
+            'kecamatan' => $request->kecamatan,
+            'kode_pos' => $request->kode_pos,
+            'alamat_lengkap' => $request->alamat_lengkap
         ]);
     return redirect('/supplier');
     }
@@ -41,9 +44,12 @@ class SupplierController extends Controller
         DB::table('supplier')->where('id',$request->id)->update([
             'id' => $request->id,
             'nama' => $request->nama,
-            'alamat' => $request->alamat,
-            'email' => $request->email,
-            'telp' => $request->telp
+            'telp' => $request->telp,
+            'provinsi' => $request->provinsi,
+            'kota' => $request->kota,
+            'kecamatan' => $request->kecamatan,
+            'kode_pos' => $request->kode_pos,
+            'alamat_lengkap' => $request->alamat_lengkap
         ]);
         return redirect('/supplier');
     }

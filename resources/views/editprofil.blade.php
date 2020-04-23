@@ -82,44 +82,59 @@
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                             <input type="hidden" name="id" value="{{$user->id}}" class="form-control" placeholder="tulis id disini">
 								<div class="row">
-									<div class="col-lg-6 col-md-6 col-12">
+									<div class="col-lg-12 col-md-6 col-12">
 										<div class="form-group">
-											<label>Nama</label>
-											<input type="text" name="nama" value="{{$user->nama}}" placeholder="">
+											<label>Name</label>
+											<input type="text" value="{{$user->nama}}" name="nama" placeholder="" required="required">
 										</div>
 									</div>
 									<div class="col-lg-6 col-md-6 col-12">
 										<div class="form-group">
 											<label>Email</label>
-											<input type="email" name="email" value="{{$user->email}}" placeholder="">
+											<input type="email" name="email" value="{{$user->email}}" placeholder="" required="required">
 										</div>
 									</div>
 									<div class="col-lg-6 col-md-6 col-12">
 										<div class="form-group">
 											<label>Password</label>
-											<input type="password" name="password" value="{{$user->password}}" placeholder="">
+											<input type="password" name="password" value="{{$user->password}}" placeholder="" required="required">
 										</div>
 									</div>
 									<div class="col-lg-6 col-md-6 col-12">
 										<div class="form-group">
-											<label>Nomer Telepon</label>
-											<input type="text" name="telepon" value="{{$user->telepon}}" placeholder="">
+											<label>Kecamatan</label>
+											<input type="text" name="kecamatan" value="{{$user->kecamatan}}" placeholder="" required="required">
 										</div>
 									</div>
 									<div class="col-lg-6 col-md-6 col-12">
 										<div class="form-group">
-											<label>Alamat</label>
-											<input type="text" name="alamat" value="{{$user->alamat}}" placeholder="">
+											<label>Kota</label>
+											<input type="text" name="kota" value="{{$user->kota}}" placeholder="" required="required">
 										</div>
 									</div>
 									<div class="col-lg-6 col-md-6 col-12">
 										<div class="form-group">
-											<label>Kode Pos</label>
-											<input type="text" name="kodepos" value="{{$user->kodepos}}" placeholder="">
+											<label>Provinsi<span>*</span></label>
+											<input type="text" name="provinsi" value="{{$user->provinsi}}" placeholder="" required="required">
+										</div>
+									</div>
+									<div class="col-lg-6 col-md-6 col-12">
+										<div class="form-group">
+											<label>Kode Pos<span>*</span></label>
+											<input type="text" name="kode_pos" value="{{$user->kode_pos}}" placeholder="" required="required">
+										</div>
+									</div>
+									<div class="col-lg-12 col-md-6 col-12">
+										<div class="form-group">
+											<label>Alamat Lengkap</label>
+											<input type="text" name="alamat_lengkap" value="{{$user->alamat_lengkap}}" placeholder="" required="required">
 										</div>
 									</div>
 									<div class="col-12">
-									<input type="submit" value="Submit" class="btn btn-warning"/>
+										<div class="form-group create-account">
+											<input id="cbox" type="checkbox">
+											<label>Create an account?</label>
+										</div>
 									</div>
 								</div>
 							</form>
