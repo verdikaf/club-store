@@ -20,6 +20,8 @@ Route::get('/', function () {
 Route::get('/pages', 'PagesController@index');
 Route::get('/pages/{id}', 'PagesController@singlePage');
 Route::get('/detail', 'PagesController@showDetail');
+Route::get('produk/list', 'PagesController@produkList');
+Route::get('/produk-kategori/{id}', 'PagesController@byKategori')->name('produk.kategori');
 
 //Login,Register,Logout User
 Route::get('/login', 'UserController@login');
@@ -36,6 +38,16 @@ Route::get('/profil', 'PagesController@profil');
 Route::get('/editprofil', 'PagesController@editprofil');
 Route::post('/profil/edit', 'PagesController@editprofilsave');
 Route::get('/logout', 'UserController@Userlogout');
+
+Route::get('/dashboard', 'DashboardController@index');
+
+
+
+Route::get('/user/employee', 'UserController@index');
+Route::get('/user/employee/add', 'UserController@employeeAdd');
+Route::post('/user/employee/add/save', 'UserController@employeeAddSave');
+Route::get('/user/employee/edit/{id}', 'UserController@employeeEdit');
+Route::post('/user/employee/edit/save', 'UserController@employeeEditSave');
 
 Route::get('/produk', 'ProdukController@index');
 Route::get('/produk/add', 'ProdukController@produkAdd');

@@ -136,5 +136,73 @@ class UserController extends Controller
         return redirect('login/employee')->with('warning','Kamu berhasil logout');
     }
     
+    
+    //WAREHOUSE EMPLOYEE
+
+    public function index() {
+        // $user = DB::table('user')->get();
+        // return view('user_employee',['user' => $user]);
+
+        $data = DB::table('user')
+            ->join('role', 'user.role_id', '=', 'role.id')
+            ->select(DB::raw('user.*, role.nama as role_id'))
+            ->groupBy('user.id')->get();
+        
+            return view('user_employee', ['data' => $data]);
+ 
+    }
+
+    public function employeeAdd() {
+        $data['role'] = DB::select("SELECT * FROM role");
+        return view('user_employee_add', $data);
+    }
+
+    public function employeeAddSave(Request $request) {
+        DB::table('user')->insert([
+            'id' => $request->id,
+            'nama' => $request->nama,
+            'email' => $request->email,
+            'password' => $request->password,
+            'provinsi' => $request->provinsi,
+            'kota' => $request->kota,
+            'kecamatan' => $request->kecamatan,
+            'kode_pos' => $request->kode_pos,
+            'alamat_lengkap' => $request->alamat_lengkap,
+            'role_id' => $request->role_id
+        ]);
+    return redirect('/user/employee');
+
+    }
+
+    public function employeeEdit($id) {
+        $user = DB::table('user')->where('id',$id)->get();
+        $role = DB::table('role')->get();
+        return view('user_employee_edit',['user' => $user, 'role' => $role]);
+
+    }
+
+    public function employeeEditSave(Request $request) {
+        DB::table('user')->where('id',$request->id)->update([
+            'nama' => $request->nama,
+            'email' => $request->email,
+            'password' => $request->password,
+            'provinsi' => $request->provinsi,
+            'kota' => $request->kota,
+            'kecamatan' => $request->kecamatan,
+            'kode_pos' => $request->kode_pos,
+            'alamat_lengkap' => $request->alamat_lengkap,
+            'role_id' => $request->role_id
+        ]);
+        return redirect('/user/employee');
+    }
+    
 
 }
+
+    
+
+
+
+    
+
+
