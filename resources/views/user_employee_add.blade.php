@@ -44,6 +44,8 @@
                   <div class="form-group">
                     <label for="nama">Nama</label>
                     <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama Employee">
+                    <label for="telp">Telepon</label>
+                    <input type="number" class="form-control" name="telp" id="telp" placeholder="No Telepon">
                     <label for="email">Email</label>
                     <input type="email" class="form-control" name="email" id="email" placeholder="Email">
                     <label for="telp">Password</label>
