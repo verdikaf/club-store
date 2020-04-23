@@ -28,7 +28,7 @@
             <i class="fa fa-caret-down"></i>
         </button>
         <div class="dropdown-container">
-            <a href="#" class="list-group-item list-group-item-action bg-extras1" >Employee</a>
+            <a href="/user/employee/" class="list-group-item list-group-item-action bg-extras1" >Employee</a>
             <a href="#" class="list-group-item list-group-item-action bg-extras1">Customer</a>
         </div>
       </div>

@@ -160,66 +160,55 @@
 	</section>
 	<!-- End Small Banner -->
 	
-	<!-- Start Trending -->
-    <div class="product-area section">
-            <div class="container">
-				<div class="row">
-					<div class="col-12">
-						<div class="section-title">
-							<h2>Trending Item</h2>
-						</div>
+	<!-- Start Best Seller -->
+	<div class="product-area most-popular section">
+        <div class="container">
+            <div class="row">
+				<div class="col-12">
+					<div class="section-title">
+						<h2>Trending Item</h2>
 					</div>
 				</div>
-				<div class="row">
-					<div class="col-12">
-						<div class="product-info">
-							<div class="tab-content" id="myTabContent">
-								<!-- Start Single Tab -->
-								<div class="tab-pane fade show active" id="man" role="tabpanel">
-									<div class="tab-single">
-										<div class="row">
-											@foreach ($produk as $p)
-											<div class="col-xl-3 col-lg-4 col-md-4 col-12">
-												<div class="single-product">
-													<div class="product-img">
-														<a href="#">
-															<img class="default-img" src="data:image/png;base64,{{ base64_encode($p->foto) }}" alt="Card image cap" style="width: 150px; height: 150px;">
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="owl-carousel popular-slider">
+						<!-- Start Single Product -->
+						@foreach ($produk as $p)
+						<div class="single-product">
+							<div class="product-img">
+								<a href="#">
+									<img class="default-img" src="data:image/png;base64,{{ base64_encode($p->foto) }}" alt="Card image cap" style="width: 150px; height: 150px;">
 															<img class="hover-img" src="data:image/png;base64,{{ base64_encode($p->foto) }}" alt="Card image cap" style="width: 150px; height: 150px;">
-															<span class="out-of-stock">Hot</span>
-														</a>
-														<div class="button-head">
-															<div class="product-action">
-																<a title="Quick View" href="{{url('/detail')}}"><i class=" ti-eye"></i><span>Detail Produk</span></a>
-															</div>
-															<div class="product-action-2">
+								</a>
+								<div class="button-head">
+									<div class="product-action">
+										<a title="Quick View" href="{{url('/detail')}}"><i class=" ti-eye"></i><span>Details</span></a>
+									</div>
+									<div class="product-action-2">
 															@if(session()->has('s_id'))
-															<a title="Add to cart" href="{{url('/keranjang')}}">Masukkan keranjang</a>
+															<a title="Add to cart" href="{{url('/keranjang?produkId='.$p->id)}}">Masukkan keranjang</a>
                             								@elseif(session()->has('s_id')== false)
 															<a title="Add to cart" href="{{url('/login')}}">Masukkan keranjang</a>
                             								@endif
                             								</div>
-														</div>
-													</div>
-													<div class="product-content">
-														<h3><a href="{{url('/detail')}}">{{$p->nama}}</a></h3>
-														<div class="product-price">
-															<span>Rp. {{$p->harga}}</span>
-														</div>
-													</div>
-												</div>
-											</div>
-											@endforeach
-										</div>
-									</div>
 								</div>
-								<!--/ End Single Tab -->
+							</div>
+							<div class="product-content">
+								<h3><a href="{{url('/detail')}}">{{$p->nama}}</a></h3>
+								<div class="product-price">
+									<span>{{$p->harga}}</span>
+								</div>
 							</div>
 						</div>
-					</div>
+						@endforeach
+						<!-- End Single Product -->
+                    </div>
 				</div>
             </div>
+        </div>
     </div>
-	<!-- End Trending -->
+	<!-- End Most Popular Area -->
 	
 	<!-- Start Midium Banner  -->
 	<section class="midium-banner">
@@ -277,11 +266,11 @@
 								</a>
 								<div class="button-head">
 									<div class="product-action">
-										<a data-toggle="modal" data-target="#exampleModal" title="Quick View" href="{{url('/detail')}}"><i class=" ti-eye"></i><span>Details</span></a>
+										<a title="Quick View" href="{{url('/detail')}}"><i class=" ti-eye"></i><span>Details</span></a>
 									</div>
 									<div class="product-action-2">
 															@if(session()->has('s_id'))
-															<a title="Add to cart" href="{{url('/keranjang')}}">Masukkan keranjang</a>
+															<a title="Add to cart" href="{{url('/keranjang?produkId='.$p->id)}}">Masukkan keranjang</a>
                             								@elseif(session()->has('s_id')== false)
 															<a title="Add to cart" href="{{url('/login')}}">Masukkan keranjang</a>
                             								@endif

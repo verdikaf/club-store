@@ -94,7 +94,7 @@
 						</div>
 					</div>
 					<div class="col-lg-2 col-md-3 col-12">
-						<div class="right-bar">
+						<div class="right-bar"> <a href="{{url('/')}}">
 							<!-- Search Form -->
 							<!-- <div class="sinlge-bar">
 								<a href="#" class="single-icon"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
@@ -107,11 +107,11 @@
                             @endif
 							</div>
 
-                            <div class="sinlge-bar">
+                            <div class="sinlge-bar shopping">
 							@if(session()->has('s_id'))
-								<a href="{{url('/keranjang')}}" class="single-icon"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+								<a href="{{url('/keranjang')}}" class="single-icon"><i class="ti-bag" aria-hidden="true"><span class="total-count">{{$cart->jumlah_keranjang}}</span></i></a>
                             @elseif(session()->has('s_id')== false)
-                            <a href="{{url('/login')}}" class="single-icon"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+                            <a href="{{url('/login')}}" class="single-icon"><i class="ti-bag" aria-hidden="true"></i></a>
                             @endif
                             </div>
 
@@ -149,7 +149,7 @@
 								</div>
 								/ End Shopping Item -->
 							</div>
-						</div>
+</a></div>
 					</div>
 				</div>
 			</div>
