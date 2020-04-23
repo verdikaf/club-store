@@ -139,9 +139,7 @@ class UserController extends Controller
     
     //WAREHOUSE EMPLOYEE
 
-    public function index() {
-        // $user = DB::table('user')->get();
-        // return view('user_employee',['user' => $user]);
+    public function indexEmployee() {
 
         $data = DB::table('user')
             ->join('role', 'user.role_id', '=', 'role.id')
@@ -161,6 +159,7 @@ class UserController extends Controller
         DB::table('user')->insert([
             'id' => $request->id,
             'nama' => $request->nama,
+            'telp' => $request->telp,
             'email' => $request->email,
             'password' => $request->password,
             'provinsi' => $request->provinsi,
@@ -184,6 +183,7 @@ class UserController extends Controller
     public function employeeEditSave(Request $request) {
         DB::table('user')->where('id',$request->id)->update([
             'nama' => $request->nama,
+            'telp' => $request->telp,
             'email' => $request->email,
             'password' => $request->password,
             'provinsi' => $request->provinsi,
@@ -195,6 +195,7 @@ class UserController extends Controller
         ]);
         return redirect('/user/employee');
     }
+    
     
 
 }
