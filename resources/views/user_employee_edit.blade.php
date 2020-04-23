@@ -45,7 +45,9 @@
                 <div class="form-group">
                 <input type="hidden" name="id" value="{{ $u->id }}">
                     <label for="nama">Nama</label>
-                    <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama Employee" value="{{ $u->nama }}"> 
+                    <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama Employee" value="{{ $u->nama }}">
+                    <label for="telp">Telepon</label>
+                    <input type="number" class="form-control" name="telp" id="telp" placeholder="No Telepon" value="{{ $u->telp }}"> 
                     <label for="email">Email</label>
                     <input type="email" class="form-control" name="email" id="email" placeholder="Email" value="{{ $u->email }}">
                     <label for="password">Password</label>
