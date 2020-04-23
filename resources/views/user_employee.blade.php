@@ -44,6 +44,7 @@
                         <th scope="col">No</th>
                         <!-- <th scope="col">ID</th> -->
                         <th scope="col">NAMA</th>
+                        <th scope="col">TELEPON</th>
                         <th scope="col">EMAIL</th>
                         <th scope="col">PASSWORD</th>
                         <th scope="col">PROVINSI</th>
@@ -64,6 +65,7 @@
                             <td >{{ $no }}</td>
                             <!-- <td >{{ $u->id }}</td> -->
                             <td >{{ $u->nama }}</td>
+                            <td >{{ $u->telp }}</td>
                             <td >{{ $u->email }}</td>
                             <td >{{ $u->password }}</td>
                             <td >{{ $u->provinsi }}</td>
