@@ -45,7 +45,7 @@ Route::get('/dashboard', 'DashboardController@index');
 
 
 
-Route::get('/user/employee', 'UserController@index');
+Route::get('/user/employee', 'UserController@indexEmployee');
 Route::get('/user/employee/add', 'UserController@employeeAdd');
 Route::post('/user/employee/add/save', 'UserController@employeeAddSave');
 Route::get('/user/employee/edit/{id}', 'UserController@employeeEdit');

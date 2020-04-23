@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 21, 2020 at 09:26 AM
+-- Generation Time: Apr 23, 2020 at 01:32 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -100,6 +100,7 @@ CREATE TABLE `preview` (
 CREATE TABLE `produk` (
   `id` int(11) NOT NULL,
   `nama` varchar(200) DEFAULT NULL,
+  `deskripsi` text DEFAULT NULL,
   `stok` int(20) DEFAULT NULL,
   `harga` decimal(10,2) DEFAULT NULL,
   `kategori_id` int(11) NOT NULL
@@ -142,6 +143,7 @@ CREATE TABLE `supplier` (
 CREATE TABLE `user` (
   `id` int(11) NOT NULL,
   `nama` varchar(100) DEFAULT NULL,
+  `telp` varchar(20) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
   `password` varchar(45) DEFAULT NULL,
   `provinsi` varchar(45) DEFAULT NULL,

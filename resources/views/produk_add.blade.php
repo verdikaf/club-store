@@ -77,6 +77,8 @@
                   <div class="form-group">
                     <label for="nama_produk">Nama</label>
                     <input type="text" class="form-control {{ $errors->has('name') ? 'is-invalid':'' }}" name="nama" id="nama" placeholder="Nama Produk">
+                    <label for="deskripsi_produk">Deskripsi</label>
+                    <textarea name="deskripsi" class="form-control {{ $errors->has('deskripsi') ? 'is-invalid':'' }}" id="deskripsi" cols="30" rows="10" placeholder="Deskripsi"></textarea>
                     <label for="stok">Stok</label>
                     <input type="number" class="form-control {{ $errors->has('stok') ? 'is-invalid':'' }}" name="stok" id="stok" placeholder="Stok Produk">
                     <label for="harga">Harga</label>
@@ -90,14 +92,6 @@
                             <option value="{{$k->id}}">{{$k->nama}}</option>
                             @endforeach
                         </select>
-
-                    <label for="supplier_id">Supplier</label>
-                    <!-- <input type="text" class="form-control" name="supplier_id" id="supplier_id" placeholder="Supplier Produk"> -->
-                    <select id="supplier_id" class="form-control" name="supplier_id">
-                            @foreach($supplier as $s)
-                            <option value="{{$s->id}}">{{$s->nama}}</option>
-                            @endforeach
-                    </select>
                   </div>
                 </div>
                 <!-- /.card-body -->

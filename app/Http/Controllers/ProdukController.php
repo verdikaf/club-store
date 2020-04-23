@@ -11,10 +11,9 @@ class ProdukController extends Controller
 
         $data = DB::table('produk')
             ->join('kategori', 'produk.kategori_id', '=', 'kategori.id')
-            ->join('supplier', 'produk.supplier_id', '=', 'supplier.id')
-            ->leftJoin('foto_produk', 'produk.id', '=', 'foto_produk.id_produk')
-            ->select(DB::raw('produk.*, kategori.nama as kategori, supplier.nama as supplier, 
-                MAX(foto_produk.foto) AS foto'))
+            ->leftJoin('preview', 'produk.id', '=', 'preview.produk_id')
+            ->select(DB::raw('produk.*, kategori.nama as kategori, 
+                MAX(preview.foto) AS foto'))
             ->groupBy('produk.id')->get();
 
             return view('produk', ['data' => $data]);
@@ -24,7 +23,6 @@ class ProdukController extends Controller
     {
 
         $data['kategori'] = DB::select("SELECT * FROM kategori");
-        $data['supplier'] = DB::select("SELECT * FROM supplier");
         return view('produk_add', $data);
     }
 
@@ -33,12 +31,12 @@ class ProdukController extends Controller
         $method = $request->method();
             if($method == "POST") {
 
-            DB::insert("INSERT INTO produk (nama, stok, harga, kategori_id, supplier_id) VALUES ( ?, ?, ?, ?, ?)", [
+            DB::insert("INSERT INTO produk (nama, deskripsi, stok, harga, kategori_id) VALUES ( ?, ?, ?, ?, ?)", [
                 $request->input('nama'),
+                $request->input('deskripsi'),
                 $request->input('stok'),
                 $request->input('harga'),
-                $request->input('kategori_id'),
-                $request->input('supplier_id')
+                $request->input('kategori_id')
             ]);
             $nama =  $request->input('nama');
             return redirect('/produk/gambar/form/'. $nama);
@@ -51,37 +49,39 @@ class ProdukController extends Controller
     public function produkEdit($id)
     {
         $produk = DB::table('produk')->where('id',$id)->get();
-        $supplier = DB::table('supplier')->get();
         $kategori = DB::table('kategori')->get();
-        $foto_produk = DB::table('foto_produk')->where('id_produk',$id)->get();
-        return view('produk_edit',['produk' => $produk, 'kategori' => $kategori, 'supplier' => $supplier,
-                                    'foto_produk' => $foto_produk]);
+        $preview = DB::table('preview')->where('produk_id',$id)->get();
+        return view('produk_edit',['produk' => $produk, 'kategori' => $kategori, 'preview' => $preview]);
     }
 
     public function produkEditSave(Request $request)
     {
+
         $method = $request->method();
             if($method == "POST"){
-                    DB::update("UPDATE produk SET nama=?, stok=?, harga=?, kategori_id=?, supplier_id=? WHERE id = ?", [
-                        $request->input('nama'),
-                        $request->input('stok'),
-                        $request->input('harga'),
-                        $request->input('kategori_id'),
-                        $request->input('supplier_id'),
-                        $request->input('id')
-                        ]);
-                return redirect('/produk');
+                $updatep = DB::update("UPDATE produk SET nama=?, deskripsi=?, stok=?, harga=?, kategori_id=? WHERE id = ?", [
+                    $request->input('nama'),
+                    $request->input('deskripsi'),
+                    $request->input('stok'),
+                    $request->input('harga'),
+                    $request->input('kategori_id'),
+                    $request->input('id')
+                    ]);
+                echo ($request->input('nama'));
+                echo ($updatep);
+                // return redirect('/produk');
             }else{
                 return redirect('/produk');
         }
 
         $method = $request->method();
             if($method == "POST"){
-                    DB::update("UPDATE foto_produk SET foto=? WHERE id = id_produk", [
-                        $request->input('foto'),
-                        $request->input('id')
-                        ]);
-                return redirect('/produk');
+                $updatef = DB::update("UPDATE preview SET foto=? WHERE id = produk_id", [
+                    $request->input('foto'),
+                    $request->input('id')
+                    ]);
+                // return redirect('/produk');
+                echo($updatef);
             }else{
                 return redirect('/produk');
         }
@@ -109,7 +109,7 @@ class ProdukController extends Controller
         $image = $request->file('file');
         $imageName = $image->getClientOriginalName();
         $image->move(public_path('/assets/produk'), $imageName);
-        DB::insert("INSERT INTO foto_produk (id_produk, foto) VALUES (?, ?)", [
+        DB::insert("INSERT INTO preview (produk_id, foto) VALUES (?, ?)", [
             $request->input('id'),
             '/assets/produk/' . $imageName
         ]);
@@ -119,7 +119,8 @@ class ProdukController extends Controller
 
     public function gambarDelete(Request $request) {
         $filename =  $request->get('filename');
-        DB::delete("DELETE FROM foto_produk WHERE foto = ?", ['/assets/produk/' . $filename]);
+        $id = $request->get('id');
+        DB::delete("DELETE FROM preview WHERE id = ?", [$id]);
         $path = public_path() . '/assets/produk/' . $filename;
         if (file_exists($path)) {
             unlink($path);
@@ -129,13 +130,16 @@ class ProdukController extends Controller
 
     public function gambarEditDelete(Request $request) {
         $filename =  $request->get('path');
-        $id_produk = $request->get('id_produk');
-        DB::delete("DELETE FROM foto_produk WHERE foto = ?", [$filename]);
+        $produk_id = $request->get('produk_id');
+        $id = $request->get('id');
+        // DB::delete("DELETE FROM preview WHERE id = ?", [$id]);
         $path = public_path() .  '/assets/produk/'. substr($filename,16);
-        if (file_exists($path)) {
-            unlink($path);
-        }
-        return redirect('/produk/edit/'. $id_produk);
+        // if (file_exists($path)) {
+        //     unlink($path);
+        // }
+        echo($id);
+        echo("DELETE FROM preview WHERE id = $id");
+        echo($path);
+        // return redirect('/produk/edit/'. $id_produk);
     }
 }
-

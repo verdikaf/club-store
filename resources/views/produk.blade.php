@@ -44,11 +44,11 @@
                         <tr>
                         <th scope="col">ID</th>
                         <th scope="col">NAMA</th>
+                        <th scope="col">DESKRIPSI</th>
                         <th scope="col">STOK</th>
                         <th scope="col">HARGA</th>
                         <th scope="col">FOTO</th>
                         <th scope="col">KATEGORI</th>
-                        <th scope="col">SUPPLIER</th>
                         <th scope="col">OPSI</th>
                         </tr>
                     </thead>
@@ -60,11 +60,11 @@
                         
                             <td >{{ $p->id }}</td>
                             <td >{{ $p->nama }}</td>
+                            <td >{{ $p->deskripsi }}</td>
                             <td >{{ $p->stok }}</td>
                             <td >{{ $p->harga }}</td>
                             <td ><img src="{{$p->foto}}" height="50"></td>
                             <td >{{ $p->kategori }}</td>
-                            <td >{{ $p->supplier }}</td>
                             <td >
                                 <a href="/produk/edit/{{ $p->id }}" type="button" class="btn btn-warning btn-sm"><span class="fa fa-pencil" ></a>
                                 <!-- <a href="/produk/delete/{{ $p->id }}" type="button" class="btn btn-danger btn-sm"><span class="fa fa-trash"></a> -->
