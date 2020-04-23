@@ -37,6 +37,8 @@ Route::get('/checkout', 'PagesController@checkout');
 Route::get('/profil', 'PagesController@profil');
 Route::get('/editprofil', 'PagesController@editprofil');
 Route::post('/profil/edit', 'PagesController@editprofilsave');
+// Route::get('/invoice', 'PagesController@invoice');
+Route::get('/invoice/preview', 'PagesController@invoicepreview');
 Route::get('/logout', 'UserController@Userlogout');
 
 Route::get('/dashboard', 'DashboardController@index');
