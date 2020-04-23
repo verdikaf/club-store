@@ -144,6 +144,7 @@ class UserController extends Controller
         $data = DB::table('user')
             ->join('role', 'user.role_id', '=', 'role.id')
             ->select(DB::raw('user.*, role.nama as role_id'))
+            ->where('role.id', 2)
             ->groupBy('user.id')->get();
         
             return view('user_employee', ['data' => $data]);
