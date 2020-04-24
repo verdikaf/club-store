@@ -28,6 +28,11 @@ Route::get('/login', 'UserController@login');
 Route::post('/login/action', 'UserController@loginAction');
 Route::get('/register', 'UserController@register');
 Route::post('/register/action', 'UserController@registerPost');
+Route::get('/logout', 'UserController@Userlogout');
+//Login,Logout Employee
+Route::get('/login/employee', 'UserController@loginEmployee');
+Route::post('/login/employee/action', 'UserController@loginEmployeeAction');
+Route::get('/logout/employee', 'UserController@Employeelogout');
 
 
 Route::get('/', 'PagesController@index');
@@ -39,7 +44,6 @@ Route::get('/editprofil', 'PagesController@editprofil');
 Route::post('/profil/edit', 'PagesController@editprofilsave');
 // Route::get('/invoice', 'PagesController@invoice');
 Route::get('/invoice/preview', 'PagesController@invoicepreview');
-Route::get('/logout', 'UserController@Userlogout');
 
 Route::get('/dashboard', 'DashboardController@index');
 
