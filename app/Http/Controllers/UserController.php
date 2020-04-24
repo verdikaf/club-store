@@ -21,7 +21,7 @@ class UserController extends Controller
     public function loginAction(Request $request){
         $method =$request->method();
         if($method == "POST"){
-            $result =DB::selectOne("SELECT u.id,u.nama,u.email,u.alamat,u.telepon,u.kodepos,u.status,r.nama AS roole FROM user AS u RIGHT JOIN role AS r
+            $result =DB::selectOne("SELECT u.id,u.nama,u.telp,u.email,u.password,u.provinsi,u.kota,u.kecamatan,u.kode_pos,u.alamat_lengkap,r.nama AS roole FROM user AS u RIGHT JOIN role AS r
             ON u.role_id = r.id WHERE u.email=? AND u.password=? AND u.role_id=3",[
                 $request->input('email'),
                 $request->input('password')
@@ -31,12 +31,16 @@ class UserController extends Controller
         if($result != null){
             $request->session()->put('s_id', $result->id);
             $request->session()->put('s_nama', $result->nama);
+            $request->session()->put('s_telp', $result->telp);
             $request->session()->put('s_email', $result->email);
-            $request->session()->put('s_status', $result->status);
+            $request->session()->put('s_password', $result->password);
+            $request->session()->put('s_provinsi', $result->provinsi);
+            $request->session()->put('s_kota', $result->kota);
+            $request->session()->put('s_kecamatan', $result->kecamatan);
+            $request->session()->put('s_kode_pos', $result->kode_pos);
+            $request->session()->put('s_alamat_lengkap', $result->alamat_lengkap);
             $request->session()->put('s_roole', $result->roole);
-            $request->session()->put('s_alamat', $result->alamat);
-            $request->session()->put('s_telepon', $result->telepon);
-            $request->session()->put('s_kodepos', $result->kodepos);
+           
 
             return redirect('/');
         }else{
@@ -85,20 +89,25 @@ class UserController extends Controller
     public function registerPost(Request $request){
         $this->validate($request, [
             'nama' => 'required|min:4',
-            'alamat' => 'required',
-            'telepon' => 'required',
-            'kodepos' => 'required',
+            'telp' => 'required',
+            'provinsi' => 'required',
+            'kota' => 'required',
+            'kecamatan' => 'required',
+            'kode_pos' => 'required',
+            'alamat_lengkap' => 'required',
             'email' => 'required|min:4|email|unique:user',
-            'password' => 'required',
+            'password' => 'required'
         ]);
         DB::table('user')->insert([
             'nama' => $request->nama,
-            'alamat' => $request->alamat,
-            'telepon'=> $request->telepon,
-            'kodepos' => $request->kodepos,
+            'telp' => $request->telp,
+            'provinsi'=> $request->provinsi,
+            'kota' => $request->kota,
+            'kecamatan' => $request->kecamatan,
+            'kode_pos' => $request->kode_pos,
+            'alamat_lengkap' => $request->alamat_lengkap,
             'email' => $request->email,
             'password' => $request->password,
-            'status' =>'active',
             'role_id'=>3
         ]);
        
@@ -200,11 +209,3 @@ class UserController extends Controller
     
 
 }
-
-    
-
-
-
-    
-
-
