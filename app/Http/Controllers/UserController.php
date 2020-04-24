@@ -51,14 +51,14 @@ class UserController extends Controller
     }
     }
     //CLUB STORE EMPLOYEE LOGIN
-    public function loginEmployee(){
+     public function loginEmployee(){
         $data['title'] = "Login Clubstore | Employee";
         return view('login_employee',$data);
     }
     public function loginEmployeeAction(Request $request){
         $method =$request->method();
         if($method == "POST"){
-            $result =DB::selectOne("SELECT u.id,u.nama,u.email,u.status,r.nama AS roole FROM user AS u RIGHT JOIN role AS r
+            $result =DB::selectOne("SELECT u.id,u.nama,u.telp,u.email,u.password,u.provinsi,u.kota,u.kecamatan,u.kode_pos,u.alamat_lengkap,r.nama AS roole FROM user AS u RIGHT JOIN role AS r
             ON u.role_id = r.id WHERE u.email=? AND u.password=? AND u.role_id=2",[
                 $request->input('email'),
                 $request->input('password')
@@ -68,13 +68,20 @@ class UserController extends Controller
         if($result != null){
             $request->session()->put('s_id', $result->id);
             $request->session()->put('s_nama', $result->nama);
+            $request->session()->put('s_telp', $result->telp);
             $request->session()->put('s_email', $result->email);
-            $request->session()->put('s_status', $result->status);
+            $request->session()->put('s_password', $result->password);
+            $request->session()->put('s_provinsi', $result->provinsi);
+            $request->session()->put('s_kota', $result->kota);
+            $request->session()->put('s_kecamatan', $result->kecamatan);
+            $request->session()->put('s_kode_pos', $result->kode_pos);
+            $request->session()->put('s_alamat_lengkap', $result->alamat_lengkap);
             $request->session()->put('s_roole', $result->roole);
+           
 
             return redirect('/supplier');
         }else{
-            return redirect('/login/employee')->with('error','Email atau Password employee yang dimasukkan salah,harap masukkan ulang!');
+            return redirect('/login/employee')->with('error','Email atau Password salah,harap masukkan ulang!');
         }
     }else{
         return redirect('/login/employee');
@@ -112,28 +119,6 @@ class UserController extends Controller
         ]);
        
         return redirect('/login')->with('success','Registrasi sukses,silahkan login!');
-    }
-    //EMPLOYEE REGISTRATION
-    public function registerEmployee(Request $request){
-        $data['title'] = "Register ClubStore";
-        return view('register_employee',$data);
-    }
-
-    public function registerEmployeePost(Request $request){
-        $this->validate($request, [
-            'nama' => 'required|min:4',
-            'email' => 'required|min:4|email|unique:user',
-            'password' => 'required',
-        ]);
-        DB::table('user')->insert([
-            'nama' => $request->nama,
-            'email' => $request->email,
-            'password' => $request->password,
-            'status' =>'active',
-            'role_id'=>2
-        ]);
-       
-        return redirect('/login/employee')->with('success','Registari employee baru sukses,silahkan login!');
     }
     //Logout
     public function Userlogout(){
