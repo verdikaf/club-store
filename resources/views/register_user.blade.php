@@ -1,72 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <!-- Required meta tags-->
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+    <!-- Title Page-->
     <title>{{$title}}</title>
-  
 
+    <!-- Icons font CSS-->
+    <link href="{{url('/assets/library/loginlibrary/material-design-iconic-font.min.css')}}" rel="stylesheet" media="all">
+    <link href="{{url('assets/library/loginlibrary/font-awesome.min.css')}}" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-    <link rel="stylesheet" href="{{url('/assets/library/loginlibrary/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{url('/assets/library/loginlibrary/style.css')}}">
-    <script type="text/javascript" src="{{'/assets/library/loginlibrary/bootstrap.min.js' }}"></script>
-    <script type="text/javascript" src="{{'/assets/library/loginlibrary/jquery.min.js' }}"></script>
-  
-    
+    <!-- Vendor CSS-->
+    <link href="{{url('assets/library/loginlibrary/select2.min.css')}}" rel="stylesheet" media="all">
+    <!-- <link href="vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all"> -->
+
+    <!-- Main CSS-->
+    <link href="{{url('assets/library/loginlibrary/main.css')}}" rel="stylesheet" media="all">
 </head>
 
 <body>
+    <div class="page-wrapper bg-gra-03 p-t-130 p-b-100 font-poppins">
+        <div class="wrapper wrapper--w680">
+        @include('flash-message')
 
-    <div id="register">
-    @include('flash-message')
-
-    @yield('content')
-        <div class="container">
-            <div id="register-row" class="row justify-content-center align-items-center">
-                <div id="register-column" class="col-md-6">
-                    <div id="register-box" class="col-md-12">
-                        <form id="register-form" class="form" action="{{url('/register/action')}}" method="post">
-                        @csrf
-                            <h3 class="text-center text-info">Club Store Register</h3>
-                            <div class="form-group">
-                                <label for="nama" class="text-info">Nama:</label><br>
-                                <input type="text" name="nama" id="nama" class="form-control" placeholder="Masukkan Nama disini" required>
+        @yield('content')
+            <div class="card card-4">
+                <div class="card-body">
+                    <h2 class="title">Club Store Register</h2>
+                    <form method="POST" action="{{url('/register/action')}}">
+                    @csrf
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Nama</label>
+                                    <input class="input--style-4" type="text" name="nama">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="alamat" class="text-info">Alamat:</label><br>
-                                <input type="text" name="alamat" id="alamat" class="form-control" placeholder="Masukkan Alamat disini" required>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Telepon</label>
+                                    <input class="input--style-4" type="text" name="telp">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="telepon" class="text-info">Telepon:</label><br>
-                                <input type="text" name="telepon" id="telepon" class="form-control" placeholder="Masukkan No Telepon disini" required>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Provinsi</label>
+                                    <input class="input--style-4" type="text" name="provinsi">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="kodepos" class="text-info">Kode Pos:</label><br>
-                                <input type="number" name="kodepos" id="kodepos" class="form-control" placeholder="Masukkan Kode Pos disini" required>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Kota</label>
+                                    <input class="input--style-4" type="text" name="kota">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="email" class="text-info">Email:</label><br>
-                                <input type="mail" name="email" id="email" class="form-control" placeholder="Masukkan Email disini" required>
+                        </div>
+						  <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Kecamatan</label>
+                                    <input class="input--style-4" type="text" name="kecamatan">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <label for="password" class="text-info">Password:</label><br>
-                                <input type="password" name="password" id="password" class="form-control" placeholder="Masukkan password disini" requaired>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Kode Pos</label>
+                                    <input class="input--style-4" type="text" name="kode_pos">
+                                </div>
                             </div>
-                            <div class="form-group">
-                                <!-- <label for="remember-me" class="text-info"><span>Remember me</span> <span><input id="remember-me" name="remember-me" type="checkbox"></span></label><br> -->
-                                <input type="submit" name="submit" class="btn btn-info btn-md" value="Register">
+                        </div>
+						<div class="input-group">
+                            <div class="input-group">
+                                    <label class="label">Alamat Lengkap</label>
+                                    <input class="input--style-4" type="text" name="alamat_lengkap">
                             </div>
-                            <div id="register-link" class="text-right">
-                                <br><h1></h1>
-                                <a href="{{url('/login')}}" class="text-info">Sudah punya akun?.Login</a>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Email</label>
+                                    <input class="input--style-4" type="email" name="email">
+                                </div>
                             </div>
-                        </form>
-                    </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Password</label>
+                                    <input class="input--style-4" type="password" name="password">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-t-15">
+                            <button class="btn btn--radius-2 btn--blue" type="submit">Register</button>
+                            <a class="text-right" href="{{url('/login')}}">Login Here</a>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-</body>
 
+    <!-- Jquery JS-->
+    <script src="{{url('assets/library/loginlibrary/jquery.min.js')}}"></script>
+    <!-- Vendor JS-->
+    <script src="{{url('loginlibrary/select2.min.js')}}"></script>
+    <!-- <script src="vendor/datepicker/moment.min.js"></script>
+    <script src="vendor/datepicker/daterangepicker.js"></script> -->
+
+    <!-- Main JS-->
+    <script src="{{url('assets/library/loginlibrary/global.js')}}"></script>
+
+</body>
 </html>
+<!-- end document-->
