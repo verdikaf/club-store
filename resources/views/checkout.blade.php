@@ -80,42 +80,63 @@
 							
 							<!-- Form -->
 							<form  class="form">
-								<div class="row">
+							<div class="row">
+									<div class="col-lg-12 col-md-6 col-12">
+										<div class="form-group">
+											<label>Name</label>
+											<input type="text" value="{{$user->nama}}" name="nama" placeholder="" required="required">
+										</div>
+									</div>
 									<div class="col-lg-6 col-md-6 col-12">
 										<div class="form-group">
-											<label>Nama</label>
-											<input type="text" name="nama" value="{{$user->nama}}" placeholder="">
+											<label>Kecamatan</label>
+											<input type="text" name="kecamatan" value="{{$user->kecamatan}}" placeholder="" required="required">
+										</div>
+									</div>
+									<div class="col-lg-6 col-md-6 col-12">
+										<div class="form-group">
+											<label>Kota</label>
+											<input type="text" name="kota" value="{{$user->kota}}" placeholder="" required="required">
+										</div>
+									</div>
+									<div class="col-lg-6 col-md-6 col-12">
+										<div class="form-group">
+											<label>Provinsi<span>*</span></label>
+											<input type="text" name="provinsi" value="{{$user->provinsi}}" placeholder="" required="required">
+										</div>
+									</div>
+									<div class="col-lg-6 col-md-6 col-12">
+										<div class="form-group">
+											<label>Kode Pos<span>*</span></label>
+											<input type="text" name="kode_pos" value="{{$user->kode_pos}}" placeholder="" required="required">
+										</div>
+									</div>
+									<div class="col-lg-12 col-md-6 col-12">
+										<div class="form-group">
+											<label>Nomer Telepon</label>
+											<input type="text" name="telp" value="{{$user->telp}}" placeholder="" required="required">
+										</div>
+									</div>
+									<div class="col-lg-12 col-md-6 col-12">
+										<div class="form-group">
+											<label>Alamat Lengkap</label>
+											<input type="text" name="alamat_lengkap" value="{{$user->alamat_lengkap}}" placeholder="" required="required">
 										</div>
 									</div>
 									<div class="col-lg-6 col-md-6 col-12">
 										<div class="form-group">
 											<label>Email</label>
-											<input type="email" name="email" value="{{$user->email}}" placeholder="">
+											<input type="email" name="email" value="{{$user->email}}" placeholder="" required="required">
 										</div>
 									</div>
 									<div class="col-lg-6 col-md-6 col-12">
 										<div class="form-group">
 											<label>Password</label>
-											<input type="password" name="password" value="{{$user->password}}" placeholder="">
+											<input type="password" name="password" value="{{$user->password}}" placeholder="" required="required">
 										</div>
 									</div>
-									<div class="col-lg-6 col-md-6 col-12">
-										<div class="form-group">
-											<label>Nomer Telepon</label>
-											<input type="text" name="telepon" value="{{$user->telepon}}" placeholder="">
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6 col-12">
-										<div class="form-group">
-											<label>Alamat</label>
-											<input type="text" name="alamat" value="{{$user->alamat}}" placeholder="">
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6 col-12">
-										<div class="form-group">
-											<label>Kode Pos</label>
-											<input type="text" name="kodepos" value="{{$user->kodepos}}" placeholder="">
-										</div>
+									<div class="col-12">
+									<a class="btn btn-warning"  href="{{url('/editprofil')}}"><i class="fa fa-pencil-alt"></i>Edit</a>
 									</div>
 								</div>
 							</form>
@@ -159,7 +180,7 @@
 							<div class="single-widget get-button">
 								<div class="content">
 									<div class="button">
-										<a href="{{url('/invoice/preview')}}" class="btn">proceed to checkout</a>
+										<a href="{{url('/')}}" class="btn" target="_blank">proceed to checkout</a>
 									</div>
 								</div>
 							</div>

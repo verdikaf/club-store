@@ -109,7 +109,7 @@
 
                             <div class="sinlge-bar shopping">
 							@if(session()->has('s_id'))
-								<a href="{{url('/keranjang')}}" class="single-icon"><i class="ti-bag" aria-hidden="true"><span class="total-count">{{$cart->jumlah_keranjang}}</span></i></a>
+								<a href="{{url('/keranjang/cart')}}" class="single-icon"><i class="ti-bag" aria-hidden="true"><span class="total-count">{{$cart->jumlah_keranjang}}</span></i></a>
                             @elseif(session()->has('s_id')== false)
                             <a href="{{url('/login')}}" class="single-icon"><i class="ti-bag" aria-hidden="true"></i></a>
                             @endif

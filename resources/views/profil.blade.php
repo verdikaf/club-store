@@ -87,18 +87,6 @@
 									</div>
 									<div class="col-lg-6 col-md-6 col-12">
 										<div class="form-group">
-											<label>Email</label>
-											<input type="email" name="email" value="{{$user->email}}" placeholder="" required="required">
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6 col-12">
-										<div class="form-group">
-											<label>Password</label>
-											<input type="password" name="password" value="{{$user->password}}" placeholder="" required="required">
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6 col-12">
-										<div class="form-group">
 											<label>Kecamatan</label>
 											<input type="text" name="kecamatan" value="{{$user->kecamatan}}" placeholder="" required="required">
 										</div>
@@ -123,15 +111,30 @@
 									</div>
 									<div class="col-lg-12 col-md-6 col-12">
 										<div class="form-group">
+											<label>Nomer Telepon</label>
+											<input type="text" name="telp" value="{{$user->telp}}" placeholder="" required="required">
+										</div>
+									</div>
+									<div class="col-lg-12 col-md-6 col-12">
+										<div class="form-group">
 											<label>Alamat Lengkap</label>
 											<input type="text" name="alamat_lengkap" value="{{$user->alamat_lengkap}}" placeholder="" required="required">
 										</div>
 									</div>
-									<div class="col-12">
-										<div class="form-group create-account">
-											<input id="cbox" type="checkbox">
-											<label>Create an account?</label>
+									<div class="col-lg-6 col-md-6 col-12">
+										<div class="form-group">
+											<label>Email</label>
+											<input type="email" name="email" value="{{$user->email}}" placeholder="" required="required">
 										</div>
+									</div>
+									<div class="col-lg-6 col-md-6 col-12">
+										<div class="form-group">
+											<label>Password</label>
+											<input type="password" name="password" value="{{$user->password}}" placeholder="" required="required">
+										</div>
+									</div>
+									<div class="col-12">
+									<a class="btn btn-warning"  href="{{url('/editprofil')}}"><i class="fa fa-pencil-alt"></i>Edit</a>
 									</div>
 								</div>
 							</form>

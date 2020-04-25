@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Route::get('/pages', 'PagesController@index');
 Route::get('/pages/{id}', 'PagesController@singlePage');
-Route::get('/detail', 'PagesController@showDetail');
+Route::get('/detail/{id}', 'PagesController@showDetail');
 Route::get('produk/list', 'PagesController@produkList');
 Route::get('/produk-kategori/{id}', 'PagesController@byKategori')->name('produk.kategori');
 
@@ -37,8 +37,9 @@ Route::get('/logout/employee', 'UserController@Employeelogout');
 
 Route::get('/', 'PagesController@index');
 Route::get('/cari','PagesController@cari');
-Route::get('/keranjang', 'PagesController@keranjang');
-Route::get('/checkout', 'PagesController@checkout');
+// Route::get('/keranjang', 'PagesController@listkeranjang');
+Route::get('/keranjang/cart/{produkId}', 'PagesController@keranjang' );
+Route::get('/checkout/{notaId}', 'PagesController@checkout');
 Route::get('/profil', 'PagesController@profil');
 Route::get('/editprofil', 'PagesController@editprofil');
 Route::post('/profil/edit', 'PagesController@editprofilsave');

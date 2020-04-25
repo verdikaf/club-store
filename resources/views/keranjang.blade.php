@@ -80,21 +80,22 @@
 						<thead>
 							<tr class="main-hading">
 								<th>Produk</th>
-								<th>NAME</th>
-								<th class="text-center">UNIT PRICE</th>
-								<th class="text-center">QUANTITY</th>
-								<th class="text-center">TOTAL</th> 
+								<th>Nama Produk</th>
+								<th class="text-center">Harga Satuan</th>
+								<th class="text-center">Jumlah</th>
+								<th class="text-center">Total</th> 
 								<th class="text-center"><i class="ti-trash remove-icon"></i></th>
 							</tr>
 						</thead>
 						<tbody>
+						@foreach ($nota->cart as $c)
 							<tr>
 								<td class="image" data-title="No"><img src="https://via.placeholder.com/100x100" alt="#"></td>
 								<td class="product-des" data-title="Description">
-									<p class="product-name"><a href="#">Women Dress</a></p>
+									<p class="product-name"><a href="#">{{$c->nama_produk}}</a></p>
 									<p class="product-des">Maboriosam in a tonto nesciung eget  distingy magndapibus.</p>
 								</td>
-								<td class="price" data-title="Price"><span>$110.00 </span></td>
+								<td class="price" data-title="Price"><span>{{$c->harga_satuan}}</span></td>
 								<td class="qty" data-title="Qty"><!-- Input Order -->
 									<div class="input-group">
 										<div class="button minus">
@@ -111,9 +112,10 @@
 									</div>
 									<!--/ End Input Order -->
 								</td>
-								<td class="total-amount" data-title="Total"><span>$220.88</span></td>
+								<td class="total-amount" data-title="Total"><span>{{$c->sub_total}}</span></td>
 								<td class="action" data-title="Remove"><a href="#"><i class="ti-trash remove-icon"></i></a></td>
 							</tr>
+							@endforeach
 						</tbody>
 					</table>
 					<!--/ End Shopping Summery -->
@@ -137,7 +139,7 @@
 										<li class="last">Pembayaran<span>$310.00</span></li>
 									</ul>
 									<div class="button5">
-										<a href="{{url('/checkout')}}" class="btn">Checkout</a>
+										<a href="{{url('/checkout/'.$nota->id)}}" class="btn">Checkout</a>
 										<a href="{{url('/')}}" class="btn">Lanjutkan Belanja</a>
 									</div>
 								</div>

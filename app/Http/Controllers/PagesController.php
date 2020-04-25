@@ -16,24 +16,25 @@ class PagesController extends Controller
     public function showDetail(Request $request){
         $data['title'] = "Clubstore.com";
         $produk = DB::table('produk')
-            ->join('kategori', 'produk.kategori_id', '=', 'kategori.id')
-            ->join('preview', 'produk.id', '=', 'preview.produk_id') 
-            ->select('produk.*', 'kategori.nama as kategori', 'preview.foto')
-            ->get();
+                ->join('kategori', 'produk.kategori_id', '=', 'kategori.id')
+                ->leftJoin('preview', 'produk.id', '=', 'preview.produk_id')
+                ->select(DB::raw('produk.*, kategori.nama as kategori, 
+                    MAX(preview.foto) AS foto'))
+                ->get();
         $kategori = DB::table('kategori')
             ->get();
-        $data['cart'] = DB::selectOne("SELECT COUNT(*) AS jumlah_keranjang FROM nota WHERE user_id=? AND status='pending'", [$request->session()->get('s_id')]);
+        $cart = DB::selectOne("SELECT COUNT(*) AS jumlah_keranjang FROM nota WHERE user_id=? AND status='pending'", [$request->session()->get('s_id')]);
         // $produk = Produk::find('id');
-        return view('produk_detail', ['produk' => $produk, 'data' => $data, 'kategori' => $kategori]);
+        return view('produk_detail', ['produk' => $produk, 'cart' => $cart, 'kategori' => $kategori]);
 
     }
 
     public function index(Request $request) {
         $data['title'] = "Clubstore.com";
         $produk = DB::table('produk')
-            ->join('kategori', 'produk.kategori_id', '=', 'kategori.id')
-            ->join('preview', 'produk.id', '=', 'preview.produk_id') 
-            ->select('produk.*', 'kategori.nama as kategori', 'preview.foto')
+        ->join('kategori', 'produk.kategori_id', '=', 'kategori.id')
+        ->leftJoin('preview', 'produk.id', '=', 'preview.produk_id')
+        ->select('produk.*', 'kategori.nama as kategori', 'preview.foto')
             ->get();
         $kategori = DB::table('kategori')
             ->get();
@@ -59,7 +60,9 @@ class PagesController extends Controller
  
     }
     
-    public function keranjang() {
+    public function keranjang(request $request, $produkId) {
+        // echo $produkId;
+
         $data['title'] = "Clubstore.com";
         $produk = DB::table('produk')
             ->join('kategori', 'produk.kategori_id', '=', 'kategori.id')
@@ -71,7 +74,7 @@ class PagesController extends Controller
                 ]);
 
                 if($nota != null){
-                    if($request->get(produkId)==null){
+                    if($request->get('produkId')==null){
                         $cartExist['cart'] = DB::select("SELECT * FROM keranjang WHERE nota_id=?", [$nota->id]);
                         $nota               = (object)array_merge((array)$nota, (array)$cartExist);
                     }else{
@@ -88,7 +91,7 @@ class PagesController extends Controller
 
                             DB::insert("INSERT INTO keranjang (nama_produk, harga_satuan, kuantitas, sub_total, nota_id, produk_id) VALUES (?,?,?,?,?,?)",[
                                 $produk->nama, $produk->harga, 1, $produk->harga * 1, 
-                                $nota ->id, $request->get(produkId)
+                                $nota ->id, $request->get('produkId')
                             ]);
                             $cartExist['cart'] = DB::select("SELECT * FROM keranjang WHERE nota_id=?", [$nota->id]);
                             $nota               = (object)array_merge((array)$nota, (array)$cartExist);
@@ -100,17 +103,17 @@ class PagesController extends Controller
 
                     }
                 }else{
-                    DB::insert("INSERT INTO nota(user_id,nama,total,tagihan,jenis_faktur,status_transaksi) VALUES (?,?,0.00,0.00,'penjualan','pending')", [
+                    DB::insert("INSERT INTO nota(user_id,nama,total,tagihan,jenis_faktur,status) VALUES (?,?,0.00,0.00,'penjualan','pending')", [
                         $request->session()->get('s_id'),
                         $request->session()->get('s_nama')
                     ]);
-                    return redirect('keranjang?produkId='.$request->get('produkId'));
+                    return redirect('/keranjang/cart/'.$request->get('produkId'));
                 }
 
-                $cart = DB::selectOne("SELECT COUNT (*) AS jumlah_keranjang FROM nota WHERE user_id=? AND status_transaksi='pending'", [$request->session()->get('s_id')]);
+                $cart = DB::selectOne("SELECT COUNT(*) AS jumlah_keranjang FROM nota WHERE user_id=? AND status='pending'", [$request->session()->get('s_id')]);
                 $data['nota'] = $nota;
                 $data['tanggal'] = date('d-m-Y H:i:s');
-        return view('keranjang', ['produk' => $produk, 'data' => $data, 'kategori' => $kategori, 'cart' => $cart]);
+        return view('keranjang', ['produk' => $produk, 'data' => $data,'nota'=>$nota,   'kategori' => $kategori, 'cart' => $cart]);
     }
 
     // Profil
@@ -119,8 +122,8 @@ class PagesController extends Controller
         // return print_r($user);
         $kategori = DB::table('kategori')
         ->get();
-        $data['cart'] = DB::selectOne("SELECT COUNT(*) AS jumlah_keranjang FROM nota WHERE user_id=? AND status='pending'", [$request->session()->get('s_id')]);
-        return view('profil', ['user' => $user,'data'=>$data, 'kategori' => $kategori]);
+        $cart = DB::selectOne("SELECT COUNT(*) AS jumlah_keranjang FROM nota WHERE user_id=? AND status='pending'", [$request->session()->get('s_id')]);
+        return view('profil', ['user' => $user,'cart'=>$cart, 'kategori' => $kategori]);
     }
 
     public function editprofil(Request $request){
@@ -128,8 +131,8 @@ class PagesController extends Controller
         // return print_r($user);
         $kategori = DB::table('kategori')
         ->get();
-        $data['cart'] = DB::selectOne("SELECT COUNT(*) AS jumlah_keranjang FROM nota WHERE user_id=? AND status='pending'", [$request->session()->get('s_id')]);
-        return view('editprofil', ['user' => $user,'data'=>$data, 'kategori' => $kategori]);
+        $cart = DB::selectOne("SELECT COUNT(*) AS jumlah_keranjang FROM nota WHERE user_id=? AND status='pending'", [$request->session()->get('s_id')]);
+        return view('editprofil', ['user' => $user,'cart'=>$cart, 'kategori' => $kategori]);
     }
 
     public function editprofilsave(Request $request){
@@ -143,7 +146,7 @@ class PagesController extends Controller
                       'provinsi' => $request->input('provinsi'),
                       'kota' => $request->input('kota'),
                       'kecamatan' => $request->input('kecamatan'),
-                      'telepon' => $request->input('telepon'),
+                      'telp' => $request->input('telp'),
                       'alamat_lengkap' => $request->input('alamat_lengkap'),
                       'kode_pos' => $request->input('kode_pos'),
                       ]);
@@ -153,19 +156,19 @@ class PagesController extends Controller
         }
     }
 
-    public function checkout($notaId){
+    public function checkout(request $request, $notaId){
         $user = DB::table('user')->where('id', session()->get('s_id'))->first();
         // return print_r($user);
         $kategori = DB::table('kategori')
         ->get();
-        $data['cart'] = DB::selectOne("SELECT COUNT(*) AS jumlah_keranjang FROM nota WHERE user_id=? AND status='pending'", [$request->session()->get('s_id')]);
+        $cart = DB::selectOne("SELECT COUNT(*) AS jumlah_keranjang FROM nota WHERE user_id=? AND status='pending'", [$request->session()->get('s_id')]);
 
-        $update=DB::update("UPDATE nota SET status_transaksi='success' WHERE id=?", [$notaId]);
-        return view('checkout', ['user' => $user,'data'=>$data, 'kategori' => $kategori, 'update' =>$update]);
+        $update=DB::update("UPDATE nota SET status='success' WHERE id=?", [$notaId]);
+        return view('checkout', ['user' => $user,'cart'=>$cart, 'kategori' => $kategori, 'update' =>$update]);
     }
 
     public function invoicepreview(){
-        $data['baseurl'] = URL::to("/");
+        $data['user'] = DB::table('user')->where('id', session()->get('s_id'))->first();
         $data['produk'] = DB::select("SELECT * FROM produk");
         $pdf    = PDF::loadview('invoicepreview', $data);
         return $pdf->stream();
@@ -178,7 +181,8 @@ class PagesController extends Controller
             ->get();
         $kategori = DB::table('kategori')
             ->get();
-        return view('produk_list', ['produk' => $produk, 'kategori' => $kategori]);
+        $cart = DB::selectOne("SELECT COUNT(*) AS jumlah_keranjang FROM nota WHERE user_id=? AND status='pending'", [$request->session()->get('s_id')]);
+        return view('produk_list', ['produk' => $produk,'cart' => $cart, 'kategori' => $kategori]);
     }
 
     public function byKategori(Request $request){

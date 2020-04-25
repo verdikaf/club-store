@@ -83,11 +83,11 @@
 														</a>
 														<div class="button-head">
 															<div class="product-action">
-																<a title="Quick View" href="{{url('/detail')}}"><i class=" ti-eye"></i><span>Details</span></a>
+																<a title="Quick View" href="{{url('/detail/'.$p->id)}}"><i class=" ti-eye"></i><span>Details</span></a>
 																<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
 															</div>
 															<div class="product-action-2">
-																<a title="Add to cart" href="{{url('/keranjang')}}">Add to cart</a>
+																<a title="Add to cart" href="{{url('/keranjang?produkId=?'.$p->id)}}">Add to cart</a>
 															</div>
 														</div>
 													</div>

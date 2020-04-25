@@ -61,7 +61,7 @@
 							@foreach($produk as $p)
                                 <!-- Product Slider -->
 									<div class="product-gallery">
-												<img src="data:image/png;base64,{{ base64_encode($p->foto) }}" alt="#">
+												<img src="{{url($p->foto)}}" alt="#">
 
 									</div>
 								<!-- End Product slider -->
@@ -77,7 +77,7 @@
                                     </div>
                                     <h3><i class="fa fa-tags"></i>Rp. {{$p->harga}}</h3>
                                     <div class="quickview-peragraph">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia iste laborum ad impedit pariatur esse optio tempora sint ullam autem deleniti nam in quos qui nemo ipsum numquam.</p>
+                                        <p>{{$p->deskripsi}}</p>
 									</div>
 									<br>
 									<br>
@@ -100,7 +100,7 @@
 									</div>
 									<div class="add-to-cart">
 									@if(session()->has('s_id'))
-															<a title="Add to cart" href="{{url('/keranjang')}}" class="btn min">Masukkan keranjang</a>
+															<a title="Add to cart" href="{{url('/keranjang/cart/'.$p->id)}}" class="btn min">Masukkan keranjang</a>
                             								@elseif(session()->has('s_id')== false)
 															<a title="Add to cart" href="{{url('/login')}}" class="btn min">Masukkan keranjang</a>
                             								@endif
