@@ -147,6 +147,18 @@
 						<div class="order-details">
 							<!-- Order Widget -->
 							<div class="single-widget">
+								<h2>Produk</h2>
+								<div class="content">
+									<ul>
+										<li>Nama Produk<span>Baju Bayi</span></li>
+										<li>Jumlah<span>$10.00</span></li>
+										<li>Harga<span>$340.00</span></li>
+									</ul>
+								</div>
+							</div>
+							<!--/ End Order Widget -->
+							<!-- Order Widget -->
+							<div class="single-widget">
 								<h2>Total</h2>
 								<div class="content">
 									<ul>
@@ -180,7 +192,7 @@
 							<div class="single-widget get-button">
 								<div class="content">
 									<div class="button">
-										<a href="{{url('/')}}" class="btn" target="_blank">proceed to checkout</a>
+										<a href="{{url('/invoice/preview')}}" class="btn" target="_blank">proceed to checkout</a>
 									</div>
 								</div>
 							</div>

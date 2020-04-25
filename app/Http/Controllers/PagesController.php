@@ -168,9 +168,11 @@ class PagesController extends Controller
     }
 
     public function invoicepreview(){
-        $data['user'] = DB::table('user')->where('id', session()->get('s_id'))->first();
-        $data['produk'] = DB::select("SELECT * FROM produk");
-        $pdf    = PDF::loadview('invoicepreview', $data);
+        $user = DB::table('user')->where('id', session()->get('s_id'))->first();
+        // return print_r($user);
+        $keranjang = DB::table('keranjang')
+        ->get();
+        $pdf    = PDF::loadview('invoicepreview',['user' => $user,'keranjang' => $keranjang]);
         return $pdf->stream();
     }
 

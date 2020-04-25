@@ -183,7 +183,7 @@
 								</a>
 								<div class="button-head">
 									<div class="product-action">
-										<a title="Quick View" href="{{url('/detail')}}"><i class=" ti-eye"></i><span>Details</span></a>
+										<a title="Quick View" href="{{url('/detail/'.$p->id)}}"><i class=" ti-eye"></i><span>Details</span></a>
 									</div>
 									<div class="product-action-2">
 															@if(session()->has('s_id'))
@@ -195,7 +195,7 @@
 								</div>
 							</div>
 							<div class="product-content">
-								<h3><a href="{{url('/detail')}}">{{$p->nama}}</a></h3>
+								<h3><a href="{{url('/detail/'.$p->id)}}">{{$p->nama}}</a></h3>
 								<div class="product-price">
 									<span>{{$p->harga}}</span>
 								</div>
@@ -266,7 +266,7 @@
 								</a>
 								<div class="button-head">
 									<div class="product-action">
-										<a title="Quick View" href="{{url('/detail')}}"><i class=" ti-eye"></i><span>Details</span></a>
+										<a title="Quick View" href="{{url('/detail/'.$p->id)}}"><i class=" ti-eye"></i><span>Details</span></a>
 									</div>
 									<div class="product-action-2">
 															@if(session()->has('s_id'))
@@ -278,7 +278,7 @@
 								</div>
 							</div>
 							<div class="product-content">
-								<h3><a href="{{url('/detail')}}">{{$p->nama}}</a></h3>
+								<h3><a href="{{url('/detail/'.$p->id)}}">{{$p->nama}}</a></h3>
 								<div class="product-price">
 									<span>{{$p->harga}}</span>
 								</div>

@@ -1,96 +1,49 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
 </head>
-<body class="js" id="wrapper">
-
-		<!-- Start Profil -->
-		<section class="shop checkout section">
-			<div class="container">
-				<div class="row"> 
-					<div class="col-lg-8 col-12">
-						<div class="checkout-form">
-							<h2>Nota</h2>
-							
-							<!-- Form -->
-							<!-- <form  class="form">
-							<div class="row">
-									<div class="col-lg-12 col-md-6 col-12">
-										<div class="form-group">
-											<label>Name</label>
-											<input type="text" value="{{$user->nama}}" name="nama" placeholder="" required="required">
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6 col-12">
-										<div class="form-group">
-											<label>Kecamatan</label>
-											<input type="text" name="kecamatan" value="{{$user->kecamatan}}" placeholder="" required="required">
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6 col-12">
-										<div class="form-group">
-											<label>Kota</label>
-											<input type="text" name="kota" value="{{$user->kota}}" placeholder="" required="required">
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6 col-12">
-										<div class="form-group">
-											<label>Provinsi<span>*</span></label>
-											<input type="text" name="provinsi" value="{{$user->provinsi}}" placeholder="" required="required">
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6 col-12">
-										<div class="form-group">
-											<label>Kode Pos<span>*</span></label>
-											<input type="text" name="kode_pos" value="{{$user->kode_pos}}" placeholder="" required="required">
-										</div>
-									</div>
-									<div class="col-lg-12 col-md-6 col-12">
-										<div class="form-group">
-											<label>Nomer Telepon</label>
-											<input type="text" name="telp" value="{{$user->telp}}" placeholder="" required="required">
-										</div>
-									</div>
-								</div>
-							</form> -->
-							<!--/ End Form -->
-						</div>
-					</div>
-					<div class="col-lg-4 col-12">
-						<div class="order-details">
-							<!-- Order Widget -->
-							<div class="single-widget">
-								<h2>Total</h2>
-								<div class="content">
+<body>
+	Nota
+	<br>
+<table class="table" style="width:100%; border:1px solid gold;">
+						<thead>
+							<tr>
+								<th>Produk </th>
+								<th>Nama Produk </th>
+								<th>Harga Satuan </th>
+								<th>Jumlah </th>
+								<th>Total </th> 
+							</tr>
+						</thead>
+						<tbody>
+						@foreach ($keranjang as $k)
+							<tr>
+								<td><img src="https://via.placeholder.com/100x100" alt="#"></td>
+								<td>
+									<p>{{$k->nama_produk}}</p>
+									<p>Maboriosam in a tonto nesciung eget  distingy magndapibus.</p>
+								</td>
+								<td><span>{{$k->harga_satuan}}</span></td>
+								<td>
+								1
+								</td>
+								<td><span>{{$k->sub_total}}</span></td>
+							</tr>
+							@endforeach
+						</tbody>
+					</table>
+					<div style="float: right;" >
 									<ul>
-										<li>Sub Total<span>$330.00</span></li>
-										<li>(+) Ongkos Kirim<span>$10.00</span></li>
-										<li class="last">Total<span>$340.00</span></li>
+										<li>Sub Total 	 :<span style="font-weight: bold;"> $330.00</span></li>
+										<li>Ongkos Kirim :<span style="font-weight: bold;">Free</span></li>
+										<li>Pembayaran   :<span style="font-weight: bold;">$310.00</span></li>
 									</ul>
-								</div>
-							</div>
-							<!--/ End Order Widget -->
-							<!-- Payment Method Widget -->
-							<div class="single-widget payement">
-								<div class="content">
-									<img src="{{url('/assets/usertemplate/images/payment-method.png')}}" alt="#">
-								</div>
-							</div>
-							<!--/ End Payment Method Widget -->
-							<!-- Button Widget -->
-							<div class="single-widget get-button">
-								<div class="content">
-									<div class="button">
-										<a href="{{url('/invoice/preview')}}" class="btn">Pembayaran Sukses</a>
+									<div>
+										<button>Pembayaran Sukses</button>
 									</div>
 								</div>
-							</div>
-							<!--/ End Button Widget -->
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-		<!--/ End Checkout -->
 </body>
 </html>
