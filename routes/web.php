@@ -38,6 +38,7 @@ Route::get('/logout/employee', 'UserController@Employeelogout');
 Route::get('/', 'PagesController@index');
 Route::get('/cari','PagesController@cari');
 // Route::get('/keranjang', 'PagesController@listkeranjang');
+Route::get('/keranjang/cart', 'PagesController@keranjang' );
 Route::get('/keranjang/cart/{produkId}', 'PagesController@keranjang' );
 Route::get('/checkout/{notaId}', 'PagesController@checkout');
 Route::get('/profil', 'PagesController@profil');

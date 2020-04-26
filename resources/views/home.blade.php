@@ -177,10 +177,10 @@
 						@foreach ($produk as $p)
 						<div class="single-product">
 							<div class="product-img">
-								<a href="#">
-									<img class="default-img" src="data:image/png;base64,{{ base64_encode($p->foto) }}" alt="Card image cap" style="width: 150px; height: 150px;">
-															<img class="hover-img" src="data:image/png;base64,{{ base64_encode($p->foto) }}" alt="Card image cap" style="width: 150px; height: 150px;">
-								</a>
+								<a>
+									<img class="default-img" src="{{$p->foto}}" alt="Card image cap" style="width: 150px; height: 150px;">
+														<img class="hover-img" src="{{$p->foto}}" alt="Card image cap" style="width: 150px; height: 150px;">
+</a>
 								<div class="button-head">
 									<div class="product-action">
 										<a title="Quick View" href="{{url('/detail/'.$p->id)}}"><i class=" ti-eye"></i><span>Details</span></a>
@@ -260,10 +260,10 @@
 						@foreach ($produk as $p)
 						<div class="single-product">
 							<div class="product-img">
-								<a href="#">
-									<img class="default-img" src="data:image/png;base64,{{ base64_encode($p->foto) }}" alt="Card image cap" style="width: 150px; height: 150px;">
-															<img class="hover-img" src="data:image/png;base64,{{ base64_encode($p->foto) }}" alt="Card image cap" style="width: 150px; height: 150px;">
-								</a>
+																<a>
+									<img class="default-img" src="{{$p->foto}}" alt="Card image cap" style="width: 150px; height: 150px;">
+														<img class="hover-img" src="{{$p->foto}}" alt="Card image cap" style="width: 150px; height: 150px;">
+</a>
 								<div class="button-head">
 									<div class="product-action">
 										<a title="Quick View" href="{{url('/detail/'.$p->id)}}"><i class=" ti-eye"></i><span>Details</span></a>

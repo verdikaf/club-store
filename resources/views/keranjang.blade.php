@@ -103,7 +103,7 @@
 												<i class="ti-minus"></i>
 											</button>
 										</div>
-										<input type="text" name="quant[1]" class="input-number"  data-min="1" data-max="100" value="1">
+										<input type="text" name="quant[1]" class="input-number"  data-min="1" data-max="100" value="{{$c->kuantitas}}">
 										<div class="button plus">
 											<button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant[1]">
 												<i class="ti-plus"></i>
