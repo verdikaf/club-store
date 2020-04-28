@@ -81,8 +81,8 @@
 									</div>
 									<br>
 									<br>
-                                    <div class="quantity">
-										<!-- Input Order -->
+                                    <!-- <div class="quantity">
+										Input Order
 										<div class="input-group">
 											<div class="button minus">
 												<button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
@@ -96,11 +96,11 @@
 												</button>
 											</div>
 										</div>
-										<!--/ End Input Order -->
-									</div>
+										/ End Input Order
+									</div> -->
 									<div class="add-to-cart">
 									@if(session()->has('s_id'))
-															<a title="Add to cart" href="{{url('/keranjang/cart/'.$p->id)}}" class="btn min">Masukkan keranjang</a>
+															<a title="Add to cart" href="{{url('/keranjang/cart?produkId='.$p->id)}}" class="btn min">Masukkan keranjang</a>
                             								@elseif(session()->has('s_id')== false)
 															<a title="Add to cart" href="{{url('/login')}}" class="btn min">Masukkan keranjang</a>
                             								@endif

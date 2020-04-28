@@ -77,14 +77,13 @@
 												<div class="single-product">
 													<div class="product-img">
 														<a href="#">
-															<img class="default-img" src="data:image/png;base64,{{ base64_encode($p->foto) }}" alt="Card image cap" style="width: 150px; height: 150px;">
-															<img class="hover-img" src="data:image/png;base64,{{ base64_encode($p->foto) }}" alt="Card image cap" style="width: 150px; height: 150px;">
+															<img class="default-img" src="{{url($p->foto)}}" alt="Card image cap" style="width: 150px; height: 150px;">
+															<img class="hover-img" src="{{url($p->foto)}}" alt="Card image cap" style="width: 150px; height: 150px;">
 															<!-- <span class="out-of-stock">Hot</span> -->
 														</a>
 														<div class="button-head">
 															<div class="product-action">
 																<a title="Quick View" href="{{url('/detail/'.$p->id)}}"><i class=" ti-eye"></i><span>Details</span></a>
-																<a title="Wishlist" href="#"><i class=" ti-heart "></i><span>Add to Wishlist</span></a>
 															</div>
 															<div class="product-action-2">
 																<a title="Add to cart" href="{{url('/keranjang?produkId=?'.$p->id)}}">Add to cart</a>

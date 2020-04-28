@@ -149,11 +149,13 @@
 							<div class="single-widget">
 								<h2>Produk</h2>
 								<div class="content">
+								@foreach ($nota->cart as $c)
 									<ul>
-										<li>Nama Produk<span>Baju Bayi</span></li>
-										<li>Jumlah<span>$10.00</span></li>
-										<li>Harga<span>$340.00</span></li>
+										<li>Nama Produk<span>{{$c->nama_produk}}</span></li>
+										<li>Jumlah<span>{{$c->kuantitas}}</span></li>
+										<li>Harga<span>{{$c->harga_satuan}}</span></li>
 									</ul>
+									@endforeach
 								</div>
 							</div>
 							<!--/ End Order Widget -->
@@ -161,10 +163,11 @@
 							<div class="single-widget">
 								<h2>Total</h2>
 								<div class="content">
-									<ul>
-										<li>Sub Total<span>$330.00</span></li>
-										<li>(+) Ongkos Kirim<span>$10.00</span></li>
-										<li class="last">Total<span>$340.00</span></li>
+								<ul>
+										<li>Sub Total<span>Rp. {{$nota_tag->total}}</span></li>		
+										<li>Ongkos Kirim<span>Free</span></li>
+										<li>Diskon<span>Rp. {{$nota_tag->diskon * $nota_tag->total}}.00</span></li>
+										<li class="last">Pembayaran<span>Rp.{{$nota_tag->tagihan}}</span></li>
 									</ul>
 								</div>
 							</div>
@@ -197,6 +200,7 @@
 								</div>
 							</div>
 							<!--/ End Button Widget -->
+					
 						</div>
 					</div>
 				</div>

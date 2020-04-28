@@ -6,12 +6,34 @@
     <title></title>
 </head>
 <body>
-	Nota
+	Nota : 
+	<form >
+											<label>Name</label>
+											<input type="text" value="{{$user->nama}}" name="nama" placeholder="" required="required">
+											<br>
+											<label>Kecamatan</label>
+											<input type="text" name="kecamatan" value="{{$user->kecamatan}}" placeholder="" required="required">
+											<br>
+											<label>Kota</label>
+											<input type="text" name="kota" value="{{$user->kota}}" placeholder="" required="required">
+											<br>
+											<label>Provinsi</label>
+											<input type="text" name="provinsi" value="{{$user->provinsi}}" placeholder="" required="required">
+											<br>
+											<label>Kode Pos</label>
+											<input type="text" name="kode_pos" value="{{$user->kode_pos}}" placeholder="" required="required">
+											<br>
+											<label>Nomer Telepon</label>
+											<input type="text" name="telp" value="{{$user->telp}}" placeholder="" required="required">
+											<br>
+											<label>Alamat Lengkap</label>
+											<input type="text" name="alamat_lengkap" value="{{$user->alamat_lengkap}}" placeholder="" required="required">
+											<br>
+							</form>
 	<br>
 <table class="table" style="width:100%; border:1px solid gold;">
 						<thead>
 							<tr>
-								<th>Produk </th>
 								<th>Nama Produk </th>
 								<th>Harga Satuan </th>
 								<th>Jumlah </th>
@@ -19,27 +41,26 @@
 							</tr>
 						</thead>
 						<tbody>
-						@foreach ($keranjang as $k)
+						@foreach ($nota->cart as $c)
 							<tr>
-								<td><img src="https://via.placeholder.com/100x100" alt="#"></td>
 								<td>
-									<p>{{$k->nama_produk}}</p>
-									<p>Maboriosam in a tonto nesciung eget  distingy magndapibus.</p>
+									<p>{{$c->nama_produk}}</p>
 								</td>
-								<td><span>{{$k->harga_satuan}}</span></td>
+								<td><span>{{$c->harga_satuan}}</span></td>
 								<td>
-								1
+								{{$c->kuantitas}}
 								</td>
-								<td><span>{{$k->sub_total}}</span></td>
+								<td><span>{{$c->sub_total}}</span></td>
 							</tr>
 							@endforeach
 						</tbody>
 					</table>
 					<div style="float: right;" >
-									<ul>
-										<li>Sub Total 	 :<span style="font-weight: bold;"> $330.00</span></li>
-										<li>Ongkos Kirim :<span style="font-weight: bold;">Free</span></li>
-										<li>Pembayaran   :<span style="font-weight: bold;">$310.00</span></li>
+					<ul>
+										<li>Sub Total : <span>Rp. {{$nota_tag->total}}</span></li>		
+										<li>Ongkos Kirim : <span>Free</span></li>
+										<li>Diskon : <span>Rp. {{$nota_tag->diskon * $nota_tag->total}}.00</span></li>
+										<li class="last">Pembayaran : <span>Rp.{{$nota_tag->tagihan}}</span></li>
 									</ul>
 									<div>
 										<button>Pembayaran Sukses</button>
