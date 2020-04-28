@@ -195,7 +195,7 @@
 							<div class="single-widget get-button">
 								<div class="content">
 									<div class="button">
-										<a href="{{url('/invoice/preview')}}" class="btn" target="_blank">proceed to checkout</a>
+										<a href="{{url('/invoice/preview/'.$nota->id)}}" class="btn" target="_blank">proceed to checkout</a>
 									</div>
 								</div>
 							</div>

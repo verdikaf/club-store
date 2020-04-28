@@ -166,7 +166,7 @@ class PagesController extends Controller
 
         return $notaTag;
     }
-    public function checkout(request $request, $notaId){
+    public function checkout(request $request){
         $user = DB::table('user')->where('id', session()->get('s_id'))->first();
         // return print_r($user);
         $kategori = DB::table('kategori')
@@ -211,14 +211,14 @@ class PagesController extends Controller
                     return redirect('/checkout'.$request->get('produkId'));
                 }
 
-                $cart = DB::selectOne("SELECT COUNT(*) AS jumlah_keranjang FROM nota WHERE user_id=? AND status='sukses'", [$request->session()->get('s_id')]);
+                $cart = DB::selectOne("SELECT COUNT(*) AS jumlah_keranjang FROM nota WHERE user_id=? AND status='pending'", [$request->session()->get('s_id')]);
                 $data['nota'] = $nota;
                 $nota_tag = $this->hitung($request);
                 $tanggal = date('d-m-Y H:i:s');
-        return view('checkout', ['user' => $user,'cart'=>$cart,'tanggal'=>$tanggal,'nota_tag'=>$nota_tag,'nota'=>$nota, 'kategori' => $kategori, 'update' =>$update]);
+        return view('checkout', ['user' => $user,'cart'=>$cart,'tanggal'=>$tanggal,'nota_tag'=>$nota_tag,'nota'=>$nota, 'kategori' => $kategori]);
     }
 
-    public function invoicepreview(Request $request){
+    public function invoicepreview(Request $request, $notaId){
         $user = DB::table('user')->where('id', session()->get('s_id'))->first();
         $nota = DB::selectOne("SELECT * FROM nota WHERE status='pending' AND jenis_faktur='penjualan' AND user_id=?", [$request->session()->get('s_id')
                 ]);
@@ -260,12 +260,12 @@ class PagesController extends Controller
                     return redirect('/invoice/preview');
                 }
 
-                $cart = DB::selectOne("SELECT COUNT(*) AS jumlah_keranjang FROM nota WHERE user_id=? AND status='pending'", [$request->session()->get('s_id')]);
                 $data['nota'] = $nota;
                 $nota_tag = $this->hitung($request);
                 $data['baseurl']    = URL::to("/");
                 $data['tanggal'] = date('d-m-Y H:i:s');
-        $pdf    = PDF::loadview('invoicepreview',['user' => $user,'nota_tag'=>$nota_tag,'data' =>$data,'nota'=>$nota]);
+                $update = DB::update("UPDATE nota SET status='sukses' WHERE id=?", [$notaId]);
+        $pdf    = PDF::loadview('invoicepreview',['user' => $user,'nota_tag'=>$nota_tag,'data' =>$data,'nota'=>$nota,'update'=>$update]);
         return $pdf->stream();
     }
 
