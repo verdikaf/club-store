@@ -37,7 +37,7 @@ class PagesController extends Controller
 		$produk = DB::table('produk')
 		->where('nama','like',"%".$cari."%")
         ->paginate();
-        
+
         $kategori = DB::table('kategori')
             ->get();
 
@@ -309,10 +309,11 @@ class PagesController extends Controller
         }
     }
 
-    public function produkList(){
+    public function produkList(Request $request){
         $produk = DB::table('produk')
-            ->join('kategori', 'produk.kategori_id', '=', 'kategori.id')
-            ->select('produk.*', 'kategori.nama as kategori')
+        ->join('kategori', 'produk.kategori_id', '=', 'kategori.id')
+        ->leftJoin('preview', 'produk.id', '=', 'preview.produk_id')
+        ->select('produk.*', 'kategori.nama as kategori', 'preview.foto')
             ->get();
         $kategori = DB::table('kategori')
             ->get();
