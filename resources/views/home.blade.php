@@ -187,7 +187,7 @@
 									</div>
 									<div class="product-action-2">
 															@if(session()->has('s_id'))
-															<a title="Add to cart" href="{{url('/keranjang/cart/'.$p->id)}}">Masukkan keranjang</a>
+															<a title="Add to cart" href="{{url('/keranjang/cart?produkId='.$p->id)}}">Masukkan keranjang</a>
                             								@elseif(session()->has('s_id')== false)
 															<a title="Add to cart" href="{{url('/login')}}">Masukkan keranjang</a>
                             								@endif
@@ -270,7 +270,7 @@
 									</div>
 									<div class="product-action-2">
 															@if(session()->has('s_id'))
-															<a title="Add to cart" href="{{url('/keranjang/cart/'.$p->id)}}">Masukkan keranjang</a>
+															<a title="Add to cart" href="{{url('/keranjang/cart?produkId='.$p->id)}}">Masukkan keranjang</a>
                             								@elseif(session()->has('s_id')== false)
 															<a title="Add to cart" href="{{url('/login')}}">Masukkan keranjang</a>
                             								@endif

@@ -79,25 +79,26 @@
 					<table class="table shopping-summery">
 						<thead>
 							<tr class="main-hading">
-								<th>Produk</th>
 								<th>Nama Produk</th>
 								<th class="text-center">Harga Satuan</th>
 								<th class="text-center">Jumlah</th>
 								<th class="text-center">Total</th> 
-								<th class="text-center"><i class="ti-trash remove-icon"></i></th>
 							</tr>
 						</thead>
 						<tbody>
 						@foreach ($nota->cart as $c)
 							<tr>
-								<td class="image" data-title="No"><img src="https://via.placeholder.com/100x100" alt="#"></td>
 								<td class="product-des" data-title="Description">
 									<p class="product-name"><a href="#">{{$c->nama_produk}}</a></p>
-									<p class="product-des">Maboriosam in a tonto nesciung eget  distingy magndapibus.</p>
+									<!-- <p class="product-des">Maboriosam in a tonto nesciung eget  distingy magndapibus.</p> -->
 								</td>
 								<td class="price" data-title="Price"><span>{{$c->harga_satuan}}</span></td>
-								<td class="qty" data-title="Qty"><!-- Input Order -->
-									<div class="input-group">
+								<td class="text-center" data-title="Qty"><!-- Input Order -->
+                                            <a href="{{url('/keranjang/cart/minus?produkId=' . $c->produk_id)}}" class="btn-sm float-left fa fa-minus"></a>
+                                            {{$c->kuantitas}}
+                                            <a href="{{url('/keranjang/cart/plus?produkId=' . $c->produk_id)}}" class="btn-sm float-right fa fa-plus"></a>
+                                        </td>
+									<!-- <div class="input-group">
 										<div class="button minus">
 											<button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
 												<i class="ti-minus"></i>
@@ -109,11 +110,10 @@
 												<i class="ti-plus"></i>
 											</button>
 										</div>
-									</div>
+									</div> -->
 									<!--/ End Input Order -->
 								</td>
 								<td class="total-amount" data-title="Total"><span>{{$c->sub_total}}</span></td>
-								<td class="action" data-title="Remove"><a href="#"><i class="ti-trash remove-icon"></i></a></td>
 							</tr>
 							@endforeach
 						</tbody>
@@ -134,9 +134,10 @@
 							<div class="col-lg-4 col-md-7 col-12">
 								<div class="right">
 									<ul>
-										<li>Sub Total<span>$330.00</span></li>
+										<li>Sub Total<span>Rp. {{$nota_tag->total}}</span></li>		
 										<li>Ongkos Kirim<span>Free</span></li>
-										<li class="last">Pembayaran<span>$310.00</span></li>
+										<li>Diskon<span>Rp. {{$nota_tag->diskon * $nota_tag->total}}.00</span></li>
+										<li class="last">Pembayaran<span>Rp.{{$nota_tag->tagihan}}</span></li>
 									</ul>
 									<div class="button5">
 										<a href="{{url('/checkout/'.$nota->id)}}" class="btn">Checkout</a>

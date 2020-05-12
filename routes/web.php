@@ -39,13 +39,14 @@ Route::get('/', 'PagesController@index');
 Route::get('/cari','PagesController@cari');
 // Route::get('/keranjang', 'PagesController@listkeranjang');
 Route::get('/keranjang/cart', 'PagesController@keranjang' );
-Route::get('/keranjang/cart/{produkId}', 'PagesController@keranjang' );
+Route::get('/keranjang/cart/plus', 'PagesController@plusProduk');
+Route::get('/keranjang/cart/minus', 'PagesController@minusProduk');
 Route::get('/checkout/{notaId}', 'PagesController@checkout');
 Route::get('/profil', 'PagesController@profil');
 Route::get('/editprofil', 'PagesController@editprofil');
 Route::post('/profil/edit', 'PagesController@editprofilsave');
 // Route::get('/invoice', 'PagesController@invoice');
-Route::get('/invoice/preview', 'PagesController@invoicepreview');
+Route::get('/invoice/preview/{notaId}', 'PagesController@invoicepreview');
 
 Route::get('/dashboard', 'DashboardController@index');
 
