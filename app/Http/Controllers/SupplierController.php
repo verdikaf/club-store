@@ -8,15 +8,27 @@ use Illuminate\Support\Facades\DB;
 class SupplierController extends Controller
 {
     //
-    public function index()
+    public function index(Request $request)
     {
         $supplier = DB::table('supplier')->get();
-        return view('supplier',['supplier' => $supplier]);
+        $nav_menu = $this->displayMenu($request);
+        $session  = array(
+            'id'             => $request->session()->get('s_id'),
+            'nama'           => $request->session()->get('s_nama'),
+            'roole'          => $request->session()->get('s_roole')
+        );
+        return view('supplier',['session' => $session, 'nav_menu' => $nav_menu, 'supplier' => $supplier]);
     }
 
-    public function supplierAdd()
+    public function supplierAdd(Request $request)
     {
-        return view('supplier_add');
+        $data['nav_menu'] = $this->displayMenu($request);
+        $data['session']  = array(
+            'id'             => $request->session()->get('s_id'),
+            'nama'           => $request->session()->get('s_nama'),
+            'roole'          => $request->session()->get('s_roole')
+        );
+        return view('supplier_add', $data);
     }
 
     public function supplierAddSave(Request $request)
@@ -34,10 +46,16 @@ class SupplierController extends Controller
     return redirect('/supplier');
     }
 
-    public function supplierEdit($id)
+    public function supplierEdit(Request $request, $id)
     {
         $supplier = DB::table('supplier')->where('id',$id)->get();
-        return view('supplier_edit',['supplier' => $supplier]);
+        $nav_menu = $this->displayMenu($request);
+        $session  = array(
+            'id'             => $request->session()->get('s_id'),
+            'nama'           => $request->session()->get('s_nama'),
+            'roole'          => $request->session()->get('s_roole')
+        );
+        return view('supplier_edit',['session' => $session, 'nav_menu' => $nav_menu, 'supplier' => $supplier]);
     }
     public function supplierEditSave(Request $request)
     {
@@ -58,5 +76,19 @@ class SupplierController extends Controller
     {
         DB::table('supplier')->where('id',$id)->delete();
         return redirect('/supplier');
+    }
+
+    private function displayMenu(Request $request) {
+        $menu = "<div class='list-group list-group-flush'>";
+        $result      = DB::select("SELECT m.id, m.nama, m.url, r.nama AS role FROM menu AS m 
+        LEFT JOIN role AS r ON m.role_id = r.id WHERE r.nama=?", [
+                            $request->session()->get('s_roole')
+                       ]);
+        foreach ($result as $r) {
+             $menu .= "<a href='".$r->url."' class='list-group-item list-group-item-action bg-extras1'>" . $r->nama . "</a>";
+        }
+        $menu .= "<a href='/logout/employee' class='list-group-item list-group-item-action bg-extras1'>Logout</a>";
+        $menu .= "</div>";
+        return $menu;
     }
 }

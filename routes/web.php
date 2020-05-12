@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Route::get('/pages', 'PagesController@index');
 Route::get('/pages/{id}', 'PagesController@singlePage');
@@ -69,7 +69,7 @@ Route::get('/produk/detail/{id}', 'ProdukController@produkDetail');
 Route::get('/produk/gambar/form/{nama}', 'ProdukController@gambarUploadForm');
 Route::post('/produk/gambar/action', 'ProdukController@gambarUploadAction');
 Route::post('/produk/gambar/delete', 'ProdukController@gambarDelete');
-Route::post('/produk/gambar/edit/delete', 'ProdukController@gambarEditDelete');
+Route::get('/produk/gambar/edit/delete/{id}', 'ProdukController@gambarEditDelete');
 //////////////
 
 Route::get('/kategori', 'KategoriController@index');

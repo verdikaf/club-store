@@ -21,8 +21,7 @@
 <body>
 
   <div class="d-flex" id="wrapper">
-    
-    
+  
   @include('sidebar')
 
     <!-- Page Content -->

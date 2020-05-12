@@ -79,7 +79,7 @@ class UserController extends Controller
             $request->session()->put('s_roole', $result->roole);
            
 
-            return redirect('/supplier');
+            return redirect('/dashboard');
         }else{
             return redirect('/login/employee')->with('error','Email atau Password salah,harap masukkan ulang!');
         }

@@ -41,14 +41,14 @@
              </div>
           </div>
           <div class="col-md-6">
-             <div class="card text-white bg-danger flex-md-row mb-4 shadow-sm h-md-250">
-                  <div class="card-body d-flex flex-column align-items-start">
-                    <strong class="d-inline-block mb-2 text-white"><h3>Sunlight Lemon Tea 600ml</h3></strong>
-                    <p class="card-text mb-auto"><h3>Stok Menipis</h3></p>
-                    <a class="btn btn-outline-light btn-sm" role="button" href="#">More Info <i class="fa fa-chevron-right "></i></a>
-                </div>
-                <img class="card-img-right flex-auto d-none d-lg-block" alt="Thumbnail [200x250]" src="{{url('/assets/image/warehouse/stok_menipis.jpg')}}" style="width: 200px; height: 250px;">
-             </div>
+          <div class="card text-white bg-danger flex-md-row mb-4 shadow-sm h-md-250">
+            <div class="card-body d-flex flex-column align-items-start">
+              <strong class="d-inline-block mb-2 text-white"><h3>Sunlight Lemon Tea 600ml</h3></strong>
+              <p class="card-text mb-auto"><h3>Stok Menipis</h3></p>
+                <a class="btn btn-outline-light btn-sm" role="button" href="#">More Info <i class="fa fa-chevron-right "></i></a>
+            </div>
+            <img class="card-img-right flex-auto d-none d-lg-block" alt="Thumbnail [200x250]" src="{{url('/assets/image/warehouse/stok_menipis.jpg')}}" style="width: 200px; height: 250px;">
+          </div>
           </div>
        </div>
       </div>

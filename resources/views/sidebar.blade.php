@@ -15,9 +15,8 @@
     <!-- Sidebar -->
     <div class="bg-extras1 border-right" id="sidebar-wrapper">
       <div class="sidebar-heading"><img src="{{url('/assets/image/warehouse/warehouse logo small.png')}}" alt="WarehouseLogo" style="width: 200px;"></div>
-      <a href="#" style="text-decoration:none; color: white;"> <div class="sidebar-heading"> Jackson D.</div></a>
-      <div class="list-group list-group-flush">
-        <!-- <a href="#" class="list-group-item list-group-item-action bg-dark" style="color: White;"><img src="#" alt="Users" style="width:30px; border-radius: 20px;"> Jackson D.</a> -->
+      <a href="#" style="text-decoration:none; color: white;"> <div class="sidebar-heading"> {{$session['nama']}}</div></a>
+      <!-- <div class="list-group list-group-flush">
         <a href="{{url('/dashboard')}}" class="list-group-item list-group-item-action bg-extras1">Dashboard</a>
         <a href="{{url('/produk/')}}" class="list-group-item list-group-item-action bg-extras1">Produk</a>
         <a href="{{url('/supplier/')}}" class="list-group-item list-group-item-action bg-extras1">Supplier</a>
@@ -31,7 +30,8 @@
             <a href="/user/employee/" class="list-group-item list-group-item-action bg-extras1" >Employee</a>
             <a href="#" class="list-group-item list-group-item-action bg-extras1">Customer</a>
         </div>
-      </div>
+      </div> -->
+      {!! $nav_menu !!}
     </div>
     <!-- /#sidebar-wrapper -->
 

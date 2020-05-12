@@ -26,101 +26,102 @@
 
         <!-- Page Content -->
         <div id="page-content-wrapper">
-            @foreach($produk as $p)
-            <form action="/produk/edit/save" method="POST">
-                {{ csrf_field() }}
-                <div class="container" style="padding-top: 15px;">
-                    <div class="row" style=>
-                        <div class="col-md-12">
-                            <!-- general form elements -->
-                            <div class="card">
+            
+            <div class="container" style="padding-top: 15px;">
+                <div class="row" style=>
+                    <div class="col-md-12">
+                        <!-- general form elements -->
+                        <div class="card">
+                            @foreach($produk as $p)
+                            <form action="/produk/edit/save" method="POST">
+                                {{ csrf_field() }}
                                 <div class="card-header">
                                     <h3 class="card-title">Update Produk</h3>
                                 </div>
 
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <input type="hidden" name="id" value="{{$p->id}}">
-                                        <label for="nama_produk">Nama</label>
-                                        <input type="text" class="form-control" name="nama" id="nama"
-                                            placeholder="Nama Produk" value="{{ $p->nama }}">
-                                        <label for="nama_produk">Nama</label>
-                                        <textarea name="deskripsi" id="deskripsi" cols="30" rows="10" 
-                                        placeholder="Deskripsi" value="{{ $p->deskripsi }}"></textarea>
-                                        <label for="stok">Stok</label>
-                                        <input type="number" class="form-control" name="stok" id="stok"
-                                            placeholder="Stok Produk" value="{{ $p->stok }}">
-                                        <label for="harga">Harga</label>
-                                        <input type="text" class="form-control" name="harga" id="harga"
-                                            placeholder="Harga Produk" value="{{ $p->harga }}">
+                                            <input type="hidden" name="id" value="{{$p->id}}">
+                                            <label for="nama_produk">Nama</label>
+                                            <input type="text" class="form-control" name="nama" id="nama"
+                                                placeholder="Nama Produk" value="{{ $p->nama }}">
+                                            <label for="deskripsi">Deskripsi</label>
+                                            <textarea class="form-control" name="deskripsi" id="deskripsi" cols="30" rows="10" 
+                                            placeholder="Deskripsi">{{ $p->deskripsi }}</textarea>
+                                            <label for="harga">Harga</label>
+                                            <input type="text" class="form-control" name="harga" id="harga"
+                                                placeholder="Harga Produk" value="{{ $p->harga }}">
 
 
-                                        <label for="kategori_id">Kategori</label>
-                                        <!-- <input type="text" class="form-control" name="kategori_id" id="kategori_id" placeholder="Kategori Produk"> -->
-                                        <select id="kategori_id" class="form-control" name="kategori_id">
-                                            @foreach($kategori as $k)
-                                            <option value="{{$k->id}}">{{$k->nama}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <input type="hidden" name="id" value="">
-                                        <label for="nama_produk">Foto</label>
-                                        <table class="table">
-                                            <thead class="thead-light">
-                                                <tr>
-                                                    <th width="700px" scope="col" style="text-align:center">FOTO</th>
-                                                    <th scope="col">OPSI</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-
-                                                @foreach($preview as $fp)
-                                                <tr>
-
-                                                    <td th width="650px" scope="col" style="text-align:center"><img
-                                                            src="{{$fp->foto}}" height="50"></td>
-
-                                                    <td>
-                                                        <form action="/produk/gambar/edit/delete" method="POST" id="delete">
-                                                            <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                            <input type="hidden" name="produk_id" value="{{$fp->produk_id}}">
-                                                            <input type="hidden" name="id" value="{{$fp->id}}">
-                                                            <input type="hidden" name="path" value="{{$fp->foto}}">
-                                                        </form>
-                                                            <button class="btn-danger" type="submit" form="delete"><span class="fa fa-trash"></button>
-                                                    </td>
-                                                </tr>
+                                            <label for="kategori_id">Kategori</label>
+                                            <!-- <input type="text" class="form-control" name="kategori_id" id="kategori_id" placeholder="Kategori Produk"> -->
+                                            <select id="kategori_id" class="form-control" name="kategori_id">
+                                                @foreach($kategori as $k)
+                                                <option value="{{$k->id}}">{{$k->nama}}</option>
                                                 @endforeach
-                                            </tbody>
-                                        </table>
+                                            </select><br>
                                     </div>
-
-                                    @foreach($produk as $p)
-                                    
-                                    <form method="post" action="{{url('/produk/gambar/action')}}" enctype="multipart/form-data" class="dropzone" id="dropzone">
-                                                <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                                <input type="hidden" id="id" name="id" value="{{$p->id}}"><br>
-                                                </form>
-                                    @endforeach
-
-
-
                                 </div>
-
-
 
                                 <div class="card-footer">
-                                  <button type="submit" class="btn btn-primary">Update</button>
+                                    <button type="submit" class="btn btn-primary">Update</button>
                                 </div>
+                            </form>
+                            @endforeach
+                        </div><br>
+                        <!-- /.card -->
+                        <div class="card">
+                            <div class="card-header">
+                                <h3 class="card-title">Preview Foto</h3>
                             </div>
-                            <!-- /.card -->
+
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <table class="table">
+                                        <thead class="thead-light">
+                                            <tr>
+                                                <th width="700px" scope="col" style="text-align:center">FOTO</th>
+                                                <th scope="col">OPSI</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                            @foreach($preview as $fp)
+                                            <tr>
+                                                <form action="/produk/gambar/edit/delete" method="POST" id="delete">
+                                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                                    <input type="hidden" name="produk_id" value="{{$fp->produk_id}}">
+                                                    <input type="hidden" name="id" value="{{$fp->id}}">
+                                                    <input type="hidden" name="path" value="{{$fp->foto}}">
+
+                                                    <td width="650px" scope="col" style="text-align:center">
+                                                        <img src="{{$fp->foto}}" height="50">
+                                                    </td>
+
+                                                    <td>
+                                                        <a href="/produk/gambar/edit/delete/{{$fp->id}}" type="button" form="delete" class="btn btn-danger"><span class="fa fa-trash"></a>
+                                                    </td>
+                                                </form>
+                                            </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                @foreach($produk as $p)
+                                
+                                <form method="post" action="{{url('/produk/gambar/action')}}" enctype="multipart/form-data" class="dropzone" id="dropzone">
+                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                    <input type="hidden" id="id" name="id" value="{{$p->id}}"><br>
+                                </form>
+                                @endforeach
+                            </div>
                         </div>
                     </div>
-            </form>
+                </div>
+            </div>
         </div>
-        @endforeach
+    </div>
 
         <!-- Bootstrap core JavaScript -->
         <!-- <link rel="stylesheet" href="{{url('/assets/library/jquery.min.js')}}">
@@ -132,7 +133,7 @@
         <script src="{{url('/assets/library/fontawesome/js/fontawesome.min.js')}}"></script>
         <script src="{{url('/assets/library/dropzone/dropzone.min.js')}}"></script>
         <!-- Menu Toggle Script -->
-        <!-- <script>
+         {{-- <script>
             $("#menu-toggle").click(function (e) {
                 e.preventDefault();
                 $("#wrapper").toggleClass("toggled");
@@ -178,7 +179,7 @@
                 }
             };
 
-        </script> -->
+        </script> --}}
 
 </body>
 
