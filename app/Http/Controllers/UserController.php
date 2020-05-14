@@ -59,7 +59,7 @@ class UserController extends Controller
         $method =$request->method();
         if($method == "POST"){
             $result =DB::selectOne("SELECT u.id,u.nama,u.telp,u.email,u.password,u.provinsi,u.kota,u.kecamatan,u.kode_pos,u.alamat_lengkap,r.nama AS roole FROM user AS u RIGHT JOIN role AS r
-            ON u.role_id = r.id WHERE u.email=? AND u.password=? AND u.role_id=2",[
+            ON u.role_id = r.id WHERE u.email=? AND u.password=?",[
                 $request->input('email'),
                 $request->input('password')
                 

@@ -89,7 +89,7 @@ Route::get('/supplier/delete/{id}', 'SupplierController@supplierDelete');
 
 //restok
 Route::get('/transaksi', 'TransaksiController@ListProduk');
-Route::get('/transaksi/api/search', 'TransaksiController@apiSearch');
+Route::get('/transaksi/api/search-product', 'TransaksiController@apiSearch');
 Route::get('/transaksi/cart', 'TransaksiController@cart');
 Route::get('/transaksi/cart/plus', 'TransaksiController@plusProduk');
 Route::get('/transaksi/cart/minus', 'TransaksiController@minusProduk');
