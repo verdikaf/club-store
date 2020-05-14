@@ -23,16 +23,6 @@ class TransaksiController extends Controller
         return view('produk_list_warehouse', $data);
     }
 
-    public function apiSearch(Request $request){
-        $result = DB::table('produk')
-                  ->select('produk.id', 'produk.nama', 'produk.harga', 'produk.stok', 'kategori.nama AS kategori')
-                  ->join('kategori', 'produk.kategori_id', '=', 'kategori.id')
-                  ->leftjoin('preview', 'produk.id', '=', 'preview.produk_id')
-                  ->where('produk.nama', 'like', "%" . $request->input('keyword') . "%")
-                  ->get();
-        return response($result);
-    }
-
     public function cart(Request $request){
         $nota = DB::selectOne("SELECT * FROM nota WHERE status='pending' AND jenis_faktur='pembelian' AND user_id=?", [
             $request->session()->get('s_id')

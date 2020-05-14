@@ -28,6 +28,17 @@ class ProdukController extends Controller
             return view('produk', $data);
     }
 
+    public function apiSearchProduk(Request $request)
+    {
+        $result = DB::table('produk')
+            ->join('kategori', 'produk.kategori_id', '=', 'kategori.id')
+            ->leftJoin('preview', 'produk.id', '=', 'preview.produk_id')
+            ->select(DB::raw('produk.*, kategori.nama AS kategori, MAX(preview.foto) AS foto'))
+            ->groupBy('produk.id')->where('produk.nama', 'LIKE', '%' . $request->input('keyword') . '%')
+            ->get();
+        return response($result);
+    }
+
     public function produkAdd(Request $request)
     {
         $data['session']  = array(

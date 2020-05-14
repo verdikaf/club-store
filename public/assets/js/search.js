@@ -1,12 +1,14 @@
 $(document).ready(function () {
-    $("#search-product").keydown(function (e) {
+    $("#search_produk").keydown(function (e) {
         $.ajax({
-            header: {
-                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="_token"]').attr("content"),
             },
-            url: "http://localhost:8000/transaksi/api/search-product",
+            url: "/produk/api/search_produk",
             type: "POST",
-            data: { keyword: $(this).val() },
+            data: {
+                keyword: $(this).val(),
+            },
             success: function (response) {
                 console.log(response);
 
@@ -22,6 +24,9 @@ $(document).ready(function () {
                         val.nama +
                         "</td>" +
                         "<td >" +
+                        val.deskripsi +
+                        "</td>" +
+                        "<td >" +
                         val.stok +
                         "</td>" +
                         "<td >" +
@@ -34,14 +39,17 @@ $(document).ready(function () {
                         val.kategori +
                         "</td>" +
                         "<td >" +
+                        "<a href='/produk/edit/" +
+                        val.id +
+                        "' type='button' class='btn btn-warning btn-sm'><span class='fa fa-pencil' ></a> " +
                         "<a href='/transaksi/cart?produkId=" +
                         val.id +
-                        "' type='button' class='btn btn-warning btn-sm'>RESTOCK</a>" +
+                        "' type='button' class='btn btn-success btn-sm'><span class='fa fa-cart-plus' ></a>" +
                         "</td>" +
                         "</tr>";
                 });
 
-                $("#list-produk").html($theme);
+                $("#list_produk").html($theme);
             },
         });
     });

@@ -64,6 +64,7 @@ Route::post('/produk/add/save', 'ProdukController@produkAddSave');
 Route::get('/produk/edit/{id}', 'ProdukController@produkEdit');
 Route::post('/produk/edit/save', 'ProdukController@produkEditSave');
 Route::get('/produk/detail/{id}', 'ProdukController@produkDetail');
+Route::post('/produk/api/search_produk', 'ProdukController@apiSearchProduk');
 //Route::get('/produk/delete/{id}', 'ProdukController@produkDelete');
 
 //MULTIPLE UPLOAD FORM
@@ -89,7 +90,7 @@ Route::get('/supplier/delete/{id}', 'SupplierController@supplierDelete');
 
 //restok
 Route::get('/transaksi', 'TransaksiController@ListProduk');
-Route::get('/transaksi/api/search-product', 'TransaksiController@apiSearch');
+// Route::get('/transaksi/api/search-product', 'TransaksiController@apiSearch');
 Route::get('/transaksi/cart', 'TransaksiController@cart');
 Route::get('/transaksi/cart/plus', 'TransaksiController@plusProduk');
 Route::get('/transaksi/cart/minus', 'TransaksiController@minusProduk');
