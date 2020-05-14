@@ -28,7 +28,7 @@ class TransaksiController extends Controller
                   ->select('produk.id', 'produk.nama', 'produk.harga', 'produk.stok', 'kategori.nama AS kategori')
                   ->join('kategori', 'produk.kategori_id', '=', 'kategori.id')
                   ->leftjoin('preview', 'produk.id', '=', 'preview.produk_id')
-                  ->where('produk.nama', 'like', '%' . $request->input('keyword') . '%')
+                  ->where('produk.nama', 'like', "%" . $request->input('keyword') . "%")
                   ->get();
         return response($result);
     }

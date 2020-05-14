@@ -7,6 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
 
   <title>Warehouse - Produk</title>
 
@@ -43,7 +44,7 @@
                           <div class="input-group-prepend">
                             <div class="input-group-text"><i class="fa fa-search"></i></div>
                           </div>
-                          <input type="text" id="search" class="form-control" placeholder="Pencarian Produk">
+                          <input type="text" id="search-product" class="form-control" placeholder="Pencarian Produk">
                         </div>
                     </div>
 
@@ -59,11 +60,11 @@
                         <th scope="col">OPSI</th>
                         </tr>
                     </thead>
-                    <tbody> 
+                    <tbody id="list-produk"> 
                 
                     
                     @foreach($produk as $p)
-                        <tr id="produk_list_warehouse">
+                        <tr>
                         
                             <td >{{ $p->id }}</td>
                             <td >{{ $p->nama }}</td>
@@ -90,9 +91,10 @@
 
   <script src="{{url('/assets/library/jquery/jquery.js')}}"></script>
   <script src="{{url('/assets/library/jquery/jquery.min.js')}}"></script>
-  <script src="{{url('/assets/library/bootstrap/js/bundle/bootstrap.bundle.min.js')}}"></script>
+
   <script src="{{url('/assets/library/fontawesome/js/fontawesome.min.js')}}"></script>
-  <script src="{{url('/assets/js/search_warehouse.js')}}"></script>
+  <script src="{{url('/assets/js/search.js')}}"></script>
+  <script src="{{url('/assets/library/bootstrap/js/bundle/bootstrap.bundle.min.js')}}"></script>
 
   <!-- Menu Toggle Script -->
   <script>

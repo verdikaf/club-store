@@ -1,10 +1,10 @@
 $(document).ready(function () {
-    $("#search").keydown(function (e) {
+    $("#search-product").keydown(function (e) {
         $.ajax({
             header: {
                 "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
             },
-            url: "http://localhost:8000/transaksi/api/search",
+            url: "http://localhost:8000/transaksi/api/search-product",
             type: "POST",
             data: { keyword: $(this).val() },
             success: function (response) {
@@ -41,7 +41,7 @@ $(document).ready(function () {
                         "</tr>";
                 });
 
-                $("#produk_list_warehouse").html($theme);
+                $("#list-produk").html($theme);
             },
         });
     });
