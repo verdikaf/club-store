@@ -90,7 +90,7 @@
 
   <script src="{{url('/assets/library/jquery/jquery.js')}}"></script>
   <script src="{{url('/assets/library/jquery/jquery.min.js')}}"></script>
-  <script src="{{url('/assets/library/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
+  <script src="{{url('/assets/library/bootstrap/js/bundle/bootstrap.bundle.min.js')}}"></script>
   <script src="{{url('/assets/library/fontawesome/js/fontawesome.min.js')}}"></script>
   <script src="{{url('/assets/js/search_warehouse.js')}}"></script>
 
