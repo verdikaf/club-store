@@ -86,3 +86,11 @@ Route::post('/supplier/add/save', 'SupplierController@supplierAddSave');
 Route::get('/supplier/edit/{id}', 'SupplierController@supplierEdit');
 Route::post('/supplier/edit/save', 'SupplierController@supplierEditSave');
 Route::get('/supplier/delete/{id}', 'SupplierController@supplierDelete');
+
+//restok
+Route::get('/transaksi', 'TransaksiController@ListProduk');
+Route::get('/transaksi/api/search', 'TransaksiController@apiSearch');
+Route::get('/transaksi/cart', 'TransaksiController@cart');
+Route::get('/transaksi/cart/plus', 'TransaksiController@plusProduk');
+Route::get('/transaksi/cart/minus', 'TransaksiController@minusProduk');
+Route::get('/transaksi/cart/checkout/{notaId}', 'TransaksiController@checkout');
