@@ -53,8 +53,8 @@
 
 	
 
-<!-- Start Trending -->
-<div class="product-area section">
+	<!-- Start Trending -->
+	<div class="product-area section">
             <div class="container">
 				<div class="row">
 					<div class="col-12">

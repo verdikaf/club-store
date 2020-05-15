@@ -29,17 +29,19 @@ class PagesController extends Controller
 
     }
 
+    public function apiSearchProduk(Request $request)
+    {
+        $result = DB::table('produk')
+            ->join('kategori', 'produk.kategori_id', '=', 'kategori.id')
+            ->leftJoin('preview', 'produk.id', '=', 'preview.produk_id')
+            ->select(DB::raw('produk.*, kategori.nama AS kategori, MAX(preview.foto) AS foto'))
+            ->groupBy('produk.id')->where('produk.nama', 'LIKE', '%' . $request->input('keyword') . '%')
+            ->get();
+        return response($result);
+    }
+
     public function cari(Request $request)
 	{
-        // $result = DB::table('produk')
-        //         ->join('kategori', 'produk.kategori_id', '=', 'kategori.id')
-        //         ->leftJoin('preview', 'produk.id', '=', 'preview.produk_id')
-        //         ->select('produk.*', 'kategori.nama as kategori', 'preview.foto')
-        //         ->where('produk.nama','like', '%' . $request->input('keyword') . '%')
-        //         ->get();
-
-        // return response($result);
-
 		// menangkap data pencarian
 		$cari = $request->cari;
  
@@ -58,30 +60,16 @@ class PagesController extends Controller
         return view('produk_list',['produk' => $produk, 'kategori' => $kategori, 'cart' => $cart]);
     }
 
-    // public function produk(Request $request) {
-    //     $data['title'] = "Clubstore.com";
-    //     $produk = DB::table('produk')
-    //     ->join('kategori', 'produk.kategori_id', '=', 'kategori.id')
-    //     ->leftJoin('preview', 'produk.id', '=', 'preview.produk_id')
-    //     ->select('produk.*', 'kategori.nama as kategori', 'preview.foto')
-    //         ->get();
-    //     $kategori = DB::table('kategori')
-    //         ->get();
-    //         $cart = DB::selectOne("SELECT COUNT(*) AS jumlah_keranjang FROM nota WHERE user_id=? AND status='pending'", [$request->session()->get('s_id')]);
-    //     return view('produk_list', ['produk' => $produk, 'data' => $data, 'kategori' => $kategori, 'cart'=>$cart]);
-
-    // }
-
     public function index(Request $request) {
         $data['title'] = "Clubstore.com";
         $produk = DB::table('produk')
         ->join('kategori', 'produk.kategori_id', '=', 'kategori.id')
         ->leftJoin('preview', 'produk.id', '=', 'preview.produk_id')
-        ->select('produk.*', 'kategori.nama as kategori', 'preview.foto')
-            ->get();
+        ->select(DB::raw('produk.*, kategori.nama as kategori, MAX(preview.foto) AS foto'))
+        ->groupBy('produk.id')->get();
         $kategori = DB::table('kategori')
             ->get();
-            $cart = DB::selectOne("SELECT COUNT(*) AS jumlah_keranjang FROM nota WHERE user_id=? AND status='pending'", [$request->session()->get('s_id')]);
+        $cart = DB::selectOne("SELECT COUNT(*) AS jumlah_keranjang FROM nota WHERE user_id=? AND status='pending'", [$request->session()->get('s_id')]);
         return view('home', ['produk' => $produk, 'data' => $data, 'kategori' => $kategori, 'cart'=>$cart]);
     }
     
@@ -184,7 +172,7 @@ class PagesController extends Controller
             $subtotal, $tagihan,
             $notax->id
         ]);
-        $notaTag = DB::selectOne("SELECT total,diskon, tagihan FROM nota WHERE status='pending' AND jenis_faktur='penjualan' 
+        $notaTag = DB::selectOne("SELECT total,diskon,ppn,tagihan FROM nota WHERE status='pending' AND jenis_faktur='penjualan' 
         AND user_id=?", [
             $request->session()->get('s_id')
         ]);

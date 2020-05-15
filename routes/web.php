@@ -38,7 +38,6 @@ Route::get('/logout/employee', 'UserController@Employeelogout');
 Route::get('/', 'PagesController@index');
 Route::get('/produklist', 'PagesController@produk');
 Route::get('/cari','PagesController@cari');
-// Route::get('/keranjang', 'PagesController@listkeranjang');
 Route::get('/keranjang/cart', 'PagesController@keranjang' );
 Route::get('/keranjang/cart/plus', 'PagesController@plusProduk');
 Route::get('/keranjang/cart/minus', 'PagesController@minusProduk');
@@ -46,12 +45,10 @@ Route::get('/checkout/{notaId}', 'PagesController@checkout');
 Route::get('/profil', 'PagesController@profil');
 Route::get('/editprofil', 'PagesController@editprofil');
 Route::post('/profil/edit', 'PagesController@editprofilsave');
-// Route::get('/invoice', 'PagesController@invoice');
 Route::get('/invoice/preview/{notaId}', 'PagesController@invoicepreview');
-
 Route::get('/dashboard', 'DashboardController@index');
 
-
+Route::post('/produk/api/search', 'PagesController@apiSearchProduk');
 
 Route::get('/user/employee', 'UserController@indexEmployee');
 Route::get('/user/employee/add', 'UserController@employeeAdd');

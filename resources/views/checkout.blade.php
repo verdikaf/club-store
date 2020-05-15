@@ -101,13 +101,13 @@
 									</div>
 									<div class="col-lg-6 col-md-6 col-12">
 										<div class="form-group">
-											<label>Provinsi<span>*</span></label>
+											<label>Provinsi</label>
 											<input type="text" name="provinsi" value="{{$user->provinsi}}" placeholder="" required="required">
 										</div>
 									</div>
 									<div class="col-lg-6 col-md-6 col-12">
 										<div class="form-group">
-											<label>Kode Pos<span>*</span></label>
+											<label>Kode Pos</label>
 											<input type="text" name="kode_pos" value="{{$user->kode_pos}}" placeholder="" required="required">
 										</div>
 									</div>

@@ -98,7 +98,7 @@ class ProdukController extends Controller
                 echo ($request->input('id'));
                 echo '--';
                 echo ($updatep);
-                // return redirect('/produk');
+                return redirect('/produk');
             }else{
                 return redirect('/produk');
         }
