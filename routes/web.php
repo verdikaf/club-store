@@ -58,6 +58,8 @@ Route::get('/user/employee/add', 'UserController@employeeAdd');
 Route::post('/user/employee/add/save', 'UserController@employeeAddSave');
 Route::get('/user/employee/edit/{id}', 'UserController@employeeEdit');
 Route::post('/user/employee/edit/save', 'UserController@employeeEditSave');
+Route::get('/user/customer', 'UserController@indexDataCustomer');
+
 
 Route::get('/produk', 'ProdukController@index');
 Route::get('/produk/add', 'ProdukController@produkAdd');
@@ -100,3 +102,8 @@ Route::get('/transaksi/cart/checkout/{notaId}', 'TransaksiController@checkout');
 //laporan
 Route::get('/api/laporan/laporanTransaksi', 'ApiLaporanController@getLaporanTransaksi');
 Route::get('/laporan', 'LaporanController@index');
+
+//invoice admin
+Route::get('/invoice/admin/{notaId}', 'InvoiceController@indexAdmin');
+Route::get('/invoice/admin/preview/{notaId}', 'InvoiceController@previewPdfAdmin');
+Route::get('/invoice/admin/print/{notaId}', 'InvoiceController@printPdfAdmin');

@@ -26,8 +26,6 @@
 
     <!-- Page Content -->
     <div id="page-content-wrapper">
-
-      
       <div class="container-fluid" style="padding-top: 15px;">
           <div class="row">
             
@@ -38,8 +36,8 @@
                         <div class="input-group">
                           <div class="button-group">
                             <a class="btn btn-outline-dark" role="button" href="{{url('produk')}}"><i class="fa fa-plus "></i> Produk</a>
-                            <a class="btn btn-primary" role="button" href="{{url('transaksi/cart')}}"><i class="fa fa-shopping-cart"></i> Pembelian <span class="badge badge-light">{{$cart->jumlah_keranjang}}</span></a>
-                            <a class="btn btn-warning" role="button" href="{{url('/transaksi/cart/checkout/' . $nota->id)}}">Checkout</a>
+                            <a class="btn btn-success" href="{{url('/invoice/admin/preview/' . $nota->id)}}" target="_blank">Preview</a>
+                            <a class="btn btn-warning" href="{{url('/invoice/admin/print/'  . $nota->id)}}" target="_blank">Print</a>
                           </div>
                         </div>
                     </div>
@@ -51,7 +49,7 @@
                       </tr>
                       <tr>
                           <th>Tanggal</th>
-                          <td>{{$tanggal}}</td>
+                          <td>{{$nota->tgl_nota}}</td>
                       </tr>
                       <tr>
                           <th>Customer</th>
@@ -76,34 +74,30 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($nota->cart as $c)
+                        @foreach($cart as $c)
                         <tr>
                             <td>{{$c->produk_id}}</td>
                             <td>{{$c->nama_produk}}</td>
                             <td>Rp.{{$c->harga_satuan}}</td>
-                            <td class="text-center">
-                                <a href="{{url('/transaksi/cart/minus?produkId=' . $c->produk_id)}}" class="btn btn-danger btn-sm float-left fa fa-minus"></a>
-                                {{$c->kuantitas}}
-                                <a href="{{url('/transaksi/cart/plus?produkId=' . $c->produk_id)}}" class="btn btn-success btn-sm float-right fa fa-plus"></a>
-                            </td>
+                            <td class="text-center">{{$c->kuantitas}}</td>
                             <td class="text-center">{{$c->sub_total}}</td>
                         </tr>
                         @endforeach
                         <tr>
                             <td colspan="4" class="text-right pr-2" style="background: #efefef">Sub Total</td>
-                            <td class="text-right" style="background: #efefef">Rp.{{$nota_tag->total}}</td>
+                            <td class="text-right" style="background: #efefef">Rp.{{$nota->total}}</td>
                         </tr>
                         <tr>
                             <td colspan="4" class="text-right pr-2">PPN 10%</td>
-                            <td class="text-right">Rp.{{$nota_tag->ppn / 100 * $nota_tag->total}}.00</td>
+                            <td class="text-right">Rp.{{$nota->ppn / 100 * $nota->total}}.00</td>
                         </tr>
                         <tr>
                             <td colspan="4" class="text-right pr-2">DISKON 10%</td>
-                            <td class="text-right">Rp.{{$nota_tag->diskon / 100 * $nota_tag->total}}.00</td>
+                            <td class="text-right">Rp.{{$nota->diskon / 100 * $nota->total}}.00</td>
                         </tr>
                         <tr>
                             <td colspan="4" class="text-right pr-2">Total Tagihan</td>
-                            <td class="text-right">Rp.{{$nota_tag->tagihan}}</td>
+                            <td class="text-right">Rp.{{$nota->tagihan}}</td>
                         </tr>
                     </tbody>
                   </table>

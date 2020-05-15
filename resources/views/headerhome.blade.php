@@ -89,8 +89,10 @@
 									<option>{{$k->nama}}</option>
 									@endforeach
 								</select>
-									<input id="cari" placeholder="Cari produk disini....." type="text">
-									<button id="cari" class="btnn"><i class="ti-search"></i></button>
+								<form action="/cari" method="GET">
+									<input id="cari" name= "cari" placeholder="Cari produk disini....." type="text">
+									<button  class="btnn"><i class="ti-search"></i></input>
+								<form>
 							</div>
 						</div>
 					</div>

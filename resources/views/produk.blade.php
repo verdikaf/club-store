@@ -37,7 +37,7 @@
                         <div class="input-group">
                           <div class="button-group">
                             <a class="btn btn-outline-dark" role="button" href="{{url('produk/add')}}"><i class="fa fa-plus "></i> Insert</a>
-                            <a class="btn btn-primary" role="button" href="{{url('transaksi/cart')}}"><i class="fa fa-shopping-cart"></i> Pembelian <span class="badge badge-light">4</span></a>
+                            <a class="btn btn-primary" role="button" href="{{url('transaksi/cart')}}"><i class="fa fa-shopping-cart"></i> Pembelian <span class="badge badge-light">{{$cart->jumlah_keranjang}}</span></a>
                           </div>
                           <div class="input-group-prepend">
                           <div class="input-group-text"><i class="fa fa-search"></i></div>
