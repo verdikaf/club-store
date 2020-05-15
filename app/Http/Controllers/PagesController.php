@@ -69,6 +69,7 @@ class PagesController extends Controller
             ->get();
             $cart = DB::selectOne("SELECT COUNT(*) AS jumlah_keranjang FROM nota WHERE user_id=? AND status='pending'", [$request->session()->get('s_id')]);
         return view('produk_list', ['produk' => $produk, 'data' => $data, 'kategori' => $kategori, 'cart'=>$cart]);
+
     }
 
     public function index(Request $request) {
@@ -177,8 +178,8 @@ class PagesController extends Controller
         ]);
         $ker = DB::selectOne("SELECT SUM(sub_total) AS total FROM keranjang WHERE nota_id=?", [$notax->id]);
         $subtotal = $ker->total;
-        $diskon = $subtotal * 10/100;
-        $tagihan = $subtotal + $diskon;
+        $pajak = $subtotal * 10/100;
+        $tagihan = $subtotal + $pajak;
         $total = DB::update("UPDATE nota SET total=?, tagihan=? WHERE id=?", [
             $subtotal, $tagihan,
             $notax->id

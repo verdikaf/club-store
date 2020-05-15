@@ -59,7 +59,7 @@
 					<ul>
 										<li>Sub Total : <span>Rp. {{$nota_tag->total}}</span></li>		
 										<li>Ongkos Kirim : <span>Free</span></li>
-										<li>Diskon : <span>Rp. {{$nota_tag->diskon * $nota_tag->total}}.00</span></li>
+										<li>Diskon : <span>Rp. 10%</span></li>
 										<li class="last">Pembayaran : <span>Rp.{{$nota_tag->tagihan}}</span></li>
 									</ul>
 									<div>
