@@ -183,7 +183,7 @@ class UserController extends Controller
 
     }
 
-    public function employeeEdit($id) {
+    public function employeeEdit(Request $request, $id) {
         $user = DB::table('user')->where('id',$id)->get();
         $role = DB::table('role')->get();
         $session  = array(
