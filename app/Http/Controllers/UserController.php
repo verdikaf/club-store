@@ -131,9 +131,9 @@ class UserController extends Controller
     }
     
     
-    //WAREHOUSE EMPLOYEE
+   //WAREHOUSE EMPLOYEE
 
-    public function indexEmployee(Request $request ) {
+    public function indexEmployee(Request $request) {
 
         $session  = array(
             'id'             => $request->session()->get('s_id'),
@@ -154,7 +154,7 @@ class UserController extends Controller
  
     }
 
-    public function employeeAdd() {
+    public function employeeAdd(Request $request ) {
         $data['role'] = DB::select("SELECT * FROM role");
         $data['nav_menu'] = $this->displayMenu($request);
         $data['session'] = array(
@@ -183,7 +183,7 @@ class UserController extends Controller
 
     }
 
-    public function employeeEdit($id) {
+    public function employeeEdit(Request $request, $id) {
         $user = DB::table('user')->where('id',$id)->get();
         $role = DB::table('role')->get();
         $session  = array(

@@ -15,7 +15,7 @@
     <!-- Sidebar -->
     <div class="bg-extras1 border-right" id="sidebar-wrapper">
       <div class="sidebar-heading"><img src="{{url('/assets/image/warehouse/warehouse logo small.png')}}" alt="WarehouseLogo" style="width: 200px;"></div>
-      <a href="#" style="text-decoration:none; color: white;"> <div class="sidebar-heading"> {{$session['nama']}}</div></a>
+      <a href="{{url('/dashboard')}}" style="text-decoration:none; color: white;"> <div class="sidebar-heading"> {{$session['nama']}}</div></a>
       <!-- <div class="list-group list-group-flush">
         <a href="{{url('/dashboard')}}" class="list-group-item list-group-item-action bg-extras1">Dashboard</a>
         <a href="{{url('/produk/')}}" class="list-group-item list-group-item-action bg-extras1">Produk</a>
@@ -28,7 +28,7 @@
         </button>
         <div class="dropdown-container">
             <a href="/user/employee/" class="list-group-item list-group-item-action bg-extras1" >Employee</a>
-            <a href="#" class="list-group-item list-group-item-action bg-extras1">Customer</a>
+            <a href="/user/dataCustomer/" class="list-group-item list-group-item-action bg-extras1">Customer</a>
         </div>
       </div> -->
       {!! $nav_menu !!}
