@@ -94,24 +94,9 @@
 								</td>
 								<td class="price" data-title="Price"><span>{{$c->harga_satuan}}</span></td>
 								<td class="text-center" data-title="Qty"><!-- Input Order -->
-                                            <a href="{{url('/keranjang/cart/minus?produkId=' . $c->produk_id)}}" class="btn-sm float-left fa fa-minus"></a>
-                                            {{$c->kuantitas}}
-                                            <a href="{{url('/keranjang/cart/plus?produkId=' . $c->produk_id)}}" class="btn-sm float-right fa fa-plus"></a>
-                                        </td>
-									<!-- <div class="input-group">
-										<div class="button minus">
-											<button type="button" class="btn btn-primary btn-number" disabled="disabled" data-type="minus" data-field="quant[1]">
-												<i class="ti-minus"></i>
-											</button>
-										</div>
-										<input type="text" name="quant[1]" class="input-number"  data-min="1" data-max="100" value="{{$c->kuantitas}}">
-										<div class="button plus">
-											<button type="button" class="btn btn-primary btn-number" data-type="plus" data-field="quant[1]">
-												<i class="ti-plus"></i>
-											</button>
-										</div>
-									</div> -->
-									<!--/ End Input Order -->
+									<a href="{{url('/keranjang/cart/minus?produkId=' . $c->produk_id)}}" class="btn-sm float-left fa fa-minus"></a>
+									{{$c->kuantitas}}
+									<a href="{{url('/keranjang/cart/plus?produkId=' . $c->produk_id)}}" class="btn-sm float-right fa fa-plus"></a>
 								</td>
 								<td class="total-amount" data-title="Total"><span>{{$c->sub_total}}</span></td>
 							</tr>
@@ -134,9 +119,10 @@
 							<div class="col-lg-4 col-md-7 col-12">
 								<div class="right">
 									<ul>
-										<li>Sub Total<span>Rp. {{$nota_tag->total}}</span></li>		
+										<li>Sub Total<span>Rp.{{$nota_tag->total}}</span></li>		
 										<li>Ongkos Kirim<span>Free</span></li>
-										<li>Pajak<span>Rp. 10%</span></li>
+										<li>Diskon 10%<span>Rp.{{$nota_tag->diskon / 100 * $nota_tag->total}}.00</span></li>
+										<li>Pajak 10%<span>Rp.{{$nota_tag->ppn / 100 * $nota_tag->total}}.00</span></li>
 										<li class="last">Pembayaran<span>Rp.{{$nota_tag->tagihan}}</span></li>
 									</ul>
 									<div class="button5">

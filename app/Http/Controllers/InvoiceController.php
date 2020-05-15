@@ -9,6 +9,21 @@ use Illuminate\Support\Facades\URL;
 
 class InvoiceController extends Controller
 {
+    public function index(Request $request, $notaId){
+        $data['title']  = "Invoice | ClubStore";
+        $data['nota'] = DB::selectOne("SELECT * FROM nota WHERE id=?", [$notaId]);
+        $data['keranjang'] = DB::select("SELECT * FROM keranjang WHERE nota_id=?", [$notaId]);
+        $data['cart']= DB::selectOne("SELECT COUNT(*) AS jumlah_keranjang FROM nota WHERE user_id=? AND status='pending'", [$request->session()->get('s_id')]);
+        $data['user'] = DB::select("SELECT * FROM user WHERE id=?", [$request->session()->get('s_id')]);
+        $data['session']  = array(
+            'id'             => $request->session()->get('s_id'),
+            'nama'           => $request->session()->get('s_nama'),
+            'roole'          => $request->session()->get('s_roole')
+        );
+        $data['nav_menu'] = $this->displayMenu($request);
+        return view('checkout', $data);
+    }
+
     public function indexAdmin(Request $request, $notaId){
         $data['title']  = "Invoice | ClubStore";
         $data['nota'] = DB::selectOne("SELECT * FROM nota WHERE id=?", [$notaId]);

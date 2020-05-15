@@ -83,20 +83,21 @@
 							
 							<!-- Form -->
 							<form  class="form">
-							<div class="row">
+								<div class="row">
+									@foreach ($user as $u)
 									<div class="col-lg-12 col-md-6 col-12">
 										<div class="form-group">
-											<label class="label-title-checkout">Pembeli :<br>
-											<label class="label-checkout">{{$user->nama}}</label><br>
-											<label class="label-checkout">{{$user->telp}}</label>
+											<label class="label-title-checkout">Pembeli :<br><br>
+											<label class="label-checkout">{{$u->nama}}</label><br>
+											<label class="content">{{$u->telp}}</label>
 										</div>
 									</div>
 
 									<div class="col-lg-9 col-md-6 col-12">
 										<div class="form-group">
-											<label class="label-title-checkout">Alamat :<br>
-											<label class="label-checkout">{{$user->alamat_lengkap}}</label><br>
-											<label class="label-checkout">{{$user->kecamatan}}, {{$user->kota}}, {{$user->provinsi}}, {{$user->kode_pos}} </label>
+											<label class="label-title-checkout">Alamat :<br><br>
+											<label class="content">{{$u->alamat_lengkap}}</label><br>
+											<label class="content">{{$u->kecamatan}}, {{$u->kota}}, {{$u->provinsi}}, {{$u->kode_pos}} </label>
 										</div>
 									</div>
 
@@ -107,9 +108,10 @@
 									</div>
 									
 									
-									<div class="col-12">
+									{{-- <div class="col-12">
 									<a class="btn btn-warning"  href="{{url('/editprofil')}}">Edit</a>
-									</div>
+									</div> --}}
+									@endforeach
 								</div>
 							</form>
 							<!--/ End Form -->
@@ -121,7 +123,7 @@
 							<div class="single-widget">
 								<h2>Produk</h2>
 								<div class="content">
-								@foreach ($nota->cart as $c)
+								@foreach ($keranjang as $c)
 									<ul>
 										<li>Nama Produk<span>{{$c->nama_produk}}</span></li>
 										<li>Jumlah<span>{{$c->kuantitas}}</span></li>
@@ -136,10 +138,11 @@
 								<h2>Total</h2>
 								<div class="content">
 								<ul>
-										<li>Sub Total<span>Rp. {{$nota_tag->total}}</span></li>		
+										<li>Sub Total<span>Rp. {{$nota->total}}</span></li>		
 										<li>Ongkos Kirim<span>Free</span></li>
-										<li>Pajak<span>Rp. 10%</span></li>
-										<li class="last">Pembayaran<span>Rp.{{$nota_tag->tagihan}}</span></li>
+										<li>Diskon 10%<span>Rp. {{$nota->diskon / 100 * $nota->total}}.00</span></li>
+										<li>Pajak 10%<span>Rp. {{$nota->ppn / 100 * $nota->total}}.00</span></li>
+										<li class="last">Pembayaran<span>Rp.{{$nota->tagihan}}</span></li>
 									</ul>
 								</div>
 							</div>
@@ -167,7 +170,7 @@
 							<div class="single-widget get-button">
 								<div class="content">
 									<div class="button">
-										<a href="{{url('/invoice/preview/'.$nota->id)}}" class="btn" target="_blank">proceed to checkout</a>
+										<a href="{{url('/invoice/admin/preview/'.$nota->id)}}" class="btn" target="_blank">proceed to checkout</a>
 									</div>
 								</div>
 							</div>

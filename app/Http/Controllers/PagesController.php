@@ -40,25 +40,25 @@ class PagesController extends Controller
         return response($result);
     }
 
-    public function cari(Request $request)
-	{
-		// menangkap data pencarian
-		$cari = $request->cari;
+    // public function cari(Request $request)
+	// {
+	// 	// menangkap data pencarian
+	// 	$cari = $request->cari;
  
-        $produk = DB::table('produk')
-        ->join('kategori', 'produk.kategori_id', '=', 'kategori.id')
-        ->leftJoin('preview', 'produk.id', '=', 'preview.produk_id')
-        ->select('produk.*', 'kategori.nama as kategori', 'preview.foto')
-		->where('produk.nama','like',"%".$cari."%")
-        ->paginate();
+    //     $produk = DB::table('produk')
+    //     ->join('kategori', 'produk.kategori_id', '=', 'kategori.id')
+    //     ->leftJoin('preview', 'produk.id', '=', 'preview.produk_id')
+    //     ->select('produk.*', 'kategori.nama as kategori', 'preview.foto')
+	// 	->where('produk.nama','like',"%".$cari."%")
+    //     ->paginate();
 
-        $kategori = DB::table('kategori')
-            ->get();
+    //     $kategori = DB::table('kategori')
+    //         ->get();
 
-        $cart = DB::selectOne("SELECT COUNT(*) AS jumlah_keranjang FROM nota WHERE user_id=? AND status='pending'", [$request->session()->get('s_id')]);
+    //     $cart = DB::selectOne("SELECT COUNT(*) AS jumlah_keranjang FROM nota WHERE user_id=? AND status='pending'", [$request->session()->get('s_id')]);
  
-        return view('produk_list',['produk' => $produk, 'kategori' => $kategori, 'cart' => $cart]);
-    }
+    //     return view('produk_list',['produk' => $produk, 'kategori' => $kategori, 'cart' => $cart]);
+    // }
 
     public function index(Request $request) {
         $data['title'] = "Clubstore.com";
@@ -116,7 +116,7 @@ class PagesController extends Controller
 
                     }
                 }else{
-                    DB::insert("INSERT INTO nota(user_id,nama,total,tagihan,jenis_faktur,status) VALUES (?,?,0.00,0.00,'penjualan','pending')", [
+                    DB::insert("INSERT INTO nota(user_id,nama,total,diskon,ppn,tagihan,jenis_faktur,status) VALUES (?,?,0.00,10.00,10.00,0.00,'penjualan','pending')", [
                         $request->session()->get('s_id'),
                         $request->session()->get('s_nama')
                     ]);
@@ -166,8 +166,9 @@ class PagesController extends Controller
         ]);
         $ker = DB::selectOne("SELECT SUM(sub_total) AS total FROM keranjang WHERE nota_id=?", [$notax->id]);
         $subtotal = $ker->total;
-        $pajak = $subtotal * 10/100;
-        $tagihan = $subtotal + $pajak;
+        $ppn = $subtotal * 0.1;
+        $diskon = $subtotal * 0.1;
+        $tagihan = $subtotal + $ppn - $diskon;
         $total = DB::update("UPDATE nota SET total=?, tagihan=? WHERE id=?", [
             $subtotal, $tagihan,
             $notax->id
@@ -179,57 +180,64 @@ class PagesController extends Controller
 
         return $notaTag;
     }
-    public function checkout(request $request){
-        $user = DB::table('user')->where('id', session()->get('s_id'))->first();
-        // return print_r($user);
-        $kategori = DB::table('kategori')
-        ->get();
-        $nota = DB::selectOne("SELECT * FROM nota WHERE status='pending' AND jenis_faktur='penjualan' AND user_id=?", [$request->session()->get('s_id')
-                ]);
 
-                if($nota != null){
-                    if($request->get('produkId')==null){
-                        $cartExist['cart'] = DB::select("SELECT * FROM keranjang WHERE nota_id=?", [$nota->id]);
-                        $nota               = (object)array_merge((array)$nota, (array)$cartExist);
-                    }else{
-                        //cek apakah produk sudah ada dikeranjang
-                        $cart = DB::selectOne("SELECT COUNT(*) AS jumlah_produk_yang_dibeli FROM keranjang WHERE nota_id=? AND produk_id=?",[
-                            $nota->id,
-                            $request->get('produkId')
-                        ]);
-
-                        if($cart->jumlah_produk_yang_dibeli == 0){
-                            $produk = DB::selectOne("SELECT * FROM produk WHERE id=?", [
-                                $request->get('produkId') 
-                            ]);
-
-                            DB::insert("INSERT INTO keranjang (nama_produk, harga_satuan, kuantitas, sub_total, nota_id, produk_id) VALUES (?,?,?,?,?,?)",[
-                                $produk->nama, $produk->harga, 1, $produk->harga * 1, 
-                                $nota ->id, $request->get('produkId')
-                            ]);
-                            $cartExist['cart'] = DB::select("SELECT * FROM keranjang WHERE nota_id=?", [$nota->id]);
-                            $nota               = (object)array_merge((array)$nota, (array)$cartExist);
-
-                        }else{
-                            $cartExist['cart'] = DB::select("SELECT * FROM keranjang WHERE nota_id=?", [$nota->id]);
-                            $nota               = (object)array_merge((array)$nota, (array)$cartExist);
-                        }
-
-                    }
-                }else{
-                    DB::insert("INSERT INTO nota(user_id,nama,total,tagihan,jenis_faktur,status) VALUES (?,?,0.00,0.00,'penjualan','pending')", [
-                        $request->session()->get('s_id'),
-                        $request->session()->get('s_nama')
-                    ]);
-                    return redirect('/checkout'.$request->get('produkId'));
-                }
-
-                $cart = DB::selectOne("SELECT COUNT(*) AS jumlah_keranjang FROM nota WHERE user_id=? AND status='pending'", [$request->session()->get('s_id')]);
-                $data['nota'] = $nota;
-                $nota_tag = $this->hitung($request);
-                $tanggal = date('d-m-Y H:i:s');
-        return view('checkout', ['user' => $user,'cart'=>$cart,'tanggal'=>$tanggal,'nota_tag'=>$nota_tag,'nota'=>$nota, 'kategori' => $kategori]);
+    public function checkout($notaId){
+        $tgl = date('Y-m-d H:i:s');
+        DB::update("UPDATE nota SET tgl_nota=?, status='sukses' WHERE id=?", [$tgl, $notaId]);
+        return redirect('/invoice/'. $notaId);
     }
+
+    // public function checkout(request $request){
+    //     $user = DB::table('user')->where('id', session()->get('s_id'))->first();
+    //     // return print_r($user);
+    //     $kategori = DB::table('kategori')
+    //     ->get();
+    //     $nota = DB::selectOne("SELECT * FROM nota WHERE status='pending' AND jenis_faktur='penjualan' AND user_id=?", [$request->session()->get('s_id')
+    //             ]);
+
+    //             if($nota != null){
+    //                 if($request->get('produkId')==null){
+    //                     $cartExist['cart'] = DB::select("SELECT * FROM keranjang WHERE nota_id=?", [$nota->id]);
+    //                     $nota               = (object)array_merge((array)$nota, (array)$cartExist);
+    //                 }else{
+    //                     //cek apakah produk sudah ada dikeranjang
+    //                     $cart = DB::selectOne("SELECT COUNT(*) AS jumlah_produk_yang_dibeli FROM keranjang WHERE nota_id=? AND produk_id=?",[
+    //                         $nota->id,
+    //                         $request->get('produkId')
+    //                     ]);
+
+    //                     if($cart->jumlah_produk_yang_dibeli == 0){
+    //                         $produk = DB::selectOne("SELECT * FROM produk WHERE id=?", [
+    //                             $request->get('produkId') 
+    //                         ]);
+
+    //                         DB::insert("INSERT INTO keranjang (nama_produk, harga_satuan, kuantitas, sub_total, nota_id, produk_id) VALUES (?,?,?,?,?,?)",[
+    //                             $produk->nama, $produk->harga, 1, $produk->harga * 1, 
+    //                             $nota ->id, $request->get('produkId')
+    //                         ]);
+    //                         $cartExist['cart'] = DB::select("SELECT * FROM keranjang WHERE nota_id=?", [$nota->id]);
+    //                         $nota               = (object)array_merge((array)$nota, (array)$cartExist);
+
+    //                     }else{
+    //                         $cartExist['cart'] = DB::select("SELECT * FROM keranjang WHERE nota_id=?", [$nota->id]);
+    //                         $nota               = (object)array_merge((array)$nota, (array)$cartExist);
+    //                     }
+
+    //                 }
+    //             }else{
+    //                 DB::insert("INSERT INTO nota(user_id,nama,total,tagihan,jenis_faktur,status) VALUES (?,?,0.00,0.00,'penjualan','pending')", [
+    //                     $request->session()->get('s_id'),
+    //                     $request->session()->get('s_nama')
+    //                 ]);
+    //                 return redirect('/checkout'.$request->get('produkId'));
+    //             }
+
+    //             $cart = DB::selectOne("SELECT COUNT(*) AS jumlah_keranjang FROM nota WHERE user_id=? AND status='pending'", [$request->session()->get('s_id')]);
+    //             $data['nota'] = $nota;
+    //             $nota_tag = $this->hitung($request);
+    //             $tanggal = date('d-m-Y H:i:s');
+    //     return view('checkout', ['user' => $user,'cart'=>$cart,'tanggal'=>$tanggal,'nota_tag'=>$nota_tag,'nota'=>$nota, 'kategori' => $kategori]);
+    // }
 
     public function invoicepreview(Request $request, $notaId){
         $user = DB::table('user')->where('id', session()->get('s_id'))->first();

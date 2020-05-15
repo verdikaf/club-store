@@ -90,7 +90,6 @@ Route::get('/supplier/delete/{id}', 'SupplierController@supplierDelete');
 
 //restok
 Route::get('/transaksi', 'TransaksiController@ListProduk');
-// Route::get('/transaksi/api/search-product', 'TransaksiController@apiSearch');
 Route::get('/transaksi/cart', 'TransaksiController@cart');
 Route::get('/transaksi/cart/plus', 'TransaksiController@plusProduk');
 Route::get('/transaksi/cart/minus', 'TransaksiController@minusProduk');
@@ -101,6 +100,7 @@ Route::get('/api/laporan/laporanTransaksi', 'ApiLaporanController@getLaporanTran
 Route::get('/laporan', 'LaporanController@index');
 
 //invoice admin
+Route::get('/invoice/{notaId}', 'InvoiceController@index');
 Route::get('/invoice/admin/{notaId}', 'InvoiceController@indexAdmin');
 Route::get('/invoice/admin/preview/{notaId}', 'InvoiceController@previewPdfAdmin');
 Route::get('/invoice/admin/print/{notaId}', 'InvoiceController@printPdfAdmin');

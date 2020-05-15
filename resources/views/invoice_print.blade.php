@@ -63,6 +63,10 @@
                                         <td class="text-right" style="background: #efefef">Rp.{{$nota->total}}</td>
                                     </tr>
                                     <tr>
+                                        <td colspan="4" class="text-right pr-2">Diskon 10%</td>
+                                        <td class="text-right">Rp.{{$nota->diskon / 100 * $nota->total}}.00</td>
+                                    </tr>
+                                    <tr>
                                         <td colspan="4" class="text-right pr-2">PPN 10%</td>
                                         <td class="text-right">Rp.{{$nota->ppn / 100 * $nota->total}}.00</td>
                                     </tr>

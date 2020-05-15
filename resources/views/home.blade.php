@@ -190,6 +190,13 @@
 															<div class="product-action">
 																<a title="Quick View" href="{{url('/detail/'.$p->id)}}"><i class=" ti-eye"></i><span>Details</span></a>
 															</div>
+															<div class="product-action-2">
+																@if(session()->has('s_id'))
+																	<a title="Add to cart" href="{{url('/keranjang/cart?produkId='.$p->id)}}">Masukkan keranjang</a>
+																@elseif(session()->has('s_id')== false)
+																	<a title="Add to cart" href="{{url('/login')}}">Masukkan keranjang</a>
+																@endif
+																</div>
 														</div>
 													</div>
 													<div class="product-content">
