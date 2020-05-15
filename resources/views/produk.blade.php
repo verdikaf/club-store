@@ -32,15 +32,17 @@
             <div class="col-md-12">
                 <div class="card text-white bg-light mb-4 shadow-sm h-md-250">
                     <div class="card-body d-flex flex-column align-items-start">
-                    <strong class="d-inline-block mb-2 text-dark"><h3>PRODUK.</h3></strong>
-                        <a class="btn btn-outline-dark btn-sm" role="button" href="{{url('produk/add')}}"><i class="fa fa-plus "></i> Insert</a>
-                        <a class="btn btn-primary btn-sm" role="button" href="{{url('transaksi/cart')}}"><i class="fa fa-shopping-cart"></i> Pembelian <span class="badge badge-light">4</span></a>
-                        <div class="input-group">
-                          <div class="input-group-prepend">
-                            <div class="input-group-text"><i class="fa fa-search"></i></div>
-                          </div>
-                          <input id="search_produk" class="form-control" type="text" name="search-product" placeholder="Search">
+                      <strong class="d-inline-block mb-2 text-dark"><h3>PRODUK.</h3></strong>
+                    </div>
+                    <div>
+                      <a class="btn btn-outline-dark btn-sm" role="button" href="{{url('produk/add')}}"><i class="fa fa-plus "></i> Insert</a>
+                      <a class="btn btn-primary btn-sm" role="button" href="{{url('transaksi/cart')}}"><i class="fa fa-shopping-cart"></i> Pembelian <span class="badge badge-light">{{$cart->jumlah_keranjang}}</span></a>
+                      <div class="input-group">
+                        <div class="input-group-prepend">
+                          <div class="input-group-text"><i class="fa fa-search"></i></div>
                         </div>
+                        <input id="search_produk" class="form-control" type="text" name="search-product" placeholder="Search">
+                      </div>
                     </div>
 
                     <table class="table">
