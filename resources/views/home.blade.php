@@ -97,9 +97,9 @@
 		<div class="col-4">
 		  <div class="card text-white flex-md-row mb-4 shadow-sm h-md-150" style="background-color: rgb(216, 216, 216);">
 			<div class="card-body d-flex flex-column align-items-start">
-			   <strong class="d-inline-block mb-2 text-white">OREO RED VELVET 136gr</strong>
-			   <p class="card-text mb-auto">Produk Terlaris></p>
-			   <a class="btn btn-outline-light btn-sm" role="button" href="#">Telusuri <i class="fa fa-chevron-right "></i></a>
+			   <strong class="d-inline-block mb-2 text-white">All Item Produk</strong>
+			   <p class="card-text mb-auto">Lihat Produk></p>
+			   <a class="btn btn-outline-light btn-sm" role="button" href="{{url('produk/list')}}">Telusuri <i class="fa fa-chevron-right "></i></a>
 			</div>
 			<img class="card-img-right flex-auto d-none d-lg-block" alt="Thumbnail [200x250]" src="{{url('/assets/image/warehouse/stok_terlaris.jpg')}}" style="width: 150px; height: 150px;">
 		 </div>
@@ -107,7 +107,7 @@
 			<div class="card-body d-flex flex-column align-items-start">
 			   <strong class="d-inline-block mb-2 text-white">OREO RED VELVET 136gr</strong>
 			   <p class="card-text mb-auto">Produk Terlaris></p>
-			   <a class="btn btn-outline-light btn-sm" role="button" href="#">Beli Sekarang <i class="fa fa-chevron-right "></i></a>
+			   <a class="btn btn-outline-light btn-sm" role="button" href="{{url('produk/list')}}">Beli Sekarang <i class="fa fa-chevron-right "></i></a>
 			</div>
 			<img class="card-img-right flex-auto d-none d-lg-block" alt="Thumbnail [200x250]" src="{{url('/assets/image/warehouse/stok_terlaris.jpg')}}" style="width: 150px; height: 150px;">
 		 </div>
