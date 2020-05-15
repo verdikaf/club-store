@@ -1,0 +1,50 @@
+.col-25 {
+    float: left;
+    width: 25%;
+    margin-top: 6px;
+    padding-top: 5px ;
+  }
+.col-75 {
+    float: left;
+    width: 75%;
+    margin-top: 6px;
+  }
+
+  input[type=email] {
+    width: 100%;
+    border: 2px solid #FF00A8;
+    border-radius: 10px;
+    resize: vertical;
+  }
+
+  input[type=password] {
+    width: 100%;
+    border: 2px solid #FF00A8;
+    border-radius: 10px;
+    resize: vertical;
+  }
+
+  input[type=text], select, textarea {
+    width: 100%;
+    border: 2px solid #FF00A8;
+    border-radius: 10px;
+    resize: vertical;
+  }
+
+  .btn{
+    color: #ffae00 !important;
+  }
+  .btn:hover{
+    color: #fff !important;
+  }
+
+  .label-checkout{
+    color: #272727;
+    font-weight: bold;
+    font-size: 20px;
+  }
+  .label-title-checkout{
+    color: #272727;
+    font-size: 20px;
+    
+  }
