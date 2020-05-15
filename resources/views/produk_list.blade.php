@@ -63,7 +63,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="row">
+				<div id="produk-list" class="row">
 					<div class="col-12">
 						<div class="product-info">
 							<div class="tab-content" id="myTabContent">
@@ -76,7 +76,7 @@
 												<div class="single-product">
 												<div class="product-img">
 													<a>
-														<img class="default-img" src="{{$p->foto}}" alt="Card image cap" style="width: 150px; height: 150px;">
+													<img class="default-img" src="{{$p->foto}}" alt="Card image cap" style="width: 150px; height: 150px;">
 																			<img class="hover-img" src="{{$p->foto}}" alt="Card image cap" style="width: 150px; height: 150px;">
 													</a>
 													<div class="button-head">
@@ -93,7 +93,7 @@
 													</div>
 												</div>
 													<div class="product-content">
-														<h3><a href="{{url('/detail')}}">{{$p->nama}}</a></h3>
+														<h3><a href="{{url('/detail/'.$p->id)}}">{{$p->nama}}</a></h3>
 														<div class="product-price">
 															<span>Rp. {{$p->harga}}</span>
 														</div>
@@ -284,6 +284,7 @@
 	<script src="{{url('/assets/usertemplate/js/easing.js')}}"></script>
 	<!-- Active JS -->
 	<script src="{{url('/assets/usertemplate/js/active.js')}}"></script>
+	<script src="{{url('/assets/js/search.js')}}"></script>
 
 	<!-- Menu Toggle Script -->
 	<script>

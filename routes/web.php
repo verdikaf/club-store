@@ -36,6 +36,7 @@ Route::get('/logout/employee', 'UserController@Employeelogout');
 
 
 Route::get('/', 'PagesController@index');
+Route::get('/produklist', 'PagesController@produk');
 Route::get('/cari','PagesController@cari');
 // Route::get('/keranjang', 'PagesController@listkeranjang');
 Route::get('/keranjang/cart', 'PagesController@keranjang' );
@@ -64,6 +65,7 @@ Route::post('/produk/add/save', 'ProdukController@produkAddSave');
 Route::get('/produk/edit/{id}', 'ProdukController@produkEdit');
 Route::post('/produk/edit/save', 'ProdukController@produkEditSave');
 Route::get('/produk/detail/{id}', 'ProdukController@produkDetail');
+Route::post('/produk/api/search_produk', 'ProdukController@apiSearchProduk');
 //Route::get('/produk/delete/{id}', 'ProdukController@produkDelete');
 
 //MULTIPLE UPLOAD FORM
@@ -86,3 +88,11 @@ Route::post('/supplier/add/save', 'SupplierController@supplierAddSave');
 Route::get('/supplier/edit/{id}', 'SupplierController@supplierEdit');
 Route::post('/supplier/edit/save', 'SupplierController@supplierEditSave');
 Route::get('/supplier/delete/{id}', 'SupplierController@supplierDelete');
+
+//restok
+Route::get('/transaksi', 'TransaksiController@ListProduk');
+// Route::get('/transaksi/api/search-product', 'TransaksiController@apiSearch');
+Route::get('/transaksi/cart', 'TransaksiController@cart');
+Route::get('/transaksi/cart/plus', 'TransaksiController@plusProduk');
+Route::get('/transaksi/cart/minus', 'TransaksiController@minusProduk');
+Route::get('/transaksi/cart/checkout/{notaId}', 'TransaksiController@checkout');

@@ -86,10 +86,8 @@
 									<option>{{$k->nama}}</option>
 									@endforeach
 								</select>
-								<form action="/cari" method="GET">
-									<input value="{{ old('cari') }}" name="cari" placeholder="Cari produk disini....." type="text">
-									<button type="submit" class="btnn"><i class="ti-search"></i></button>
-								</form>
+									<input id="cari" placeholder="Cari produk disini....." type="text">
+									<button id="cari" class="btnn"><i class="ti-search"></i></button>
 							</div>
 						</div>
 					</div>
@@ -158,6 +156,7 @@
 	<!--/ End Header -->
 
             <!-- Menu Toggle Script -->
+			<script src="{{url('/assets/js/search.js')}}"></script>
     <script>
         $("#menu-toggle").click(function(e) {
         e.preventDefault();
