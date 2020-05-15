@@ -45,6 +45,9 @@
 	<link rel="stylesheet" href="{{url('/assets/usertemplate/style.css')}}">
     <link rel="stylesheet" href="{{url('/assets/usertemplate/css/responsive.css')}}">
 
+	<!-- EXTRAS CSS -->
+	<link rel="stylesheet" href="{{url('/assets/css/dashboard-extras.css')}}">
+
 	
 	
 </head>
@@ -81,6 +84,10 @@
                             <form class="form" action="{{url('/profil/edit')}}" method="post">
                             <input type="hidden" name="_token" value="{{csrf_token()}}">
                             <input type="hidden" name="id" value="{{$user->id}}" class="form-control" placeholder="tulis id disini">
+								
+							</div>
+
+							<form  class="form">
 								<div class="row">
 									<div class="col-lg-12 col-md-6 col-12">
 										<div class="form-group">
@@ -114,7 +121,7 @@
 									</div>
 									<div class="col-lg-12 col-md-6 col-12">
 										<div class="form-group">
-											<label>Nomor Telepon</label>
+											<label>Nomer Telepon</label>
 											<input type="text" name="telp" value="{{$user->telp}}" placeholder="" required="required">
 										</div>
 									</div>
@@ -137,9 +144,7 @@
 										</div>
 									</div>
 									<div class="col-12">
-									<div class="col-12">
-									<input type="submit" value="Submit" class="btn btn-primary">
-									</div>
+										<input type="submit" value="Submit" class="btn btn-primary" >
 									</div>
 								</div>
 							</form>

@@ -43,7 +43,10 @@
 	<!-- Eshop StyleSheet -->
 	<link rel="stylesheet" href="{{url('/assets/usertemplate/css/reset.css')}}">
 	<link rel="stylesheet" href="{{url('/assets/usertemplate/style.css')}}">
-    <link rel="stylesheet" href="{{url('/assets/usertemplate/css/responsive.css')}}">
+	<link rel="stylesheet" href="{{url('/assets/usertemplate/css/responsive.css')}}">
+	
+		<!-- EXTRAS CSS -->
+	<link rel="stylesheet" href="{{url('/assets/css/dashboard-extras.css')}}">
 
 	
 	
@@ -82,59 +85,59 @@
 									<div class="col-lg-12 col-md-6 col-12">
 										<div class="form-group">
 											<label>Name</label>
-											<input type="text" value="{{$user->nama}}" name="nama" placeholder="" required="required">
+											<input type="text" value="{{$user->nama}}" name="nama" placeholder="" required="required" disabled>
 										</div>
 									</div>
 									<div class="col-lg-6 col-md-6 col-12">
 										<div class="form-group">
 											<label>Kecamatan</label>
-											<input type="text" name="kecamatan" value="{{$user->kecamatan}}" placeholder="" required="required">
+											<input type="text" name="kecamatan" value="{{$user->kecamatan}}" placeholder="" required="required" disabled>
 										</div>
 									</div>
 									<div class="col-lg-6 col-md-6 col-12">
 										<div class="form-group">
 											<label>Kota</label>
-											<input type="text" name="kota" value="{{$user->kota}}" placeholder="" required="required">
+											<input type="text" name="kota" value="{{$user->kota}}" placeholder="" required="required" disabled>
 										</div>
 									</div>
 									<div class="col-lg-6 col-md-6 col-12">
 										<div class="form-group">
 											<label>Provinsi<span>*</span></label>
-											<input type="text" name="provinsi" value="{{$user->provinsi}}" placeholder="" required="required">
+											<input type="text" name="provinsi" value="{{$user->provinsi}}" placeholder="" required="required" disabled>
 										</div>
 									</div>
 									<div class="col-lg-6 col-md-6 col-12">
 										<div class="form-group">
 											<label>Kode Pos<span>*</span></label>
-											<input type="text" name="kode_pos" value="{{$user->kode_pos}}" placeholder="" required="required">
+											<input type="text" name="kode_pos" value="{{$user->kode_pos}}" placeholder="" required="required" disabled>
 										</div>
 									</div>
 									<div class="col-lg-12 col-md-6 col-12">
 										<div class="form-group">
 											<label>Nomer Telepon</label>
-											<input type="text" name="telp" value="{{$user->telp}}" placeholder="" required="required">
+											<input type="text" name="telp" value="{{$user->telp}}" placeholder="" required="required" disabled>
 										</div>
 									</div>
 									<div class="col-lg-12 col-md-6 col-12">
 										<div class="form-group">
 											<label>Alamat Lengkap</label>
-											<input type="text" name="alamat_lengkap" value="{{$user->alamat_lengkap}}" placeholder="" required="required">
+											<input type="text" name="alamat_lengkap" value="{{$user->alamat_lengkap}}" placeholder="" required="required" disabled>
 										</div>
 									</div>
 									<div class="col-lg-6 col-md-6 col-12">
 										<div class="form-group">
 											<label>Email</label>
-											<input type="email" name="email" value="{{$user->email}}" placeholder="" required="required">
+											<input type="email" name="email" value="{{$user->email}}" placeholder="" required="required" disabled>
 										</div>
 									</div>
 									<div class="col-lg-6 col-md-6 col-12">
 										<div class="form-group">
 											<label>Password</label>
-											<input type="password" name="password" value="{{$user->password}}" placeholder="" required="required">
+											<input type="password" name="password" value="{{$user->password}}" placeholder="" required="required" disabled>
 										</div>
 									</div>
 									<div class="col-12">
-									<a class="btn btn-warning"  href="{{url('/editprofil')}}"><i class="fa fa-pencil-alt"></i>Edit</a>
+										<a class="btn btn-warning"  href="{{url('/editprofil')}}">Edit</a>
 									</div>
 								</div>
 							</form>
