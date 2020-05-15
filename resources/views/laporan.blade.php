@@ -13,6 +13,7 @@
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="{{url('/assets/library/bootstrap/css/bootstrap.css')}}">
   <link rel="stylesheet" href="{{url('/assets/library/bootstrap/css/simple-sidebar.css')}}">
+  <link rel="stylesheet" href="{{url('/assets/css/css-extras.css')}}">
   <link rel="stylesheet" href="{{url('https://code.highcharts.com/8.1.0/css/highcharts.css')}}">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
 
@@ -37,16 +38,18 @@
             <div class="col-md-12">
                 <div class="card text-white bg-light mb-4 shadow-sm h-md-250">
                     <div class="card-body d-flex flex-column align-items-start">
-                    <strong class="d-inline-block mb-2 text-dark"><h3>Laporan.</h3></strong>
+                    <strong class="d-inline-block mb-2 text-dark">
+                      <div class="title text-dark">Laporan.</div>
+                    </strong>
                     </div>
 
-                  <div class="col-md-12 mt-5">
+                  <div class="col-md-12" style="margin:auto; margin-top:0px; padding-bottom:20px">
                       <div class="card">
-                          <div class="card-header" style="color:red">
+                          <div class="card-header bg-dark" style="color:#fff;width:100%">
                               Jumlah Faktur
                           </div>
                           <div class="card-body">
-                              <div id="grafikfaktur" style="height: 400px; border:solid green 1px"></div>
+                              <div id="grafikfaktur" style="height: 400px;"></div>
                           </div>
                       </div>
                   </div>

@@ -47,7 +47,8 @@ $(document).ready(function() {
                     series: [
                         {
                             name: 'Faktur',
-                            data: data
+                            data: data,
+                            color: '#343a40',
                         }
                     ]
                 });

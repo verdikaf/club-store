@@ -46,6 +46,9 @@
     <link rel="stylesheet" href="{{url('/assets/usertemplate/css/responsive.css')}}">
 
 	
+	<link rel="shortcut icon" href="{{url('/assets/image/Icon/icon.png')}}">
+
+	
 	
 </head>
 <body class="js">
@@ -58,7 +61,7 @@
 					<div class="col-lg-2 col-md-2 col-12">
 						<!-- Logo -->
 						<div class="logo">
-              <a class="navbar-brand font-weight-bold" href="{{url('/')}}"><h6>ClubStore.com</h6></a>
+              			<a class="navbar-brand font-weight-bold" href=""><img src="{{url('/assets/image/Icon/type_co.png')}}" alt=""></a>
 						</div>
 						<!--/ End Logo -->
 						<!-- Search Form -->
