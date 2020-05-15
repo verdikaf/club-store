@@ -22,70 +22,97 @@
 
   <div class="d-flex" id="wrapper">
   
-  @include('sidebar')
+    @include('sidebar')
 
     <!-- Page Content -->
     <div id="page-content-wrapper">
 
       
-        <div class="container-fluid" style="padding-top: 15px;">
-            <div class="row">
-
+      <div class="container-fluid" style="padding-top: 15px;">
+          <div class="row">
             <div class="col-md-12">
                 <div class="card text-white bg-light mb-4 shadow-sm h-md-250">
                     <div class="card-body d-flex flex-column align-items-start">
-                        <strong class="mb-2 text-dark"><h3>KATALOG PRODUK.</h3></strong>
-                        <a href="{{url('/transaksi/cart')}}">
-                            <span class="badge badge-danger" style="position: absolute; margin-left: -15px; margin-top: -15px">{{$cart->jumlah_keranjang}}</span>
-                            <i class="fa fa-shopping-cart"></i>
-                        </a>
+                        <strong class="mb-2 text-dark"><h3>Nota {{$nota->jenis_faktur}}</h3></strong>
+                        <div class="input-group">
+                          <div class="button-group">
+                            <a class="btn btn-outline-dark" role="button" href="{{url('produk')}}"><i class="fa fa-plus "></i> Produk</a>
+                            <a class="btn btn-primary" role="button" href="{{url('transaksi/cart')}}"><i class="fa fa-shopping-cart"></i> Pembelian <span class="badge badge-light">{{$cart->jumlah_keranjang}}</span></a>
+                          </div>
+                        </div>
                     </div>
 
                     <table class="table">
-                    <thead class="thead-light">
+                      <tr>
+                          <th>Nomor</th>
+                          <td>{{$nota->id}}</td>
+                      </tr>
+                      <tr>
+                          <th>Tanggal</th>
+                          <td>{{$tanggal}}</td>
+                      </tr>
+                      <tr>
+                          <th>Customer</th>
+                          <td>{{session('s_id')}} | {{session('s_nama')}}</td>
+                      </tr>
+                    </table>
+                </div>
+            </div>
+
+            <hr class="m-0">
+
+            <div class="col-md-12">
+                <div class="card bg-light mb-4 shadow-sm h-md-250">
+                  <table style="width: 100%" class="table">
+                    <thead>
                         <tr>
-                        <th scope="col">ID</th>
-                        <th scope="col">NAMA</th>
-                        <th scope="col">STOK</th>
-                        <th scope="col">HARGA</th>
-                        <th scope="col">FOTO</th>
-                        <th scope="col">KATEGORI</th>
-                        <th scope="col">OPSI</th>
+                            <th>Id</th>
+                            <th>Nama Produk</th>
+                            <th>Harga</th>
+                            <th class="text-center">Jumlah</th>
+                            <th class="text-center">Subtotal</th>
                         </tr>
                     </thead>
-                    <tbody> 
-                
-                    
-                    @foreach($produk as $p)
+                    <tbody>
+                        @foreach($nota->cart as $c)
                         <tr>
-                        
-                            <td >{{ $p->id }}</td>
-                            <td >{{ $p->nama }}</td>
-                            <td >{{ $p->stok }}</td>
-                            <td >{{ $p->harga }}</td>
-                            <td ><img src="{{$p->foto}}" height="50"></td>
-                            <td >{{ $p->kategori }}</td>
-                            <td >
-                                <a href="{{url('/transaksi/cart?produkId=' . $p->id)}}" type="button" class="btn btn-warning btn-sm">RESTOCK</a>
+                            <td>{{$c->produk_id}}</td>
+                            <td>{{$c->nama_produk}}</td>
+                            <td>Rp.{{$c->harga_satuan}}</td>
+                            <td class="text-center">
+                                <a href="{{url('/transaksi/cart/minus?produkId=' . $c->produk_id)}}" class="btn btn-danger btn-sm float-left fa fa-minus"></a>
+                                {{$c->kuantitas}}
+                                <a href="{{url('/transaksi/cart/plus?produkId=' . $c->produk_id)}}" class="btn btn-success btn-sm float-right fa fa-plus"></a>
                             </td>
+                            <td class="text-center">{{$c->sub_total}}</td>
                         </tr>
-                    @endforeach
+                        @endforeach
+                        <tr>
+                            <td colspan="4" class="text-right pr-2" style="background: #efefef">Sub Total</td>
+                            <td class="text-right" style="background: #efefef">Rp.{{$nota_tag->total}}</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" class="text-right pr-2">PPN 10%</td>
+                            <td class="text-right">Rp.{{$nota_tag->ppn / 100 * $nota_tag->total}}.00</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" class="text-right pr-2">DISKON 10%</td>
+                            <td class="text-right">Rp.{{$nota_tag->diskon / 100 * $nota_tag->total}}.00</td>
+                        </tr>
+                        <tr>
+                            <td colspan="4" class="text-right pr-2">Total Tagihan</td>
+                            <td class="text-right">Rp.{{$nota_tag->tagihan}}</td>
+                        </tr>
                     </tbody>
-                </table>
-
+                  </table>
                 </div>
-                
             </div>
 
-                
-            </div>
-        </div>
+          </div>
       </div>
+    </div>
+  </div>
 
-  <!-- Bootstrap core JavaScript -->
-  <!-- <link rel="stylesheet" href="{{url('/assets/library/jquery.min.js')}}">
-  <link rel="stylesheet" href="{{url('/assets/library/fontawesome/css/fontawesome.css')}}">
-  <link rel="stylesheet" href="{{url('/assets/library/fontawesome/css/fontawesome.css')}}"> -->
   <script src="{{url('/assets/library/jquery/jquery.js')}}"></script>
   <script src="{{url('/assets/library/jquery/jquery.min.js')}}"></script>
   <script src="{{url('/assets/library/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
