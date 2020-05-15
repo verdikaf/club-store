@@ -70,8 +70,8 @@ class TransaksiController extends Controller
 
     public function checkout($notaId){
         $tgl = date('Y-m-d H:i:s');
-        DB::update("UPDATE nota SET tanggal=?, status='sukses' WHERE id=?", [$tgl, $notaId]);
-        return redirect('/invoice/'. $notaId);
+        DB::update("UPDATE nota SET tgl_nota=?, status='sukses' WHERE id=?", [$tgl, $notaId]);
+        return redirect('/invoice/admin/'. $notaId);
     }
 
     public function plusProduk(Request $request){

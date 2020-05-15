@@ -102,3 +102,8 @@ Route::get('/transaksi/cart/checkout/{notaId}', 'TransaksiController@checkout');
 //laporan
 Route::get('/api/laporan/laporanTransaksi', 'ApiLaporanController@getLaporanTransaksi');
 Route::get('/laporan', 'LaporanController@index');
+
+//invoice admin
+Route::get('/invoice/admin/{notaId}', 'InvoiceController@indexAdmin');
+Route::get('/invoice/admin/preview/{notaId}', 'InvoiceController@previewPdfAdmin');
+Route::get('/invoice/admin/print/{notaId}', 'InvoiceController@printPdfAdmin');
