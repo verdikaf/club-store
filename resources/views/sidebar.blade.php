@@ -28,7 +28,7 @@
         </button>
         <div class="dropdown-container">
             <a href="/user/employee/" class="list-group-item list-group-item-action bg-extras1" >Employee</a>
-            <a href="#" class="list-group-item list-group-item-action bg-extras1">Customer</a>
+            <a href="/user/dataCustomer/" class="list-group-item list-group-item-action bg-extras1">Customer</a>
         </div>
       </div> -->
       {!! $nav_menu !!}
