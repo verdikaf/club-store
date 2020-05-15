@@ -96,3 +96,7 @@ Route::get('/transaksi/cart', 'TransaksiController@cart');
 Route::get('/transaksi/cart/plus', 'TransaksiController@plusProduk');
 Route::get('/transaksi/cart/minus', 'TransaksiController@minusProduk');
 Route::get('/transaksi/cart/checkout/{notaId}', 'TransaksiController@checkout');
+
+//laporan
+Route::get('/api/laporan/laporanTransaksi', 'ApiLaporanController@getLaporanTransaksi');
+Route::get('/laporan', 'LaporanController@index');
