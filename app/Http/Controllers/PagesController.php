@@ -32,19 +32,18 @@ class PagesController extends Controller
     public function cari(Request $request)
 	{
 		// menangkap data pencarian
-		$cari = $request->cari;
- 
-		$produk = DB::table('produk')
+        $cari = $request->cari;
+        
+        $produk = DB::table('produk')
+        ->join('preview', 'produk.id', '=', 'preview.produk_id')
 		->where('nama','like',"%".$cari."%")
         ->paginate();
-
         $kategori = DB::table('kategori')
             ->get();
 
         $cart = DB::selectOne("SELECT COUNT(*) AS jumlah_keranjang FROM nota WHERE user_id=? AND status='pending'", [$request->session()->get('s_id')]);
  
-		return view('produk_list',['produk' => $produk, 'kategori' => $kategori, 'cart' => $cart]);
- 
+        return view('produk_list',['produk' => $produk, 'kategori' => $kategori, 'cart' => $cart]);
     }
 
     public function index(Request $request) {
