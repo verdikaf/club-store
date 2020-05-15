@@ -370,35 +370,6 @@
 	</section>
 	<!-- End Shop Home List  -->
 	
-	<!-- Start Cowndown Area -->
-	<section class="cown-down">
-		<div class="section-inner ">
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-lg-6 col-12 padding-right">
-						<div class="image">
-							<img src="{{url('/assets/image/dashboard/8.jpg')}}" alt="#">
-						</div>	
-					</div>	
-					<div class="col-lg-6 col-12 padding-left">
-						<div class="content">
-							<div class="heading-block">
-								<p class="small-title">Deal of day</p>
-								<h3 class="title">Dress Wanita</h3>
-								<p class="text">Suspendisse massa leo, vestibulum cursus nulla sit amet, frungilla placerat lorem. Cars fermentum, sapien. </p>
-								<h1 class="price">Rp. 200 <s>Rp. 500</s></h1>
-								<!-- <div class="coming-time">
-									<div class="clearfix" data-countdown="2021/02/30"></div>
-								</div> -->
-							</div>
-						</div>	
-					</div>	
-				</div>
-			</div>
-		</div>
-	</section>
-	<!-- /End Cowndown Area -->
-	
 	<!-- Start Shop Services Area -->
 	<section class="shop-services section home">
 		<div class="container">
@@ -569,6 +540,7 @@
 	<script src="{{url('/assets/usertemplate/js/easing.js')}}"></script>
 	<!-- Active JS -->
 	<script src="{{url('/assets/usertemplate/js/active.js')}}"></script>
+	<script src="{{url('/assets/js/search.js')}}"></script>
 
 		<!-- Menu Toggle Script -->
 		<script>

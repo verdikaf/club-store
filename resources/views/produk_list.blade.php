@@ -63,7 +63,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="row">
+				<div id="produk-list" class="row">
 					<div class="col-12">
 						<div class="product-info">
 							<div class="tab-content" id="myTabContent">
@@ -284,6 +284,7 @@
 	<script src="{{url('/assets/usertemplate/js/easing.js')}}"></script>
 	<!-- Active JS -->
 	<script src="{{url('/assets/usertemplate/js/active.js')}}"></script>
+	<script src="{{url('/assets/js/search.js')}}"></script>
 
 	<!-- Menu Toggle Script -->
 	<script>

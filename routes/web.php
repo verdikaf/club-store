@@ -36,6 +36,7 @@ Route::get('/logout/employee', 'UserController@Employeelogout');
 
 
 Route::get('/', 'PagesController@index');
+Route::get('/produklist', 'PagesController@produk');
 Route::get('/cari','PagesController@cari');
 // Route::get('/keranjang', 'PagesController@listkeranjang');
 Route::get('/keranjang/cart', 'PagesController@keranjang' );
