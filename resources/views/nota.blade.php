@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Warehouse - Produk</title>
+  <title>Warehouse - Nota</title>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="{{url('/assets/library/bootstrap/css/bootstrap.css')}}">

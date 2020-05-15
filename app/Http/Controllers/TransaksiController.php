@@ -126,8 +126,8 @@ class TransaksiController extends Controller
         ]);
         $ker = DB::selectOne("SELECT SUM(subtotal) AS total FROM keranjang WHERE nota_id=?", [$notax->id]);
         $subtotal = $ker->total;
-        $pajak = $subtotal * 0.1;
-        $tagihan = $subtotal + $pajak;
+        $ppn = $subtotal * 0.1;
+        $tagihan = $subtotal + $ppn;
         $total = DB::update("UPDATE nota SET total=?, tagihan=? WHERE id=?", [
             $subtotal, $tagihan,
             $notax->id

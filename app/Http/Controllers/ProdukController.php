@@ -11,7 +11,7 @@ use App\Gambar;
 class ProdukController extends Controller
 {
     public function index(Request $request){
-
+        $data['cart']       = DB::selectOne("SELECT COUNT(*) AS jumlah_keranjang FROM nota WHERE user_id=? AND status='pending'", [$request->session()->get('s_id')]);
         $data['data'] = DB::table('produk')
             ->join('kategori', 'produk.kategori_id', '=', 'kategori.id')
             ->leftJoin('preview', 'produk.id', '=', 'preview.produk_id')
