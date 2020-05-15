@@ -33,7 +33,7 @@
 
             <div class="col-md-12">
                 <div class="card text-white bg-light mb-4 shadow-sm h-md-250">
-                    <div class="card-body d-flex flex-column align-items-start">
+                <div class="card-body d-flex flex-column align-items-start">
                     <strong class="d-inline-block mb-2 text-dark"><h3>USER - EMPLOYEE.</h3></strong>
                         <a class="btn btn-outline-dark btn-sm" role="button" href="{{url('user/employee/add')}}">Insert <i class="fa fa-plus "></i></a>
                     </div>
@@ -46,13 +46,7 @@
                         <th scope="col">NAMA</th>
                         <th scope="col">TELEPON</th>
                         <th scope="col">EMAIL</th>
-                        <th scope="col">PASSWORD</th>
-                        <th scope="col">PROVINSI</th>
-                        <th scope="col">KOTA</th>
-                        <th scope="col">KECAMATAN</th>
-                        <th scope="col">KODE POS</th>
                         <th scope="col">ALAMAT</th>
-                        <th scope="col">ROLE ID</th>
                         <th scope="col">OPSI</th>
                         </tr>
                     </thead>
@@ -67,13 +61,7 @@
                             <td >{{ $u->nama }}</td>
                             <td >{{ $u->telp }}</td>
                             <td >{{ $u->email }}</td>
-                            <td >{{ $u->password }}</td>
-                            <td >{{ $u->provinsi }}</td>
-                            <td >{{ $u->kota }}</td>
-                            <td >{{ $u->kecamatan }}</td>
-                            <td >{{ $u->kode_pos }}</td>
-                            <td >{{ $u->alamat_lengkap }}</td>
-                            <td >{{ $u->role_id }}</td>
+                            <td >{{ $u->alamat_lengkap }}, {{ $u->kecamatan }}, {{ $u->kota }}, {{ $u->provinsi }}, {{ $u->kode_pos }}</td>
                             <td >
                                 <a href="/user/employee/edit/{{ $u->id }}" type="button" class="btn btn-warning btn-sm"><span class="fa fa-pencil" ></a>
                                 <!-- <a href="/ecommerce/warehouse/supplier/delete/{{ $u->id }}" type="button" class="btn btn-danger btn-sm"><span class="fa fa-trash"></a> -->
@@ -85,6 +73,8 @@
 
                 </div>
                 
+                </div>
+                    
             </div>
 
                 

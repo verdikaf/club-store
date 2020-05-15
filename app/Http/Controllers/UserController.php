@@ -131,9 +131,17 @@ class UserController extends Controller
     }
     
     
-    //WAREHOUSE EMPLOYEE
+   //WAREHOUSE EMPLOYEE
 
-    public function indexEmployee() {
+    public function indexEmployee(Request $request) {
+
+        $session  = array(
+            'id'             => $request->session()->get('s_id'),
+            'nama'           => $request->session()->get('s_nama'),
+            'roole'          => $request->session()->get('s_roole')
+        );
+
+        $nav_menu = $this->displayMenu($request);
 
         $data = DB::table('user')
             ->join('role', 'user.role_id', '=', 'role.id')
@@ -141,12 +149,19 @@ class UserController extends Controller
             ->where('role.id', 2)
             ->groupBy('user.id')->get();
         
-            return view('user_employee', ['data' => $data]);
+            
+            return view('user_employee', ['data' => $data, 'session' => $session, 'nav_menu' => $nav_menu]);
  
     }
 
-    public function employeeAdd() {
+    public function employeeAdd(Request $request ) {
         $data['role'] = DB::select("SELECT * FROM role");
+        $data['nav_menu'] = $this->displayMenu($request);
+        $data['session'] = array(
+            'id'             => $request->session()->get('s_id'),
+            'nama'           => $request->session()->get('s_nama'),
+            'roole'          => $request->session()->get('s_roole')
+        );
         return view('user_employee_add', $data);
     }
 
@@ -168,10 +183,17 @@ class UserController extends Controller
 
     }
 
-    public function employeeEdit($id) {
+    public function employeeEdit(Request $request, $id) {
         $user = DB::table('user')->where('id',$id)->get();
         $role = DB::table('role')->get();
-        return view('user_employee_edit',['user' => $user, 'role' => $role]);
+        $session  = array(
+            'id'             => $request->session()->get('s_id'),
+            'nama'           => $request->session()->get('s_nama'),
+            'roole'          => $request->session()->get('s_roole')
+        );
+
+        $nav_menu = $this->displayMenu($request);
+        return view('user_employee_edit',['user' => $user, 'session' => $session, 'nav_menu' => $nav_menu, 'role' => $role]);
 
     }
 
@@ -190,7 +212,40 @@ class UserController extends Controller
         ]);
         return redirect('/user/employee');
     }
-    
+
+    public function indexDataCustomer(Request $request) {
+
+        $data = DB::table('user')
+            ->join('role', 'user.role_id', '=', 'role.id')
+            ->select(DB::raw('user.*, role.nama as role_id'))
+            ->where('role.id', 3)
+            ->groupBy('user.id')->get();
     
 
+            $nav_menu = $this->displayMenu($request);
+            $session = array(
+                'id'             => $request->session()->get('s_id'),
+                'nama'           => $request->session()->get('s_nama'),
+                'roole'          => $request->session()->get('s_roole')
+            );
+
+            return view('data_customer', ['data' => $data, 'nav_menu' => $nav_menu, 'session' => $session]);
+            
+ 
+    }
+
+    private function displayMenu(Request $request) {
+        $menu = "<div class='list-group list-group-flush'>";
+        $result      = DB::select("SELECT m.id, m.nama, m.url, r.nama AS role FROM menu AS m 
+        LEFT JOIN role AS r ON m.role_id = r.id WHERE r.nama=?", [
+                            $request->session()->get('s_roole')
+                       ]);
+        foreach ($result as $r) {
+             $menu .= "<a href='".$r->url."' class='list-group-item list-group-item-action bg-extras1'>" . $r->nama . "</a>";
+        }
+        $menu .= "<a href='/logout/employee' class='list-group-item list-group-item-action bg-extras1'>Logout</a>";
+        $menu .= "</div>";
+        return $menu;
+    }
+    
 }
