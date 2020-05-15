@@ -41,8 +41,6 @@ class PagesController extends Controller
         return response($result);
 
 		// menangkap data pencarian
-<<<<<<< HEAD
-<<<<<<< HEAD
 		// $cari = $request->cari;
  
         // $produk = DB::table('produk')
@@ -54,28 +52,10 @@ class PagesController extends Controller
 
         // $kategori = DB::table('kategori')
         //     ->get();
-=======
-=======
->>>>>>> 1e038de6e9d93ec3685de7a89b57f2b339587cd3
-        $cari = $request->cari;
-        
-        $produk = DB::table('produk')
-        ->join('preview', 'produk.id', '=', 'preview.produk_id')
-		->where('nama','like',"%".$cari."%")
-        ->paginate();
-        $kategori = DB::table('kategori')
-            ->get();
->>>>>>> 1e038de6e9d93ec3685de7a89b57f2b339587cd3
 
         // $cart = DB::selectOne("SELECT COUNT(*) AS jumlah_keranjang FROM nota WHERE user_id=? AND status='pending'", [$request->session()->get('s_id')]);
  
-<<<<<<< HEAD
-<<<<<<< HEAD
-		// return view('produk_list',['produk' => $produk, 'kategori' => $kategori, 'cart' => $cart]);
- 
-=======
         return view('produk_list',['produk' => $produk, 'kategori' => $kategori, 'cart' => $cart]);
->>>>>>> 1e038de6e9d93ec3685de7a89b57f2b339587cd3
     }
 
     public function produk(Request $request) {
@@ -89,9 +69,6 @@ class PagesController extends Controller
             ->get();
             $cart = DB::selectOne("SELECT COUNT(*) AS jumlah_keranjang FROM nota WHERE user_id=? AND status='pending'", [$request->session()->get('s_id')]);
         return view('produk_list', ['produk' => $produk, 'data' => $data, 'kategori' => $kategori, 'cart'=>$cart]);
-=======
-        return view('produk_list',['produk' => $produk, 'kategori' => $kategori, 'cart' => $cart]);
->>>>>>> 1e038de6e9d93ec3685de7a89b57f2b339587cd3
     }
 
     public function index(Request $request) {
