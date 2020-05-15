@@ -58,6 +58,8 @@ Route::get('/user/employee/add', 'UserController@employeeAdd');
 Route::post('/user/employee/add/save', 'UserController@employeeAddSave');
 Route::get('/user/employee/edit/{id}', 'UserController@employeeEdit');
 Route::post('/user/employee/edit/save', 'UserController@employeeEditSave');
+Route::get('/user/customer', 'UserController@indexDataCustomer');
+
 
 Route::get('/produk', 'ProdukController@index');
 Route::get('/produk/add', 'ProdukController@produkAdd');
