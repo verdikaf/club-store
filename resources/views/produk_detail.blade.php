@@ -59,11 +59,14 @@
                         <div class="row no-gutters">
                             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
 							@foreach($produk as $p)
-                                <!-- Product Slider -->
+								<!-- Product Slider -->
+								@foreach($prev as $v)
 									<div class="product-gallery">
-												<img src="{{url($p->foto)}}" alt="#">
-
+										
+												<img src="{{url($v->foto)}}" alt="#">
+										
 									</div>
+								@endforeach
 								<!-- End Product slider -->
                             </div>
                             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
