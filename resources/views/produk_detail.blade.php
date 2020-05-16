@@ -60,13 +60,15 @@
                             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
 							@foreach($produk as $p)
 								<!-- Product Slider -->
-								@foreach($prev as $v)
 									<div class="product-gallery">
-										
+										<div class="quickview-slider-active">
+											@foreach($prev as $v)
+											<div class="single-slider">
 												<img src="{{url($v->foto)}}" alt="#">
-										
+											</div>
+											@endforeach
+										</div>
 									</div>
-								@endforeach
 								<!-- End Product slider -->
                             </div>
                             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
@@ -78,7 +80,7 @@
                                             <span><i class="fa fa-check-circle-o"></i>Tersedia: {{$p->stok}} barang</span>
                                         </div>
                                     </div>
-                                    <h3><i class="fa fa-tags"></i>Rp. {{$p->harga}}</h3>
+                                    <h3>Rp. {{$p->harga}}</h3>
                                     <div class="quickview-peragraph">
                                         <p>{{$p->deskripsi}}</p>
 									</div>
