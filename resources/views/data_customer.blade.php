@@ -8,14 +8,12 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Warehouse</title>
+  <title>Warehouse - Employee</title>
 
   <!-- Bootstrap core CSS -->
   <link rel="stylesheet" href="{{url('/assets/library/bootstrap/css/bootstrap.css')}}">
-  <link rel="stylesheet" href="{{url('/assets/library/fontawesome/css/fontawesome.css')}}">
-  <link rel="stylesheet" href="{{url('/assets/css/sidebar.css')}}">
+  <link rel="stylesheet" href="{{url('/assets/library/bootstrap/css/simple-sidebar.css')}}">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />
-
 
 </head>
 
@@ -23,71 +21,59 @@
 
   <div class="d-flex" id="wrapper">
     
-    @include ('sidebar')
+    
+  @include('sidebar')
 
     <!-- Page Content -->
-    <div id="page-content-wrapper" style="padding: 10px;">
-      <div class="container-fluid">
-        
-        <div class="row">
- 
-      <!-- ./card-body -->
+    <div id="page-content-wrapper">
 
-      <?php $no = 0;?>
-            @foreach($data as $u)
+      
+        <div class="container-fluid" style="padding-top: 15px;">
+            <div class="row">
 
-      <div class="col-md-12">
-        <div class="card text-white bg-dark mb-4 shadow-sm h-md-250">
-            <div class="card-body d-flex flex-column align-items-start">
-                <?php $no++ ;?>
-               <strong class="d-inline-block mb-2 text-white"><h3>{{ $no }}</h3></strong>
-            </div>
+            <div class="col-md-12">
+                <div class="card text-white bg-light mb-4 shadow-sm h-md-250">
+                <div class="card-body d-flex flex-column align-items-start">
+                    <strong class="d-inline-block mb-2 text-dark"><h3>USER - CUSTOMER.</h3></strong>
+                    </div>
 
-            <div class="card-footer">
-              <div class="row">
-                <div class="col-md-6 col-6">
-                  <div class="row mb-4">
-                    <div class="col-md-12">
+                    <table class="table">
+                    <thead class="thead-light">
+                        <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">NAMA</th>
+                        <th scope="col">TELEPON</th>
+                        <th scope="col">EMAIL</th>
+                        <th scope="col">ALAMAT</th>
+                        </tr>
+                    </thead>
+                    <tbody>
                     
-                            <ul>
-                                 <li>
-                                      <th>Nama : </th> &nbsp;
-                                      <td>{{ $u->nama }}</td>
-                                  </li>
-                                  <li>
-                                      <th>Telepon : </th>
-                                      <td>{{ $u->telp }}</td>
-                                  </li>
-                                  <li>
-                                      <th>Email : </th>
-                                      <td>{{ $u->email }}</td>
-                                  </li>  
-                                  <li>
-                                      <th>Alamat : </th>
-                                      <td>{{ $u->alamat_lengkap }},</td>
-                                      <td>{{ $u->kecamatan }},</td>
-                                      <td>{{ $u->kota }}</td>
-                                  </li> 
-                                  <li>
-                                      <th>KodePos : </th>
-                                      <td>{{ $u->kode_pos }}</td>
-                                  </li>                                                    
-                              </ul>    
-                      </div>
-                    
-                  </div>
+                    <?php $no = 0;?>
+                    @foreach($data as $u)
+                    <?php $no++ ;?>
+                        <tr>
+                            <td >{{ $no }}</td>
+                            <!-- <td >{{ $u->id }}</td> -->
+                            <td >{{ $u->nama }}</td>
+                            <td >{{ $u->telp }}</td>
+                            <td >{{ $u->email }}</td>
+                            <td >{{ $u->alamat_lengkap }}, {{ $u->kecamatan }}, {{ $u->kota }}, {{ $u->provinsi }}, {{ $u->kode_pos }}</td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+
                 </div>
-              </div>
-              
+                
+                </div>
+                    
             </div>
-          </div>  
-      </div>
-      @endforeach
-    </div>
-    <!-- /#page-content-wrapper -->
 
-  </div>
-  <!-- /#wrapper -->
+                
+            </div>
+        </div>
+      </div>
 
   <!-- Bootstrap core JavaScript -->
   <!-- <link rel="stylesheet" href="{{url('/assets/library/jquery.min.js')}}">

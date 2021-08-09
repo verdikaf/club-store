@@ -57,7 +57,7 @@
                           <th scope="col">HARGA</th>
                           <th scope="col">FOTO</th>
                           <th scope="col">KATEGORI</th>
-                          <th scope="col">OPSI</th>
+                          <th scope="col" style="width: 100px">OPSI</th>
                           </tr>
                       </thead>
                       <tbody id="list_produk">
